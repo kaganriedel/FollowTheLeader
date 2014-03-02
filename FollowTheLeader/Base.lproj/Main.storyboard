@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="323-t6-3R8"/>
+                        <viewControllerLayoutGuide type="bottom" id="M6q-B8-9GD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esu-gn-dgj">
+                                <rect key="frame" x="20" y="124" width="528" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZt-IQ-5ED">
+                                <rect key="frame" x="20" y="124" width="528" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="FOLLOW THE LEADER">
+                                    <color key="titleColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vbe-ua-vcN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-LU-fW7">
+                                <rect key="frame" x="20" y="55" width="528" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-BW-7if">
+                                <rect key="frame" x="418" y="9" width="130" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HIGH SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-St-EIa">
+                                <rect key="frame" x="106" y="215" width="357" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="McU-oB-dtx">
+                                <rect key="frame" x="202" y="6" width="165" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Speed"/>
+                                    <segment title="Timed"/>
+                                </segments>
+                                <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="cYl-3s-MKT"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFP-2z-tqh">
+                                <rect key="frame" x="20" y="9" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="y11-4j-IP3" appends="YES" id="CNY-fB-pHa"/>
+                            <outletCollection property="gestureRecognizers" destination="ESk-y0-Ig8" appends="YES" id="FT5-Fw-VSS"/>
+                            <outletCollection property="gestureRecognizers" destination="4IQ-WC-B4f" appends="YES" id="cF2-on-g37"/>
+                            <outletCollection property="gestureRecognizers" destination="qar-47-VP7" appends="YES" id="x7A-fU-jph"/>
+                            <outletCollection property="gestureRecognizers" destination="vNx-RW-WHm" appends="YES" id="C04-X9-Knn"/>
+                            <outletCollection property="gestureRecognizers" destination="faq-Tv-3pH" appends="YES" id="6AP-BK-83R"/>
+                            <outletCollection property="gestureRecognizers" destination="Rh5-rc-GMH" appends="YES" id="GP8-0T-zd6"/>
+                            <outletCollection property="gestureRecognizers" destination="z4d-yg-5wi" appends="YES" id="Jde-dU-DYs"/>
+                            <outletCollection property="gestureRecognizers" destination="k9s-bc-mEa" appends="YES" id="YkF-JL-rPU"/>
+                        </connections>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="feedbackLabel" destination="qAu-LU-fW7" id="nDr-bV-yBP"/>
+                        <outlet property="gameModeControl" destination="McU-oB-dtx" id="EdN-30-IAN"/>
+                        <outlet property="goButton" destination="XZt-IQ-5ED" id="6Sj-eh-UY5"/>
+                        <outlet property="highscoreLabel" destination="XWX-St-EIa" id="K6Z-Ny-xKT"/>
+                        <outlet property="leaderLabel" destination="Esu-gn-dgj" id="eft-f5-eja"/>
+                        <outlet property="scoreLabel" destination="VOI-BW-7if" id="MLh-kG-oAK"/>
+                        <outlet property="timerLabel" destination="LFP-2z-tqh" id="E58-bg-hiR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="y11-4j-IP3">
+                    <connections>
+                        <action selector="didRecieveTap:" destination="vXZ-lx-hvc" id="04R-4b-ZqD"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="wGe-g4-yes"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTouchesRequired="2" id="k9s-bc-mEa" userLabel="Double Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didRecieveDoubletap:" destination="vXZ-lx-hvc" id="wdl-fV-oxo"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="dBC-Ax-e2Z"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="ESk-y0-Ig8">
+                    <connections>
+                        <action selector="didRecievePinch:" destination="vXZ-lx-hvc" id="bDu-Vy-OXk"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="elE-V3-fyi"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="4IQ-WC-B4f" userLabel="Right Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="didSwipeRight:" destination="vXZ-lx-hvc" id="gto-F5-0Gg"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="yPt-g3-733"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="faq-Tv-3pH" userLabel="Left Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="didSwipeLeft:" destination="vXZ-lx-hvc" id="qGu-Nv-RzW"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="qOt-Qx-4uQ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="Rh5-rc-GMH" userLabel="Up Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="didSwipeUp:" destination="vXZ-lx-hvc" id="2wG-OA-ahp"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="ah0-in-5ab"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="z4d-yg-5wi" userLabel="Down Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="didSwipeDown:" destination="vXZ-lx-hvc" id="30W-O3-v73"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="KU0-iS-ebW"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="2" id="qar-47-VP7">
+                    <connections>
+                        <action selector="didRecievePan:" destination="vXZ-lx-hvc" id="U8T-SO-lC2"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="1HU-Er-JQn"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.30000000000000004" id="vNx-RW-WHm">
+                    <connections>
+                        <action selector="didRecieveLongPress:" destination="vXZ-lx-hvc" id="XiD-e4-HcE"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="LKV-H8-Gnr"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="16" y="203"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
