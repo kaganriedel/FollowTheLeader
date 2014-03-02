@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CSAnimationView.h"
 
 @interface ViewController () <UIGestureRecognizerDelegate>
 {
@@ -17,6 +18,8 @@
     __weak IBOutlet UIButton *goButton;
     __weak IBOutlet UILabel *timerLabel;
     __weak IBOutlet UISegmentedControl *gameModeControl;
+    __weak IBOutlet CSAnimationView *feedbackAnimationView;
+    __weak IBOutlet CSAnimationView *leaderAnimationView;
     NSTimer *timer;
     NSString *gestureCommanded;
     NSString *lastGestureRecieved;
@@ -39,12 +42,24 @@
     leaderLabel.alpha = 0.0;
     scoreLabel.alpha = 0.0;
     timerLabel.alpha = 0.0;
-    speedMode = YES;
+    feedbackAnimationView.type = CSAnimationTypeBounceDown;
+    feedbackAnimationView.delay = 0.0;
+    feedbackAnimationView.duration = 0.5;
+        speedMode = YES;
     feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZEBALLS", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
     userDefaults = [NSUserDefaults standardUserDefaults];
     highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"speedhighscore"] ?: 0)];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    leaderAnimationView.type = CSAnimationTypeSlideRight;
+    leaderAnimationView.delay = 0.0;
+    leaderAnimationView.duration = 0.5;
+    [leaderAnimationView startCanvasAnimation];
+
+}
 - (IBAction)segmentValueChanged:(UISegmentedControl *)segmentedControl
 {
     scoreLabel.alpha = 0.0;
@@ -87,9 +102,9 @@
         counter = 25;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
-    
+    lastGestureRecieved = @"";
     feedbackLabel.alpha = 0.0;
-    int randomNumber = arc4random()%9;
+    int randomNumber = arc4random()%10;
     switch (randomNumber) {
         case 0:
             leaderLabel.text = @"TAP";
@@ -143,16 +158,16 @@
     {
         [timer invalidate];
     }
-    lastGestureRecieved = @"";
     int randomNumber = arc4random()%feedbackArray.count;
     feedbackLabel.text = feedbackArray[randomNumber];
     feedbackLabel.alpha = 1.0;
-    [UIView animateWithDuration:3.5 animations:^{
+    [feedbackAnimationView startCanvasAnimation];
+    [UIView animateWithDuration:2.5 animations:^{
         feedbackLabel.alpha = 0.0;
     }];
     score += 1;
     scoreLabel.text = [NSString stringWithFormat:@"%i", score];
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startNextCommand) userInfo:nil repeats:NO];
+    [self startNextCommand];
 }
 
 - (void)wrong
@@ -225,6 +240,8 @@
 {
     lastGestureRecieved = @"PRESS";
 }
+
+
 
 - (BOOL)prefersStatusBarHidden
 {
