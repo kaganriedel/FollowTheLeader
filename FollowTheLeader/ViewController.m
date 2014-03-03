@@ -17,7 +17,7 @@
     __weak IBOutlet UILabel *highscoreLabel;
     __weak IBOutlet UIButton *goButton;
     __weak IBOutlet UILabel *timerLabel;
-    __weak IBOutlet UISegmentedControl *gameModeControl;
+    __weak IBOutlet UISegmentedControl *gameModeSegmentedControl;
     __weak IBOutlet CSAnimationView *feedbackAnimationView;
     __weak IBOutlet CSAnimationView *leaderAnimationView;
     __weak IBOutlet CSAnimationView *timerAnimationView;
@@ -48,7 +48,10 @@
     scoreLabel.alpha = 0.0;
     timerLabel.alpha = 1.0;
     endlessMode = NO;
-
+    UIFont *font = [UIFont fontWithName:@"Copperplate-Light" size:17.0];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                           forKey:NSFontAttributeName];
+    [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     feedbackAnimationView.type = CSAnimationTypeBounceDown;
     feedbackAnimationView.delay = 0.0;
     feedbackAnimationView.duration = 0.5;
@@ -121,7 +124,7 @@
     highscoreLabel.alpha = 0.0;
     leaderLabel.alpha = 1.0;
     scoreLabel.alpha = 1.0;
-    gameModeControl.alpha = 0.0;
+    gameModeSegmentedControl.alpha = 0.0;
     score = 0;
     scoreLabel.text = [NSString stringWithFormat:@"%i", score];
     [self startNextCommand];
@@ -215,7 +218,7 @@
 {
     leaderLabel.alpha = 0.0;
     highscoreLabel.alpha = 1.0;
-    gameModeControl.alpha = 1.0;
+    gameModeSegmentedControl.alpha = 1.0;
     goButton.alpha = 1.0;
     segmentedControlAnimationView.delay = 0.0;
     [segmentedControlAnimationView startCanvasAnimation];
@@ -286,8 +289,6 @@
 {
     lastGestureRecieved = @"PRESS";
 }
-
-
 
 - (BOOL)prefersStatusBarHidden
 {
