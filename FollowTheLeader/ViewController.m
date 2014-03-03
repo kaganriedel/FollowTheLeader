@@ -20,14 +20,18 @@
     __weak IBOutlet UISegmentedControl *gameModeControl;
     __weak IBOutlet CSAnimationView *feedbackAnimationView;
     __weak IBOutlet CSAnimationView *leaderAnimationView;
+    __weak IBOutlet CSAnimationView *timerAnimationView;
+    __weak IBOutlet CSAnimationView *segmentedControlAnimationView;
+    __weak IBOutlet CSAnimationView *highscoreAnimationView;
     NSTimer *timer;
     NSString *gestureCommanded;
     NSString *lastGestureRecieved;
     NSArray *feedbackArray;
     NSUserDefaults *userDefaults;
-    int counter;
+    float counter;
     int score;
-    BOOL speedMode;
+    BOOL endlessMode;
+    int lastRandomGesturePicked;
 }
 
 @end
@@ -37,27 +41,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     feedbackLabel.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
     leaderLabel.alpha = 0.0;
     scoreLabel.alpha = 0.0;
-    timerLabel.alpha = 0.0;
+    timerLabel.alpha = 1.0;
+    endlessMode = NO;
+
     feedbackAnimationView.type = CSAnimationTypeBounceDown;
     feedbackAnimationView.delay = 0.0;
     feedbackAnimationView.duration = 0.5;
-        speedMode = YES;
-    feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZEBALLS", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
+    highscoreAnimationView.type = CSAnimationTypeZoomOut;
+    highscoreAnimationView.delay = 0.0;
+    highscoreAnimationView.duration = 1.0;
+    
+    feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZING", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
     userDefaults = [NSUserDefaults standardUserDefaults];
-    highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"speedhighscore"] ?: 0)];
+    highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    leaderAnimationView.type = CSAnimationTypeSlideRight;
-    leaderAnimationView.delay = 0.0;
-    leaderAnimationView.duration = 0.5;
+    leaderAnimationView.type = CSAnimationTypeZoomOut;
+    leaderAnimationView.delay = 0.4;
+    leaderAnimationView.duration = 1.0;
     [leaderAnimationView startCanvasAnimation];
+    
+    timerAnimationView.type = CSAnimationTypeSlideRight;
+    timerAnimationView.delay = 0.8;
+    timerAnimationView.duration = 1.5;
+    [timerAnimationView startCanvasAnimation];
+    
+    segmentedControlAnimationView.type = CSAnimationTypeSlideDown;
+    segmentedControlAnimationView.delay = 0.8;
+    segmentedControlAnimationView.duration = 1.5;
+    [segmentedControlAnimationView startCanvasAnimation];
 
 }
 - (IBAction)segmentValueChanged:(UISegmentedControl *)segmentedControl
@@ -66,24 +86,36 @@
     //speed
     if (segmentedControl.selectedSegmentIndex == 0)
     {
-        timerLabel.alpha = 0.0;
-        speedMode = YES;
-        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"speedhighscore"] ?: 0)];
+        timerLabel.alpha = 1.0;
+        timerAnimationView.type = CSAnimationTypeFadeIn;
+        timerAnimationView.delay = 0.0;
+        timerAnimationView.duration = 1.0;
+        [timerAnimationView startCanvasAnimation];
+        endlessMode = NO;
+        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
     }
     //timed
     else if (segmentedControl.selectedSegmentIndex == 1)
     {
-        timerLabel.alpha = 1.0;
-        speedMode = NO;
-        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
+        timerAnimationView.type = CSAnimationTypeFadeOut;
+        timerAnimationView.delay = 0.0;
+        timerAnimationView.duration = 1.0;
+        [timerAnimationView startCanvasAnimation];
+
+        endlessMode = YES;
+        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"endlesshighscore"] ?: 0)];
     }
 }
 - (IBAction)goPressed:(UIButton *)sender
 {
-    if (!speedMode)
+    if (!endlessMode)
     {
-        counter = 1000;
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+        counter = 10.0;
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+    }
+    else
+    {
+        timerLabel.alpha = 0.0;
     }
     goButton.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
@@ -97,14 +129,21 @@
 
 - (void)startNextCommand
 {
-    if (speedMode)
+    if (endlessMode)
     {
-        counter = 25;
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+        counter = 2.0;
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
-    lastGestureRecieved = @"";
     feedbackLabel.alpha = 0.0;
-    int randomNumber = arc4random()%10;
+    int randomNumber = arc4random()%9;
+    if (randomNumber == lastRandomGesturePicked && randomNumber > 0)
+    {
+        randomNumber --;
+    }
+    else if (randomNumber == lastRandomGesturePicked && randomNumber == 0)
+    {
+        randomNumber ++;
+    }
     switch (randomNumber) {
         case 0:
             leaderLabel.text = @"TAP";
@@ -136,15 +175,16 @@
         default:
             break;
     }
+    lastRandomGesturePicked = randomNumber;
 }
 
 - (void)timerFired
 {
-    counter --;
-    timerLabel.text = [NSString stringWithFormat:@"%i", (counter + 9) / 10];
-    if (counter == 0)
+    counter -= 0.01;
+    timerLabel.text = [NSString stringWithFormat:@"%i", (int)(counter+0.99)];
+    if (counter <= 0)
     {
-        [self wrong];
+        [self gameOver];
     }
     if ([leaderLabel.text isEqualToString:lastGestureRecieved])
     {
@@ -154,7 +194,8 @@
 
 - (void)correct
 {
-    if (speedMode)
+    lastGestureRecieved = @"";
+    if (endlessMode)
     {
         [timer invalidate];
     }
@@ -162,7 +203,7 @@
     feedbackLabel.text = feedbackArray[randomNumber];
     feedbackLabel.alpha = 1.0;
     [feedbackAnimationView startCanvasAnimation];
-    [UIView animateWithDuration:2.5 animations:^{
+    [UIView animateWithDuration:2.0 animations:^{
         feedbackLabel.alpha = 0.0;
     }];
     score += 1;
@@ -170,19 +211,24 @@
     [self startNextCommand];
 }
 
-- (void)wrong
+- (void)gameOver
 {
     leaderLabel.alpha = 0.0;
     highscoreLabel.alpha = 1.0;
     gameModeControl.alpha = 1.0;
     goButton.alpha = 1.0;
+    segmentedControlAnimationView.delay = 0.0;
+    [segmentedControlAnimationView startCanvasAnimation];
+    leaderAnimationView.delay = 0.0;
+    [leaderAnimationView startCanvasAnimation];
+    [highscoreAnimationView startCanvasAnimation];
     [timer invalidate];
-    if (speedMode)
+    if (endlessMode)
     {
-        if ([userDefaults integerForKey:@"speedhighscore"] < score)
+        if ([userDefaults integerForKey:@"endlesshighscore"] < score)
         {
-            [userDefaults setInteger:score forKey:@"speedhighscore"];
-            highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %i", score];
+            [userDefaults setInteger:score forKey:@"endlesshighscore"];
+            highscoreLabel.text = [NSString stringWithFormat:@"NEW HIGH SCORE %i", score];
         }
     }
     else
@@ -190,7 +236,7 @@
         if ([userDefaults integerForKey:@"timedhighscore"] < score)
         {
             [userDefaults setInteger:score forKey:@"timedhighscore"];
-            highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %i", score];
+            highscoreLabel.text = [NSString stringWithFormat:@"NEW HIGH SCORE %i", score];
         }
     }
     [userDefaults synchronize];

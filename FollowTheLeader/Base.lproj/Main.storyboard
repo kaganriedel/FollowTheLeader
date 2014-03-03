@@ -23,32 +23,6 @@
                                 <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HIGH SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-St-EIa">
-                                <rect key="frame" x="106" y="215" width="357" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="McU-oB-dtx">
-                                <rect key="frame" x="202" y="6" width="165" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Speed"/>
-                                    <segment title="Timed"/>
-                                </segments>
-                                <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
-                                <connections>
-                                    <action selector="segmentValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="cYl-3s-MKT"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFP-2z-tqh">
-                                <rect key="frame" x="20" y="9" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GxP-FC-xXM" customClass="CSAnimationView">
                                 <rect key="frame" x="34" y="55" width="500" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -89,6 +63,53 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Cs-ye-fci" customClass="CSAnimationView">
+                                <rect key="frame" x="20" y="9" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFP-2z-tqh">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-GV-BXE" customClass="CSAnimationView">
+                                <rect key="frame" x="196" y="4" width="176" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="McU-oB-dtx">
+                                        <rect key="frame" x="6" y="2" width="165" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="TIMED"/>
+                                            <segment title="ENDLESS"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                                        <connections>
+                                            <action selector="segmentValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="cYl-3s-MKT"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jdo-hF-06K" customClass="CSAnimationView">
+                                <rect key="frame" x="86" y="195" width="397" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HIGH SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-St-EIa">
+                                        <rect key="frame" x="20" y="20" width="357" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -111,10 +132,13 @@
                         <outlet property="feedbackLabel" destination="qAu-LU-fW7" id="nDr-bV-yBP"/>
                         <outlet property="gameModeControl" destination="McU-oB-dtx" id="EdN-30-IAN"/>
                         <outlet property="goButton" destination="XZt-IQ-5ED" id="6Sj-eh-UY5"/>
+                        <outlet property="highscoreAnimationView" destination="Jdo-hF-06K" id="uCU-tU-nnY"/>
                         <outlet property="highscoreLabel" destination="XWX-St-EIa" id="K6Z-Ny-xKT"/>
                         <outlet property="leaderAnimationView" destination="YNK-FO-a5f" id="Z8C-U6-dcT"/>
                         <outlet property="leaderLabel" destination="Esu-gn-dgj" id="eft-f5-eja"/>
                         <outlet property="scoreLabel" destination="VOI-BW-7if" id="MLh-kG-oAK"/>
+                        <outlet property="segmentedControlAnimationView" destination="Gh5-GV-BXE" id="wXP-Mn-2Qo"/>
+                        <outlet property="timerAnimationView" destination="1Cs-ye-fci" id="ySn-aN-YKq"/>
                         <outlet property="timerLabel" destination="LFP-2z-tqh" id="E58-bg-hiR"/>
                     </connections>
                 </viewController>
@@ -174,7 +198,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="16" y="203"/>
+            <point key="canvasLocation" x="25" y="242"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
