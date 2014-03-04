@@ -64,17 +64,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Cs-ye-fci" customClass="CSAnimationView">
-                                <rect key="frame" x="20" y="9" width="40" height="21"/>
+                                <rect key="frame" x="20" y="9" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFP-2z-tqh">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="17"/>
-                                        <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-GV-BXE" customClass="CSAnimationView">
@@ -139,7 +130,6 @@
                         <outlet property="scoreLabel" destination="VOI-BW-7if" id="MLh-kG-oAK"/>
                         <outlet property="segmentedControlAnimationView" destination="Gh5-GV-BXE" id="wXP-Mn-2Qo"/>
                         <outlet property="timerAnimationView" destination="1Cs-ye-fci" id="ySn-aN-YKq"/>
-                        <outlet property="timerLabel" destination="LFP-2z-tqh" id="E58-bg-hiR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -191,7 +181,7 @@
                         <outlet property="delegate" destination="vXZ-lx-hvc" id="1HU-Er-JQn"/>
                     </connections>
                 </panGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.30000000000000004" id="vNx-RW-WHm">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.20000000000000004" id="vNx-RW-WHm">
                     <connections>
                         <action selector="didRecieveLongPress:" destination="vXZ-lx-hvc" id="XiD-e4-HcE"/>
                         <outlet property="delegate" destination="vXZ-lx-hvc" id="LKV-H8-Gnr"/>

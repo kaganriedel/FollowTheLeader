@@ -1,1 +1,2 @@
 pod 'Canvas'
+pod 'BKECircularProgressView'

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CSAnimationView.h"
+#import "BKECircularProgressView.h"
 
 @interface ViewController () <UIGestureRecognizerDelegate>
 {
@@ -16,18 +17,19 @@
     __weak IBOutlet UILabel *scoreLabel;
     __weak IBOutlet UILabel *highscoreLabel;
     __weak IBOutlet UIButton *goButton;
-    __weak IBOutlet UILabel *timerLabel;
     __weak IBOutlet UISegmentedControl *gameModeSegmentedControl;
     __weak IBOutlet CSAnimationView *feedbackAnimationView;
     __weak IBOutlet CSAnimationView *leaderAnimationView;
     __weak IBOutlet CSAnimationView *timerAnimationView;
     __weak IBOutlet CSAnimationView *segmentedControlAnimationView;
     __weak IBOutlet CSAnimationView *highscoreAnimationView;
+    BKECircularProgressView *progressView;
     NSTimer *timer;
     NSString *gestureCommanded;
     NSString *lastGestureRecieved;
     NSArray *feedbackArray;
     NSUserDefaults *userDefaults;
+    float maxCounterTime;
     float counter;
     int score;
     BOOL endlessMode;
@@ -46,12 +48,18 @@
     highscoreLabel.alpha = 0.0;
     leaderLabel.alpha = 0.0;
     scoreLabel.alpha = 0.0;
-    timerLabel.alpha = 1.0;
     endlessMode = NO;
-    UIFont *font = [UIFont fontWithName:@"Copperplate-Light" size:17.0];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
-                                                           forKey:NSFontAttributeName];
+    maxCounterTime = 50.0;
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Copperplate-Light" size:17.0] forKey:NSFontAttributeName];
     [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
+    progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [progressView setProgressTintColor:[UIColor orangeColor]];
+    [progressView setBackgroundTintColor:[UIColor clearColor]];
+    [progressView setLineWidth:2.0f];
+    [progressView setProgress:1.0f];
+    [timerAnimationView addSubview:progressView];
+    
     feedbackAnimationView.type = CSAnimationTypeBounceDown;
     feedbackAnimationView.delay = 0.0;
     feedbackAnimationView.duration = 0.5;
@@ -60,6 +68,7 @@
     highscoreAnimationView.duration = 1.0;
     
     feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZING", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
+    
     userDefaults = [NSUserDefaults standardUserDefaults];
     highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
 }
@@ -89,22 +98,14 @@
     //speed
     if (segmentedControl.selectedSegmentIndex == 0)
     {
-        timerLabel.alpha = 1.0;
-        timerAnimationView.type = CSAnimationTypeFadeIn;
-        timerAnimationView.delay = 0.0;
-        timerAnimationView.duration = 1.0;
-        [timerAnimationView startCanvasAnimation];
+        maxCounterTime = 50.0;
         endlessMode = NO;
         highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
     }
     //timed
     else if (segmentedControl.selectedSegmentIndex == 1)
     {
-        timerAnimationView.type = CSAnimationTypeFadeOut;
-        timerAnimationView.delay = 0.0;
-        timerAnimationView.duration = 1.0;
-        [timerAnimationView startCanvasAnimation];
-
+        maxCounterTime = 5.0;
         endlessMode = YES;
         highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"endlesshighscore"] ?: 0)];
     }
@@ -113,12 +114,8 @@
 {
     if (!endlessMode)
     {
-        counter = 10.0;
+        counter = 0;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
-    }
-    else
-    {
-        timerLabel.alpha = 0.0;
     }
     goButton.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
@@ -134,7 +131,7 @@
 {
     if (endlessMode)
     {
-        counter = 2.0;
+        counter = 0;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
     feedbackLabel.alpha = 0.0;
@@ -183,9 +180,9 @@
 
 - (void)timerFired
 {
-    counter -= 0.01;
-    timerLabel.text = [NSString stringWithFormat:@"%i", (int)(counter+0.99)];
-    if (counter <= 0)
+    counter += 0.01;
+    [progressView setProgress:counter/maxCounterTime];
+    if (counter >= maxCounterTime)
     {
         [self gameOver];
     }
@@ -201,6 +198,10 @@
     if (endlessMode)
     {
         [timer invalidate];
+        if (maxCounterTime > 1.0)
+        {
+            maxCounterTime -= 0.1;
+        }
     }
     int randomNumber = arc4random()%feedbackArray.count;
     feedbackLabel.text = feedbackArray[randomNumber];
@@ -220,6 +221,8 @@
     highscoreLabel.alpha = 1.0;
     gameModeSegmentedControl.alpha = 1.0;
     goButton.alpha = 1.0;
+    [progressView setProgress:1.0];
+    
     segmentedControlAnimationView.delay = 0.0;
     [segmentedControlAnimationView startCanvasAnimation];
     leaderAnimationView.delay = 0.0;
