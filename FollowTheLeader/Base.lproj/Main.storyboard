@@ -109,7 +109,6 @@
                             <outletCollection property="gestureRecognizers" destination="y11-4j-IP3" appends="YES" id="CNY-fB-pHa"/>
                             <outletCollection property="gestureRecognizers" destination="ESk-y0-Ig8" appends="YES" id="FT5-Fw-VSS"/>
                             <outletCollection property="gestureRecognizers" destination="4IQ-WC-B4f" appends="YES" id="cF2-on-g37"/>
-                            <outletCollection property="gestureRecognizers" destination="qar-47-VP7" appends="YES" id="x7A-fU-jph"/>
                             <outletCollection property="gestureRecognizers" destination="vNx-RW-WHm" appends="YES" id="C04-X9-Knn"/>
                             <outletCollection property="gestureRecognizers" destination="faq-Tv-3pH" appends="YES" id="6AP-BK-83R"/>
                             <outletCollection property="gestureRecognizers" destination="Rh5-rc-GMH" appends="YES" id="GP8-0T-zd6"/>
@@ -139,7 +138,7 @@
                         <outlet property="delegate" destination="vXZ-lx-hvc" id="wGe-g4-yes"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer numberOfTouchesRequired="2" id="k9s-bc-mEa" userLabel="Double Tap Gesture Recognizer">
+                <tapGestureRecognizer numberOfTapsRequired="2" id="k9s-bc-mEa" userLabel="Double Tap Gesture Recognizer">
                     <connections>
                         <action selector="didRecieveDoubletap:" destination="vXZ-lx-hvc" id="wdl-fV-oxo"/>
                         <outlet property="delegate" destination="vXZ-lx-hvc" id="dBC-Ax-e2Z"/>
@@ -175,12 +174,6 @@
                         <outlet property="delegate" destination="vXZ-lx-hvc" id="KU0-iS-ebW"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="2" id="qar-47-VP7">
-                    <connections>
-                        <action selector="didRecievePan:" destination="vXZ-lx-hvc" id="U8T-SO-lC2"/>
-                        <outlet property="delegate" destination="vXZ-lx-hvc" id="1HU-Er-JQn"/>
-                    </connections>
-                </panGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.20000000000000004" id="vNx-RW-WHm">
                     <connections>
                         <action selector="didRecieveLongPress:" destination="vXZ-lx-hvc" id="XiD-e4-HcE"/>

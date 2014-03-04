@@ -135,7 +135,7 @@
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
     feedbackLabel.alpha = 0.0;
-    int randomNumber = arc4random()%9;
+    int randomNumber = arc4random()%8;
     if (randomNumber == lastRandomGesturePicked && randomNumber > 0)
     {
         randomNumber --;
@@ -167,9 +167,6 @@
             leaderLabel.text = @"SWIPE DOWN";
             break;
         case 7:
-            leaderLabel.text = @"DOUBLE SWIPE";
-            break;
-        case 8:
             leaderLabel.text = @"PRESS";
             break;
         default:
@@ -231,6 +228,7 @@
     [timer invalidate];
     if (endlessMode)
     {
+        maxCounterTime = 5.0;
         if ([userDefaults integerForKey:@"endlesshighscore"] < score)
         {
             [userDefaults setInteger:score forKey:@"endlesshighscore"];
@@ -283,10 +281,6 @@
     lastGestureRecieved = @"SWIPE DOWN";
 }
 
-- (IBAction)didRecievePan:(UIPanGestureRecognizer *)sender
-{
-    lastGestureRecieved = @"DOUBLE SWIPE";
-}
 
 - (IBAction)didRecieveLongPress:(UILongPressGestureRecognizer *)sender
 {
