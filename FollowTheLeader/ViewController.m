@@ -48,8 +48,8 @@
     highscoreLabel.alpha = 0.0;
     leaderLabel.alpha = 0.0;
     scoreLabel.alpha = 0.0;
-    endlessMode = NO;
-    maxCounterTime = 50.0;
+    endlessMode = YES;
+    maxCounterTime = 5.0;
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Copperplate-Light" size:17.0] forKey:NSFontAttributeName];
     [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
@@ -70,7 +70,7 @@
     feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZING", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
     
     userDefaults = [NSUserDefaults standardUserDefaults];
-    highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
+    highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"endlesshighscore"] ?: 0)];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -95,19 +95,19 @@
 - (IBAction)segmentValueChanged:(UISegmentedControl *)segmentedControl
 {
     scoreLabel.alpha = 0.0;
-    //speed
+    //endless
     if (segmentedControl.selectedSegmentIndex == 0)
-    {
-        maxCounterTime = 50.0;
-        endlessMode = NO;
-        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
-    }
-    //timed
-    else if (segmentedControl.selectedSegmentIndex == 1)
     {
         maxCounterTime = 5.0;
         endlessMode = YES;
         highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"endlesshighscore"] ?: 0)];
+    }
+    //timed
+    else if (segmentedControl.selectedSegmentIndex == 1)
+    {
+        maxCounterTime = 50.0;
+        endlessMode = NO;
+        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
     }
 }
 - (IBAction)goPressed:(UIButton *)sender

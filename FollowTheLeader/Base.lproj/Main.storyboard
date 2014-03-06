@@ -105,8 +105,8 @@
                                         <rect key="frame" x="0.0" y="2" width="176" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="TIMED"/>
                                             <segment title="ENDLESS"/>
+                                            <segment title="TIMED"/>
                                         </segments>
                                         <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
