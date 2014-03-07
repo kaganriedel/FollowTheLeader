@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 Kagan Riedel. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "ViewController.h"
 #import "CSAnimationView.h"
 #import "BKECircularProgressView.h"
 
-@interface ViewController () <UIGestureRecognizerDelegate>
+@interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate>
 {
     __weak IBOutlet UILabel *leaderLabel;
     __weak IBOutlet UILabel *feedbackLabel;
@@ -23,6 +24,7 @@
     __weak IBOutlet CSAnimationView *timerAnimationView;
     __weak IBOutlet CSAnimationView *segmentedControlAnimationView;
     __weak IBOutlet CSAnimationView *highscoreAnimationView;
+    __weak IBOutlet UIButton *playPauseButton;
     BKECircularProgressView *progressView;
     NSTimer *timer;
     NSString *gestureCommanded;
@@ -34,6 +36,8 @@
     int score;
     BOOL endlessMode;
     int lastRandomGesturePicked;
+    
+    AVAudioPlayer *player;
 }
 
 @end
@@ -53,7 +57,7 @@
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Copperplate-Light" size:17.0] forKey:NSFontAttributeName];
     [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
-    progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 25, 25)];
     [progressView setProgressTintColor:[UIColor orangeColor]];
     [progressView setBackgroundTintColor:[UIColor clearColor]];
     [progressView setLineWidth:2.0f];
@@ -71,6 +75,21 @@
     
     userDefaults = [NSUserDefaults standardUserDefaults];
     highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"endlesshighscore"] ?: 0)];
+    
+    NSString *soundFilePath =
+    [[NSBundle mainBundle] pathForResource: @"Ghostwriter"
+                                    ofType: @"mp3"];
+    
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: soundFilePath];
+    
+    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+    
+    player = newPlayer;
+    
+    [player prepareToPlay];
+    player.delegate = self;
+    [player play];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -246,6 +265,20 @@
     [userDefaults synchronize];
 }
 
+- (IBAction)playButtonPressed:(id)sender
+{
+    if (player.playing)
+    {
+        [playPauseButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        [player pause];
+    }
+    else
+    {
+        [playPauseButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+        [player play];
+    }
+}
+
 - (IBAction)didRecieveTap:(UITapGestureRecognizer *)sender
 {
     lastGestureRecieved = @"TAP";
@@ -289,6 +322,15 @@
 
 - (BOOL)prefersStatusBarHidden
 {
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIControl class]])
+    {
+        return NO;
+    }
     return YES;
 }
 

@@ -68,10 +68,11 @@
                                             <constraint firstAttribute="height" constant="72" id="1Wq-25-805"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="46"/>
-                                        <state key="normal" title="Tap To Follow">
+                                        <state key="normal" title="Follow">
                                             <color key="titleColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="highlighted" title="Follow"/>
                                         <connections>
                                             <action selector="goPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vbe-ua-vcN"/>
                                         </connections>
@@ -89,11 +90,23 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cs-ye-fci" customClass="CSAnimationView">
-                                <rect key="frame" x="20" y="9" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yl7-KE-xJy">
+                                        <rect key="frame" x="41" y="0.0" width="38" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="pause.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WvH-3I-XPd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="KvI-mY-muS"/>
+                                    <constraint firstAttribute="width" constant="100" id="KvI-mY-muS"/>
                                     <constraint firstAttribute="height" constant="50" id="eo3-Uu-xKe"/>
                                 </constraints>
                             </view>
@@ -153,7 +166,7 @@
                         <constraints>
                             <constraint firstItem="VOI-BW-7if" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="9" id="1Wc-wO-BHU"/>
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="55" id="53I-NH-OIm"/>
-                            <constraint firstItem="1Cs-ye-fci" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="AdZ-zZ-nG0"/>
+                            <constraint firstItem="1Cs-ye-fci" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="AdZ-zZ-nG0"/>
                             <constraint firstAttribute="trailing" secondItem="GxP-FC-xXM" secondAttribute="trailing" constant="34" id="B84-QS-P2d"/>
                             <constraint firstAttribute="trailing" secondItem="Jdo-hF-06K" secondAttribute="trailing" constant="85" id="COp-9D-Ezh"/>
                             <constraint firstAttribute="bottom" secondItem="YNK-FO-a5f" secondAttribute="bottom" constant="110" id="H5z-G4-2T8"/>
@@ -161,7 +174,7 @@
                             <constraint firstItem="Jdo-hF-06K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="86" id="Rl9-y1-3D5"/>
                             <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="4" id="S9o-b7-oGa"/>
                             <constraint firstAttribute="centerX" secondItem="Gh5-GV-BXE" secondAttribute="centerX" id="TI1-6Z-bJg"/>
-                            <constraint firstItem="1Cs-ye-fci" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="9" id="dOp-Xp-wfX"/>
+                            <constraint firstItem="1Cs-ye-fci" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="dOp-Xp-wfX"/>
                             <constraint firstAttribute="trailing" secondItem="VOI-BW-7if" secondAttribute="trailing" constant="20" id="irn-yc-0cR"/>
                             <constraint firstAttribute="bottom" secondItem="Jdo-hF-06K" secondAttribute="bottom" constant="35" id="oNb-0p-jUf"/>
                             <constraint firstAttribute="trailing" secondItem="YNK-FO-a5f" secondAttribute="trailing" constant="20" id="pJw-gy-hMP"/>
@@ -190,6 +203,7 @@
                         <outlet property="highscoreLabel" destination="XWX-St-EIa" id="K6Z-Ny-xKT"/>
                         <outlet property="leaderAnimationView" destination="YNK-FO-a5f" id="Z8C-U6-dcT"/>
                         <outlet property="leaderLabel" destination="Esu-gn-dgj" id="eft-f5-eja"/>
+                        <outlet property="playPauseButton" destination="Yl7-KE-xJy" id="olV-tu-N97"/>
                         <outlet property="scoreLabel" destination="VOI-BW-7if" id="MLh-kG-oAK"/>
                         <outlet property="segmentedControlAnimationView" destination="Gh5-GV-BXE" id="wXP-Mn-2Qo"/>
                         <outlet property="timerAnimationView" destination="1Cs-ye-fci" id="ySn-aN-YKq"/>
@@ -245,9 +259,12 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="25" y="242"/>
+            <point key="canvasLocation" x="37" y="244"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pause.png" width="40" height="40"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
