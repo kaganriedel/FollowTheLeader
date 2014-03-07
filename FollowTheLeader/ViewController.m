@@ -37,7 +37,7 @@
     BOOL endlessMode;
     int lastRandomGesturePicked;
     
-    AVAudioPlayer *player;
+    AVAudioPlayer *audioPlayer;
 }
 
 @end
@@ -54,7 +54,7 @@
     scoreLabel.alpha = 0.0;
     endlessMode = YES;
     maxCounterTime = 5.0;
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"Copperplate-Light" size:17.0] forKey:NSFontAttributeName];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0] forKey:NSFontAttributeName];
     [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
     progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 25, 25)];
@@ -82,14 +82,12 @@
     
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: soundFilePath];
     
-    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
     
-    player = newPlayer;
+    [audioPlayer prepareToPlay];
+    audioPlayer.delegate = self;
+    [audioPlayer play];
     
-    [player prepareToPlay];
-    player.delegate = self;
-    [player play];
-
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -267,15 +265,15 @@
 
 - (IBAction)playButtonPressed:(id)sender
 {
-    if (player.playing)
+    if (audioPlayer.playing)
     {
         [playPauseButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-        [player pause];
+        [audioPlayer pause];
     }
     else
     {
         [playPauseButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
-        [player play];
+        [audioPlayer play];
     }
 }
 
@@ -325,6 +323,8 @@
     return YES;
 }
 
+#pragma mark Delegate methods
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     if ([touch.view isKindOfClass:[UIControl class]])
@@ -332,6 +332,11 @@
         return NO;
     }
     return YES;
+}
+
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    [audioPlayer play];
 }
 
 @end

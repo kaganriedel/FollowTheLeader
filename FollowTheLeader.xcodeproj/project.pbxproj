@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		5142407DE680446F9E9A406A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 567668A951244E18A61A79E8 /* libPods.a */; };
 		6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */; };
-		6D57253218CA2C3000F68E58 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D57253118CA2C3000F68E58 /* pause.png */; };
-		6D57253418CA2C6E00F68E58 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D57253318CA2C6E00F68E58 /* play.png */; };
+		6D57253218CA2C3000F68E58 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D57253118CA2C3000F68E58 /* pause@2x.png */; };
+		6D57253418CA2C6E00F68E58 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D57253318CA2C6E00F68E58 /* play@2x.png */; };
 		6D8F71D718C296410077D383 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F71D618C296410077D383 /* Foundation.framework */; };
 		6D8F71D918C296410077D383 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F71D818C296410077D383 /* CoreGraphics.framework */; };
 		6D8F71DB18C296410077D383 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F71DA18C296410077D383 /* UIKit.framework */; };
@@ -40,8 +40,8 @@
 /* Begin PBXFileReference section */
 		567668A951244E18A61A79E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ghostwriter.mp3; sourceTree = "<group>"; };
-		6D57253118CA2C3000F68E58 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
-		6D57253318CA2C6E00F68E58 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		6D57253118CA2C3000F68E58 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
+		6D57253318CA2C6E00F68E58 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		6D8F71D318C296410077D383 /* FollowTheLeader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FollowTheLeader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8F71D618C296410077D383 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D8F71D818C296410077D383 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,8 +100,8 @@
 		6D57252618CA234400F68E58 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6D57253118CA2C3000F68E58 /* pause.png */,
-				6D57253318CA2C6E00F68E58 /* play.png */,
+				6D57253118CA2C3000F68E58 /* pause@2x.png */,
+				6D57253318CA2C6E00F68E58 /* play@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -263,10 +263,10 @@
 			files = (
 				6D8F71EF18C296410077D383 /* Images.xcassets in Resources */,
 				6D8F71E118C296410077D383 /* InfoPlist.strings in Resources */,
-				6D57253218CA2C3000F68E58 /* pause.png in Resources */,
+				6D57253218CA2C3000F68E58 /* pause@2x.png in Resources */,
 				6D8F71EA18C296410077D383 /* Main.storyboard in Resources */,
 				6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */,
-				6D57253418CA2C6E00F68E58 /* play.png in Resources */,
+				6D57253418CA2C6E00F68E58 /* play@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
