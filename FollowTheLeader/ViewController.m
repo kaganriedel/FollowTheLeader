@@ -7,6 +7,7 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
+#import <iAd/iAd.h>
 #import "ViewController.h"
 #import "CSAnimationView.h"
 #import "BKECircularProgressView.h"
@@ -87,8 +88,11 @@
     [audioPlayer prepareToPlay];
     audioPlayer.delegate = self;
     [audioPlayer play];
+    self.canDisplayBannerAds = YES;
+
     
 }
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -142,6 +146,7 @@
     score = 0;
     scoreLabel.text = [NSString stringWithFormat:@"%i", score];
     [self startNextCommand];
+    self.canDisplayBannerAds = NO;
 }
 
 - (void)startNextCommand
@@ -261,6 +266,7 @@
         }
     }
     [userDefaults synchronize];
+    self.canDisplayBannerAds = YES;
 }
 
 - (IBAction)playButtonPressed:(id)sender
