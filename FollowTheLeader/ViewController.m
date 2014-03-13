@@ -25,7 +25,7 @@
     __weak IBOutlet CSAnimationView *timerAnimationView;
     __weak IBOutlet CSAnimationView *segmentedControlAnimationView;
     __weak IBOutlet CSAnimationView *highscoreAnimationView;
-    __weak IBOutlet UIButton *playPauseButton;
+    __weak IBOutlet UIButton *musicButton;
     BKECircularProgressView *progressView;
     NSTimer *timer;
     NSString *gestureCommanded;
@@ -91,7 +91,11 @@
     
     [audioPlayer prepareToPlay];
     audioPlayer.delegate = self;
-    [audioPlayer play];
+    if (![userDefaults boolForKey:@"Prefer Music Off"])
+    {
+        [audioPlayer play];
+        [musicButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+    }
     self.canDisplayBannerAds = YES;
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     
@@ -291,18 +295,21 @@
     }
 }
 
-- (IBAction)playButtonPressed:(id)sender
+- (IBAction)musicButtonPressed:(id)sender
 {
     if (audioPlayer.playing)
     {
-        [playPauseButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        [musicButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
         [audioPlayer pause];
+        [userDefaults setBool:YES forKey:@"Prefer Music Off"];
     }
     else
     {
-        [playPauseButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+        [musicButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
         [audioPlayer play];
+        [userDefaults setBool:NO forKey:@"Prefer Music Off"];
     }
+    [userDefaults synchronize];
 }
 
 - (BOOL)prefersStatusBarHidden
