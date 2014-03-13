@@ -36,7 +36,9 @@
     float counter;
     int score;
     BOOL endlessMode;
+    BOOL firstLoad;
     int lastRandomGesturePicked;
+    int gamesPlayed;
     
     AVAudioPlayer *audioPlayer;
 }
@@ -55,6 +57,8 @@
     scoreLabel.alpha = 0.0;
     endlessMode = YES;
     maxCounterTime = 5.0;
+    gamesPlayed = 0;
+    firstLoad = YES;
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0] forKey:NSFontAttributeName];
     [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
@@ -89,7 +93,7 @@
     audioPlayer.delegate = self;
     [audioPlayer play];
     self.canDisplayBannerAds = YES;
-
+    self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     
 }
 
@@ -97,21 +101,26 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    leaderAnimationView.type = CSAnimationTypeZoomOut;
-    leaderAnimationView.delay = 0.4;
-    leaderAnimationView.duration = 1.0;
-    [leaderAnimationView startCanvasAnimation];
-    
-    timerAnimationView.type = CSAnimationTypeSlideRight;
-    timerAnimationView.delay = 0.8;
-    timerAnimationView.duration = 1.5;
-    [timerAnimationView startCanvasAnimation];
-    
-    segmentedControlAnimationView.type = CSAnimationTypeSlideDown;
-    segmentedControlAnimationView.delay = 0.8;
-    segmentedControlAnimationView.duration = 1.5;
-    [segmentedControlAnimationView startCanvasAnimation];
 
+    if (firstLoad)
+    {
+        leaderAnimationView.type = CSAnimationTypeZoomOut;
+        leaderAnimationView.delay = 0.4;
+        leaderAnimationView.duration = 1.0;
+        [leaderAnimationView startCanvasAnimation];
+        
+        timerAnimationView.type = CSAnimationTypeSlideRight;
+        timerAnimationView.delay = 0.8;
+        timerAnimationView.duration = 1.5;
+        [timerAnimationView startCanvasAnimation];
+        
+        segmentedControlAnimationView.type = CSAnimationTypeSlideDown;
+        segmentedControlAnimationView.delay = 0.8;
+        segmentedControlAnimationView.duration = 1.5;
+        [segmentedControlAnimationView startCanvasAnimation];
+        
+        firstLoad = NO;
+    }
 }
 - (IBAction)segmentValueChanged:(UISegmentedControl *)segmentedControl
 {
@@ -267,6 +276,18 @@
     }
     [userDefaults synchronize];
     self.canDisplayBannerAds = YES;
+    gamesPlayed ++;
+    [self checkGamesPlayedCount];
+}
+
+- (void)checkGamesPlayedCount
+{
+    NSLog(@"%i", gamesPlayed);
+    if (gamesPlayed >= 3)
+    {
+        [self requestInterstitialAdPresentation];
+        gamesPlayed = 0;
+    }
 }
 
 - (IBAction)playButtonPressed:(id)sender
@@ -282,6 +303,13 @@
         [audioPlayer play];
     }
 }
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+#pragma mark Gesture Recognizers
 
 - (IBAction)didRecieveTap:(UITapGestureRecognizer *)sender
 {
@@ -324,10 +352,7 @@
     lastGestureRecieved = @"PRESS";
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
+
 
 #pragma mark Delegate methods
 
