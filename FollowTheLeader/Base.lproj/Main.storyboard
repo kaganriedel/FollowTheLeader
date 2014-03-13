@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="21" id="ZHD-Yu-G48"/>
                                     <constraint firstAttribute="width" constant="130" id="y0c-X1-0o4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -48,44 +48,6 @@
                                     <constraint firstAttribute="height" constant="50" id="IGN-7W-i6s"/>
                                     <constraint firstItem="qAu-LU-fW7" firstAttribute="top" secondItem="GxP-FC-xXM" secondAttribute="top" id="YSU-RX-vRS"/>
                                     <constraint firstItem="qAu-LU-fW7" firstAttribute="leading" secondItem="GxP-FC-xXM" secondAttribute="leading" id="mZ0-Uo-6tY"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNK-FO-a5f" customClass="CSAnimationView">
-                                <rect key="frame" x="20" y="110" width="528" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esu-gn-dgj" userLabel="LeaderLabel">
-                                        <rect key="frame" x="0.0" y="14" width="528" height="72"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
-                                        <color key="textColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZt-IQ-5ED">
-                                        <rect key="frame" x="0.0" y="14" width="528" height="72"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="72" id="1Wq-25-805"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
-                                        <state key="normal" title="FOLLOW">
-                                            <color key="titleColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="goPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vbe-ua-vcN"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Esu-gn-dgj" secondAttribute="bottom" constant="14" id="3ul-FF-2Cb"/>
-                                    <constraint firstItem="XZt-IQ-5ED" firstAttribute="leading" secondItem="YNK-FO-a5f" secondAttribute="leading" id="6QM-Mv-G0b"/>
-                                    <constraint firstItem="XZt-IQ-5ED" firstAttribute="top" secondItem="YNK-FO-a5f" secondAttribute="top" constant="14" id="QJg-sg-Xna"/>
-                                    <constraint firstItem="Esu-gn-dgj" firstAttribute="top" secondItem="YNK-FO-a5f" secondAttribute="top" constant="14" id="dxX-ql-lky"/>
-                                    <constraint firstAttribute="trailing" secondItem="XZt-IQ-5ED" secondAttribute="trailing" id="eJN-MP-ndq"/>
-                                    <constraint firstAttribute="trailing" secondItem="Esu-gn-dgj" secondAttribute="trailing" id="eX7-AA-Gul"/>
-                                    <constraint firstItem="Esu-gn-dgj" firstAttribute="leading" secondItem="YNK-FO-a5f" secondAttribute="leading" id="iG6-qI-Hsc"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cs-ye-fci" customClass="CSAnimationView">
@@ -159,25 +121,63 @@
                                     <constraint firstItem="XWX-St-EIa" firstAttribute="leading" secondItem="Jdo-hF-06K" secondAttribute="leading" constant="20" id="xCJ-he-6Wf"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNK-FO-a5f" customClass="CSAnimationView">
+                                <rect key="frame" x="20" y="49" width="528" height="236"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esu-gn-dgj" userLabel="LeaderLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="528" height="236"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
+                                        <color key="textColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZt-IQ-5ED">
+                                        <rect key="frame" x="0.0" y="0.0" width="528" height="236"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="236" id="1Wq-25-805"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
+                                        <state key="normal" title="Gesture Loop">
+                                            <color key="titleColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vbe-ua-vcN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Esu-gn-dgj" secondAttribute="bottom" id="3ul-FF-2Cb"/>
+                                    <constraint firstItem="XZt-IQ-5ED" firstAttribute="leading" secondItem="YNK-FO-a5f" secondAttribute="leading" id="6QM-Mv-G0b"/>
+                                    <constraint firstItem="XZt-IQ-5ED" firstAttribute="top" secondItem="YNK-FO-a5f" secondAttribute="top" id="QJg-sg-Xna"/>
+                                    <constraint firstItem="Esu-gn-dgj" firstAttribute="top" secondItem="YNK-FO-a5f" secondAttribute="top" id="dxX-ql-lky"/>
+                                    <constraint firstAttribute="trailing" secondItem="XZt-IQ-5ED" secondAttribute="trailing" id="eJN-MP-ndq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Esu-gn-dgj" secondAttribute="trailing" id="eX7-AA-Gul"/>
+                                    <constraint firstItem="Esu-gn-dgj" firstAttribute="leading" secondItem="YNK-FO-a5f" secondAttribute="leading" id="iG6-qI-Hsc"/>
+                                    <constraint firstAttribute="height" constant="236" id="oah-IO-lpQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Jdo-hF-06K" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="195" id="0ah-a4-S49"/>
                             <constraint firstItem="VOI-BW-7if" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="9" id="1Wc-wO-BHU"/>
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="55" id="53I-NH-OIm"/>
                             <constraint firstItem="1Cs-ye-fci" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="AdZ-zZ-nG0"/>
                             <constraint firstAttribute="trailing" secondItem="GxP-FC-xXM" secondAttribute="trailing" constant="34" id="B84-QS-P2d"/>
                             <constraint firstAttribute="trailing" secondItem="Jdo-hF-06K" secondAttribute="trailing" constant="85" id="COp-9D-Ezh"/>
-                            <constraint firstAttribute="bottom" secondItem="YNK-FO-a5f" secondAttribute="bottom" constant="110" id="H5z-G4-2T8"/>
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="34" id="Kfo-7v-GKb"/>
                             <constraint firstItem="Jdo-hF-06K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="86" id="Rl9-y1-3D5"/>
                             <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="4" id="S9o-b7-oGa"/>
                             <constraint firstAttribute="centerX" secondItem="Gh5-GV-BXE" secondAttribute="centerX" id="TI1-6Z-bJg"/>
                             <constraint firstItem="1Cs-ye-fci" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="dOp-Xp-wfX"/>
                             <constraint firstAttribute="trailing" secondItem="VOI-BW-7if" secondAttribute="trailing" constant="20" id="irn-yc-0cR"/>
-                            <constraint firstAttribute="bottom" secondItem="Jdo-hF-06K" secondAttribute="bottom" constant="35" id="oNb-0p-jUf"/>
                             <constraint firstAttribute="trailing" secondItem="YNK-FO-a5f" secondAttribute="trailing" constant="20" id="pJw-gy-hMP"/>
-                            <constraint firstItem="YNK-FO-a5f" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="110" id="rFZ-Ku-OBR"/>
+                            <constraint firstItem="YNK-FO-a5f" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="49" id="rFZ-Ku-OBR"/>
                             <constraint firstItem="YNK-FO-a5f" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="wkd-3R-mQF"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>

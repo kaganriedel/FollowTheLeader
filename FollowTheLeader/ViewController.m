@@ -166,14 +166,15 @@
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
     feedbackLabel.alpha = 0.0;
-    int randomNumber = arc4random()%8;
+    int numberOfGestures = 8;
+    int randomNumber = arc4random()%numberOfGestures;
     if (randomNumber == lastRandomGesturePicked && randomNumber > 0)
     {
         randomNumber --;
     }
     else if (randomNumber == lastRandomGesturePicked && randomNumber == 0)
     {
-        randomNumber ++;
+        randomNumber = numberOfGestures - 1;
     }
     switch (randomNumber) {
         case 0:
@@ -226,7 +227,7 @@
     if (endlessMode)
     {
         [timer invalidate];
-        if (maxCounterTime > 1.0)
+        if (maxCounterTime > 1.2)
         {
             maxCounterTime -= 0.1;
         }
