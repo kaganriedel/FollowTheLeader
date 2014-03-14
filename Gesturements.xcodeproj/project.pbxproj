@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5142407DE680446F9E9A406A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 567668A951244E18A61A79E8 /* libPods.a */; };
+		6D00545C18D37E11000C96CF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D00545B18D37E11000C96CF /* GameKit.framework */; };
+		6D00545F18D38DEB000C96CF /* GameCenterHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D00545E18D38DEB000C96CF /* GameCenterHandler.m */; };
 		6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */; };
 		6D57253218CA2C3000F68E58 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D57253118CA2C3000F68E58 /* pause@2x.png */; };
 		6D57253418CA2C6E00F68E58 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D57253318CA2C6E00F68E58 /* play@2x.png */; };
@@ -40,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		567668A951244E18A61A79E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D00545B18D37E11000C96CF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		6D00545D18D38DEB000C96CF /* GameCenterHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHandler.h; sourceTree = "<group>"; };
+		6D00545E18D38DEB000C96CF /* GameCenterHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHandler.m; sourceTree = "<group>"; };
 		6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ghostwriter.mp3; sourceTree = "<group>"; };
 		6D57253118CA2C3000F68E58 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		6D57253318CA2C6E00F68E58 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D00545C18D37E11000C96CF /* GameKit.framework in Frameworks */,
 				6D7FA00818D0EFE400314E8A /* iAd.framework in Frameworks */,
 				6D8F71D918C296410077D383 /* CoreGraphics.framework in Frameworks */,
 				6D8F71DB18C296410077D383 /* UIKit.framework in Frameworks */,
@@ -132,6 +138,7 @@
 		6D8F71D518C296410077D383 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D00545B18D37E11000C96CF /* GameKit.framework */,
 				6D7FA00718D0EFE400314E8A /* iAd.framework */,
 				6D8F71D618C296410077D383 /* Foundation.framework */,
 				6D8F71D818C296410077D383 /* CoreGraphics.framework */,
@@ -150,6 +157,8 @@
 				6D8F71E818C296410077D383 /* Main.storyboard */,
 				6D8F71EB18C296410077D383 /* ViewController.h */,
 				6D8F71EC18C296410077D383 /* ViewController.m */,
+				6D00545D18D38DEB000C96CF /* GameCenterHandler.h */,
+				6D00545E18D38DEB000C96CF /* GameCenterHandler.m */,
 				6D8F71EE18C296410077D383 /* Images.xcassets */,
 				6D57252518CA233E00F68E58 /* Audio */,
 				6D57252618CA234400F68E58 /* Images */,
@@ -233,7 +242,7 @@
 		6D8F71CB18C296410077D383 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Kagan Riedel";
 				TargetAttributes = {
 					6D8F71F318C296410077D383 = {
@@ -325,6 +334,7 @@
 				6D8F71ED18C296410077D383 /* ViewController.m in Sources */,
 				6D8F71E718C296410077D383 /* AppDelegate.m in Sources */,
 				6D8F71E318C296410077D383 /* main.m in Sources */,
+				6D00545F18D38DEB000C96CF /* GameCenterHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +388,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -391,8 +400,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kagan riedel (R79GM526T2)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: kagan riedel (R79GM526T2)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -410,7 +419,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F3877C12-29E4-463C-A5C7-467818DFF530";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -419,7 +428,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -432,8 +440,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: kagan riedel (K67R3SLFMD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: kagan riedel (K67R3SLFMD)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -444,7 +452,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "F3877C12-29E4-463C-A5C7-467818DFF530";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -483,7 +491,6 @@
 		6D8F720918C296410077D383 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FollowTheLeader.app/FollowTheLeader";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -506,7 +513,6 @@
 		6D8F720A18C296410077D383 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FollowTheLeader.app/FollowTheLeader";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

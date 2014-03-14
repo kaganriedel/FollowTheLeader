@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "CSAnimationView.h"
 #import "BKECircularProgressView.h"
+#import <GameKit/GameKit.h>
 
 @interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate>
 {
@@ -41,6 +42,7 @@
     int gamesPlayed;
     
     AVAudioPlayer *audioPlayer;
+    GKPlayer *currentPlayer;
 }
 
 @end
@@ -100,7 +102,6 @@
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     
 }
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -316,6 +317,7 @@
 {
     return YES;
 }
+
 
 #pragma mark Gesture Recognizers
 

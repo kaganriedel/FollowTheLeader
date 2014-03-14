@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <iAd/iAd.h>
+#import "GameCenterHandler.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,8 @@
 {
     [UIViewController prepareInterstitialAds];
     
+    [[GameCenterHandler sharedInstance] authenticateLocalUser];
+
     return YES;
 }
 							
