@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  FollowTheLeader
 //
-//  Created by Kagan Riedel on 3/1/14.
-//  Copyright (c) 2014 Kagan Riedel. All rights reserved.
+//  Created by 612 Development LLC on 3/1/14.
+//  Copyright (c) 612 Development LLC. All rights reserved.
 //
 
 #import "AppDelegate.h"

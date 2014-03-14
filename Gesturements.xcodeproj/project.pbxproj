@@ -44,23 +44,23 @@
 		6D57253118CA2C3000F68E58 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		6D57253318CA2C6E00F68E58 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		6D7FA00718D0EFE400314E8A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		6D8F71D318C296410077D383 /* FollowTheLeader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FollowTheLeader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D8F71D318C296410077D383 /* Gesturements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gesturements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8F71D618C296410077D383 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D8F71D818C296410077D383 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6D8F71DA18C296410077D383 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6D8F71DE18C296410077D383 /* FollowTheLeader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FollowTheLeader-Info.plist"; sourceTree = "<group>"; };
+		6D8F71DE18C296410077D383 /* Gesturements-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gesturements-Info.plist"; sourceTree = "<group>"; };
 		6D8F71E018C296410077D383 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D8F71E218C296410077D383 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6D8F71E418C296410077D383 /* FollowTheLeader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FollowTheLeader-Prefix.pch"; sourceTree = "<group>"; };
+		6D8F71E418C296410077D383 /* Gesturements-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gesturements-Prefix.pch"; sourceTree = "<group>"; };
 		6D8F71E518C296410077D383 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6D8F71E618C296410077D383 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6D8F71E918C296410077D383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D8F71EB18C296410077D383 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6D8F71EC18C296410077D383 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6D8F71EE18C296410077D383 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6D8F71F418C296410077D383 /* FollowTheLeaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FollowTheLeaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D8F71F418C296410077D383 /* GesturementsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GesturementsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8F71F518C296410077D383 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6D8F71FD18C296410077D383 /* FollowTheLeaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FollowTheLeaderTests-Info.plist"; sourceTree = "<group>"; };
+		6D8F71FD18C296410077D383 /* GesturementsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GesturementsTests-Info.plist"; sourceTree = "<group>"; };
 		6D8F71FF18C296410077D383 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D8F720118C296410077D383 /* FollowTheLeaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowTheLeaderTests.m; sourceTree = "<group>"; };
 		A9487285B49F4BF8A6140B94 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -123,8 +123,8 @@
 		6D8F71D418C296410077D383 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6D8F71D318C296410077D383 /* FollowTheLeader.app */,
-				6D8F71F418C296410077D383 /* FollowTheLeaderTests.xctest */,
+				6D8F71D318C296410077D383 /* Gesturements.app */,
+				6D8F71F418C296410077D383 /* GesturementsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,10 +161,10 @@
 		6D8F71DD18C296410077D383 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6D8F71DE18C296410077D383 /* FollowTheLeader-Info.plist */,
+				6D8F71DE18C296410077D383 /* Gesturements-Info.plist */,
 				6D8F71DF18C296410077D383 /* InfoPlist.strings */,
 				6D8F71E218C296410077D383 /* main.m */,
-				6D8F71E418C296410077D383 /* FollowTheLeader-Prefix.pch */,
+				6D8F71E418C296410077D383 /* Gesturements-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -181,7 +181,7 @@
 		6D8F71FC18C296410077D383 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6D8F71FD18C296410077D383 /* FollowTheLeaderTests-Info.plist */,
+				6D8F71FD18C296410077D383 /* GesturementsTests-Info.plist */,
 				6D8F71FE18C296410077D383 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -190,9 +190,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D8F71D218C296410077D383 /* FollowTheLeader */ = {
+		6D8F71D218C296410077D383 /* Gesturements */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D8F720518C296410077D383 /* Build configuration list for PBXNativeTarget "FollowTheLeader" */;
+			buildConfigurationList = 6D8F720518C296410077D383 /* Build configuration list for PBXNativeTarget "Gesturements" */;
 			buildPhases = (
 				C98CA1355F224222A8B4FE6D /* Check Pods Manifest.lock */,
 				6D8F71CF18C296410077D383 /* Sources */,
@@ -204,14 +204,14 @@
 			);
 			dependencies = (
 			);
-			name = FollowTheLeader;
+			name = Gesturements;
 			productName = FollowTheLeader;
-			productReference = 6D8F71D318C296410077D383 /* FollowTheLeader.app */;
+			productReference = 6D8F71D318C296410077D383 /* Gesturements.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D8F71F318C296410077D383 /* FollowTheLeaderTests */ = {
+		6D8F71F318C296410077D383 /* GesturementsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D8F720818C296410077D383 /* Build configuration list for PBXNativeTarget "FollowTheLeaderTests" */;
+			buildConfigurationList = 6D8F720818C296410077D383 /* Build configuration list for PBXNativeTarget "GesturementsTests" */;
 			buildPhases = (
 				6D8F71F018C296410077D383 /* Sources */,
 				6D8F71F118C296410077D383 /* Frameworks */,
@@ -222,9 +222,9 @@
 			dependencies = (
 				6D8F71FA18C296410077D383 /* PBXTargetDependency */,
 			);
-			name = FollowTheLeaderTests;
+			name = GesturementsTests;
 			productName = FollowTheLeaderTests;
-			productReference = 6D8F71F418C296410077D383 /* FollowTheLeaderTests.xctest */;
+			productReference = 6D8F71F418C296410077D383 /* GesturementsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -241,7 +241,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D8F71CE18C296410077D383 /* Build configuration list for PBXProject "FollowTheLeader" */;
+			buildConfigurationList = 6D8F71CE18C296410077D383 /* Build configuration list for PBXProject "Gesturements" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -254,8 +254,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D8F71D218C296410077D383 /* FollowTheLeader */,
-				6D8F71F318C296410077D383 /* FollowTheLeaderTests */,
+				6D8F71D218C296410077D383 /* Gesturements */,
+				6D8F71F318C296410077D383 /* GesturementsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -341,7 +341,7 @@
 /* Begin PBXTargetDependency section */
 		6D8F71FA18C296410077D383 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D8F71D218C296410077D383 /* FollowTheLeader */;
+			target = 6D8F71D218C296410077D383 /* Gesturements */;
 			targetProxy = 6D8F71F918C296410077D383 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -457,9 +457,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FollowTheLeader/FollowTheLeader-Prefix.pch";
-				INFOPLIST_FILE = "FollowTheLeader/FollowTheLeader-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FollowTheLeader/Gesturements-Prefix.pch";
+				INFOPLIST_FILE = "FollowTheLeader/Gesturements-Info.plist";
+				PRODUCT_NAME = Gesturements;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -472,9 +472,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FollowTheLeader/FollowTheLeader-Prefix.pch";
-				INFOPLIST_FILE = "FollowTheLeader/FollowTheLeader-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "FollowTheLeader/Gesturements-Prefix.pch";
+				INFOPLIST_FILE = "FollowTheLeader/Gesturements-Info.plist";
+				PRODUCT_NAME = Gesturements;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -496,8 +496,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "FollowTheLeaderTests/FollowTheLeaderTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FollowTheLeaderTests/GesturementsTests-Info.plist";
+				PRODUCT_NAME = GesturementsTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -515,8 +515,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FollowTheLeader/FollowTheLeader-Prefix.pch";
-				INFOPLIST_FILE = "FollowTheLeaderTests/FollowTheLeaderTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FollowTheLeaderTests/GesturementsTests-Info.plist";
+				PRODUCT_NAME = GesturementsTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -525,7 +525,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D8F71CE18C296410077D383 /* Build configuration list for PBXProject "FollowTheLeader" */ = {
+		6D8F71CE18C296410077D383 /* Build configuration list for PBXProject "Gesturements" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D8F720318C296410077D383 /* Debug */,
@@ -534,7 +534,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D8F720518C296410077D383 /* Build configuration list for PBXNativeTarget "FollowTheLeader" */ = {
+		6D8F720518C296410077D383 /* Build configuration list for PBXNativeTarget "Gesturements" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D8F720618C296410077D383 /* Debug */,
@@ -543,7 +543,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D8F720818C296410077D383 /* Build configuration list for PBXNativeTarget "FollowTheLeaderTests" */ = {
+		6D8F720818C296410077D383 /* Build configuration list for PBXNativeTarget "GesturementsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D8F720918C296410077D383 /* Debug */,
