@@ -12,10 +12,12 @@
 #import "CSAnimationView.h"
 #import "BKECircularProgressView.h"
 #import <GameKit/GameKit.h>
+#import "ADDropDownMenuItemView.h"
+#import "ADDropDownMenuView.h"
 
 #define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
 
-@interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, ADDropDownMenuDelegate, UINavigationControllerDelegate>
 {
     __weak IBOutlet UILabel *leaderLabel;
     __weak IBOutlet UILabel *feedbackLabel;
@@ -28,7 +30,7 @@
     __weak IBOutlet CSAnimationView *timerAnimationView;
     __weak IBOutlet CSAnimationView *segmentedControlAnimationView;
     __weak IBOutlet CSAnimationView *highscoreAnimationView;
-    __weak IBOutlet UIButton *musicButton;
+    __weak IBOutlet CSAnimationView *settingsAnimationView;
     BKECircularProgressView *progressView;
     NSTimer *timer;
     NSString *gestureCommanded;
@@ -45,6 +47,7 @@
     
     AVAudioPlayer *audioPlayer;
     GKPlayer *currentPlayer;
+    ADDropDownMenuView *dropDownView;
 }
 
 @end
@@ -63,14 +66,12 @@
     maxCounterTime = 5.0;
     gamesPlayed = 0;
     firstLoad = YES;
-//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:FONT_ALTEHAAS_REG(17.0) forKey:NSFontAttributeName];
-//    [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
     feedbackLabel.font = FONT_ALTEHAAS_REG(35);
     highscoreLabel.font = FONT_ALTEHAAS_REG(35);
     leaderLabel.font = FONT_ALTEHAAS_REG(52);
     goButton.titleLabel.font = FONT_ALTEHAAS_REG(52);
-    scoreLabel.font = FONT_ALTEHAAS_REG(20);
+    scoreLabel.font = FONT_ALTEHAAS_REG(28);
     
     progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 33, 33)];
     [progressView setProgressTintColor:[UIColor orangeColor]];
@@ -91,14 +92,66 @@
     userDefaults = [NSUserDefaults standardUserDefaults];
     highscoreLabel.text = @"";
     
-    NSString *soundFilePath =
-    [[NSBundle mainBundle] pathForResource: @"Ghostwriter"
-                                    ofType: @"mp3"];
+    self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     
+    //Drop Down Menu
+    ADDropDownMenuItemView *item1 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+    item1.tag = 1;
+    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+
+    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateNormal];
+    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateSelected];
+    item1.layer.cornerRadius = 10.0f;
+    
+    ADDropDownMenuItemView *item2 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+    item2.tag = 2;
+    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+
+    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateNormal];
+    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateSelected];
+    item2.state = ADDropDownMenuItemViewStateHighlighted;
+    item2.layer.cornerRadius = 10.0f;
+
+    ADDropDownMenuItemView *item3 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+    item3.tag = 3;
+    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+
+    [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateNormal];
+    [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateSelected];
+    item3.state = ADDropDownMenuItemViewStateHighlighted;
+    item3.layer.cornerRadius = 10.0f;
+
+    ADDropDownMenuItemView *item4 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+    item4.tag = 4;
+    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+
+    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
+    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
+    item4.state = ADDropDownMenuItemViewStateHighlighted;
+    item4.layer.cornerRadius = 10.0f;
+
+    dropDownView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 8) withItemsViews:@[item1, item2, item3, item4]];
+    dropDownView.delegate = self;
+    
+    [settingsAnimationView addSubview:dropDownView];
+
+    //Audio
+
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource: @"Ghostwriter" ofType: @"mp3"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: soundFilePath];
-    
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-    
     [audioPlayer prepareToPlay];
     audioPlayer.delegate = self;
     if (![userDefaults boolForKey:@"Prefer Music Off"])
@@ -109,14 +162,13 @@
     {
         self.canDisplayBannerAds = YES;
     }
-    
-    self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
 }
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    
     if (firstLoad)
     {
         leaderAnimationView.type = CSAnimationTypeZoomOut;
@@ -262,21 +314,6 @@
     [self startNextCommand];
 }
 
-- (IBAction)musicButtonPressed:(id)sender
-{
-    if (audioPlayer.playing)
-    {
-        [audioPlayer pause];
-        [userDefaults setBool:YES forKey:@"Prefer Music Off"];
-    }
-    else
-    {
-        [audioPlayer play];
-        [userDefaults setBool:NO forKey:@"Prefer Music Off"];
-    }
-    [userDefaults synchronize];
-}
-
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -297,7 +334,10 @@
     leaderAnimationView.delay = 0.0;
     [leaderAnimationView startCanvasAnimation];
     [timer invalidate];
-    self.canDisplayBannerAds = YES;
+    if (![userDefaults boolForKey:@"Ads Disabled"])
+    {
+        self.canDisplayBannerAds = YES;
+    }
     gamesPlayed ++;
     [self checkGamesPlayedCount];
 
@@ -361,12 +401,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)leaderBoardButtonPressed:(id)sender
-{
-    GKGameCenterViewController *GKVC = [[GKGameCenterViewController alloc] init];
-    GKVC.gameCenterDelegate = self;
-    [self presentViewController:GKVC animated:YES completion:nil];
-}
 
 #pragma mark Gesture Recognizers
 
@@ -415,9 +449,50 @@
 
 #pragma mark Delegate methods
 
+-(void)ADDropDownMenu:(ADDropDownMenuView *)view didSelectItem:(ADDropDownMenuItemView *)item
+{
+    if (item.tag == 2)
+    {
+        NSLog(@"Music Tapped");
+        if (audioPlayer.playing)
+        {
+            [audioPlayer pause];
+            [userDefaults setBool:YES forKey:@"Prefer Music Off"];
+        }
+        else
+        {
+            [audioPlayer play];
+            [userDefaults setBool:NO forKey:@"Prefer Music Off"];
+        }
+        [userDefaults synchronize];
+    }
+    else if (item.tag == 3)
+    {
+        NSLog(@"Leaders Tapped");
+        GKGameCenterViewController *GKVC = [[GKGameCenterViewController alloc] init];
+        GKVC.gameCenterDelegate = self;
+        [self presentViewController:GKVC animated:YES completion:nil];
+    }
+    else if (item.tag == 4)
+    {
+        NSLog(@"Ads Tapped");
+        if (![userDefaults boolForKey:@"Ads Disabled"])
+        {
+            self.canDisplayBannerAds = NO;
+            [userDefaults setBool:YES forKey:@"Ads Disabled"];
+        }
+        else
+        {
+            self.canDisplayBannerAds = YES;
+            [userDefaults setBool:NO forKey:@"Ads Disabled"];
+        }
+        [userDefaults synchronize];
+    }
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    if ([touch.view isKindOfClass:[UIControl class]])
+    if ([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[ADDropDownMenuItemView class]])
     {
         return NO;
     }
