@@ -377,6 +377,21 @@
 
 - (void) reportScore: (int64_t) gameScore forLeaderboardID: (NSString*) identifier
 {
+    //save the local userDefaults highscore first
+    NSString *highScoreKey;
+    if (endlessMode)
+    {
+        highScoreKey = @"endlessHighScore";
+    }
+    else
+    {
+        highScoreKey = @"timedHighScore";
+    }
+    
+    int yourHighScore;
+    yourHighScore = [userDefaults integerForKey:highScoreKey];
+
+    //then push to GameCenter if it's available
     GKScore *scoreReporter = [[GKScore alloc] initWithLeaderboardIdentifier: identifier];
     scoreReporter.value = gameScore;
     [GKScore reportScores:@[scoreReporter] withCompletionHandler:^(NSError *error) {
@@ -386,20 +401,47 @@
             leaderBoard.identifier = identifier;
             leaderBoard.timeScope = GKLeaderboardTimeScopeAllTime;
             [leaderBoard loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
-                GKScore *bestScore = scores[0];
-                if (bestScore.value > score)
+                if (!error)
                 {
-                    highscoreLabel.text = [NSString stringWithFormat:@"%lli MORE FOR THE RECORD", bestScore.value - score];
+                    GKScore *bestScore = scores[0];
+                    if (bestScore.value > score)
+                    {
+                        highscoreLabel.text = [NSString stringWithFormat:@"%lli MORE FOR THE RECORD", bestScore.value - score];
+                    }
+                    else if (bestScore.value == score)
+                    {
+                        highscoreLabel.text = @"YOU TIED THE RECORD!";
+                    }
+                    else
+                    {
+                        highscoreLabel.text = @"HOT DAMN NEW RECORD!";
+                    }
+                    [highscoreAnimationView startCanvasAnimation];
                 }
-                else if (bestScore.value == score)
-                {
-                    highscoreLabel.text = @"YOU TIED THE RECORD!";
-                }
+                //if gamecenter isn't available
                 else
                 {
-                    highscoreLabel.text = @"HOT DAMN NEW RECORD!";
+                    if (yourHighScore > score)
+                    {
+                        highscoreLabel.text = [NSString stringWithFormat:@"%li MORE FOR YOUR RECORD", yourHighScore - score];
+                    }
+                    else if (yourHighScore == score)
+                    {
+                        highscoreLabel.text = @"YOU TIED YOUR RECORD!";
+                    }
+                    else
+                    {
+                        highscoreLabel.text = @"HOT DAMN NEW RECORD!";
+                    }
+                    [highscoreAnimationView startCanvasAnimation];
+
                 }
-                [highscoreAnimationView startCanvasAnimation];
+                //always save the local high score
+                if (score > yourHighScore)
+                {
+                    [userDefaults setInteger:score forKey:highScoreKey];
+                }
+                [userDefaults synchronize];
             }];
         }
     }];

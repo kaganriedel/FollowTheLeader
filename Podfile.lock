@@ -2,15 +2,18 @@ PODS:
   - ADDropDownMenuView (1.0.1)
   - BKECircularProgressView (0.1)
   - Canvas (0.1.1)
+  - TestFlightSDK (3.0.0)
 
 DEPENDENCIES:
   - ADDropDownMenuView
   - BKECircularProgressView
   - Canvas
+  - TestFlightSDK
 
 SPEC CHECKSUMS:
   ADDropDownMenuView: 182f2cdb0040c1c0f66874cd635de529177753a1
   BKECircularProgressView: ac51de975f9274a735edc69e6f49019f0240d80c
   Canvas: f1911025fc9ec9c7339df6e4399c90c87ce6b631
+  TestFlightSDK: 71e3e78d3a46144dbad975a4bf80a14dae6a818a
 
 COCOAPODS: 0.29.0

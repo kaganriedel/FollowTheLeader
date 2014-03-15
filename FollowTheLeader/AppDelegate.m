@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <iAd/iAd.h>
 #import <GameKit/GameKit.h>
+#import "TestFlight.h"
 
 @implementation AppDelegate
 
@@ -16,6 +17,7 @@
 {
     [UIViewController prepareInterstitialAds];
     
+    [TestFlight takeOff:@"f289ad7c-aeb4-4fce-a6ed-b9fb10c80cda"];
     [self authenticateLocalPlayer];
 
     return YES;
