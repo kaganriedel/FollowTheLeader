@@ -13,7 +13,7 @@
 #import "BKECircularProgressView.h"
 #import <GameKit/GameKit.h>
 
-@interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate>
+@interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, UINavigationControllerDelegate>
 {
     __weak IBOutlet UILabel *leaderLabel;
     __weak IBOutlet UILabel *feedbackLabel;
@@ -35,7 +35,7 @@
     NSUserDefaults *userDefaults;
     float maxCounterTime;
     float counter;
-    int score;
+    long score;
     BOOL endlessMode;
     BOOL firstLoad;
     int lastRandomGesturePicked;
@@ -64,7 +64,7 @@
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0] forKey:NSFontAttributeName];
     [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
-    progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 25, 25)];
+    progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 33, 33)];
     [progressView setProgressTintColor:[UIColor orangeColor]];
     [progressView setBackgroundTintColor:[UIColor clearColor]];
     [progressView setLineWidth:2.0f];
@@ -81,7 +81,7 @@
     feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZING", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
     
     userDefaults = [NSUserDefaults standardUserDefaults];
-    highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"endlesshighscore"] ?: 0)];
+    highscoreLabel.text = @"";
     
     NSString *soundFilePath =
     [[NSBundle mainBundle] pathForResource: @"Ghostwriter"
@@ -96,7 +96,6 @@
     if (![userDefaults boolForKey:@"Prefer Music Off"])
     {
         [audioPlayer play];
-        [musicButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
     }
     self.canDisplayBannerAds = YES;
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
@@ -135,14 +134,12 @@
     {
         maxCounterTime = 5.0;
         endlessMode = YES;
-        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"endlesshighscore"] ?: 0)];
     }
     //timed
     else if (segmentedControl.selectedSegmentIndex == 1)
     {
         maxCounterTime = 50.0;
         endlessMode = NO;
-        highscoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE %li", (long)([userDefaults integerForKey:@"timedhighscore"] ?: 0)];
     }
 }
 - (IBAction)goPressed:(UIButton *)sender
@@ -152,13 +149,18 @@
         counter = 0;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
+    else
+    {
+        maxCounterTime = 5.0;
+    }
     goButton.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
+    highscoreLabel.text = @"";
     leaderLabel.alpha = 1.0;
     scoreLabel.alpha = 1.0;
     gameModeSegmentedControl.alpha = 0.0;
     score = 0;
-    scoreLabel.text = [NSString stringWithFormat:@"%i", score];
+    scoreLabel.text = [NSString stringWithFormat:@"%li", score];
     [self startNextCommand];
     self.canDisplayBannerAds = NO;
 }
@@ -245,9 +247,31 @@
         feedbackLabel.alpha = 0.0;
     }];
     score += 1;
-    scoreLabel.text = [NSString stringWithFormat:@"%i", score];
+    scoreLabel.text = [NSString stringWithFormat:@"%li", score];
     [self startNextCommand];
 }
+
+- (IBAction)musicButtonPressed:(id)sender
+{
+    if (audioPlayer.playing)
+    {
+        [audioPlayer pause];
+        [userDefaults setBool:YES forKey:@"Prefer Music Off"];
+    }
+    else
+    {
+        [audioPlayer play];
+        [userDefaults setBool:NO forKey:@"Prefer Music Off"];
+    }
+    [userDefaults synchronize];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+#pragma mark GameOver
 
 - (void)gameOver
 {
@@ -261,29 +285,19 @@
     [segmentedControlAnimationView startCanvasAnimation];
     leaderAnimationView.delay = 0.0;
     [leaderAnimationView startCanvasAnimation];
-    [highscoreAnimationView startCanvasAnimation];
     [timer invalidate];
-    if (endlessMode)
-    {
-        maxCounterTime = 5.0;
-        if ([userDefaults integerForKey:@"endlesshighscore"] < score)
-        {
-            [userDefaults setInteger:score forKey:@"endlesshighscore"];
-            highscoreLabel.text = [NSString stringWithFormat:@"NEW HIGH SCORE %i", score];
-        }
-    }
-    else
-    {
-        if ([userDefaults integerForKey:@"timedhighscore"] < score)
-        {
-            [userDefaults setInteger:score forKey:@"timedhighscore"];
-            highscoreLabel.text = [NSString stringWithFormat:@"NEW HIGH SCORE %i", score];
-        }
-    }
-    [userDefaults synchronize];
     self.canDisplayBannerAds = YES;
     gamesPlayed ++;
     [self checkGamesPlayedCount];
+
+    if (endlessMode)
+    {
+        [self reportScore:score forLeaderboardID:@"endless"];
+    }
+    else
+    {
+        [self reportScore:score forLeaderboardID:@"timed"];
+    }
 }
 
 - (void)checkGamesPlayedCount
@@ -296,28 +310,49 @@
     }
 }
 
-- (IBAction)musicButtonPressed:(id)sender
+#pragma mark GameCenter
+
+- (void) reportScore: (int64_t) gameScore forLeaderboardID: (NSString*) identifier
 {
-    if (audioPlayer.playing)
-    {
-        [musicButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-        [audioPlayer pause];
-        [userDefaults setBool:YES forKey:@"Prefer Music Off"];
-    }
-    else
-    {
-        [musicButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
-        [audioPlayer play];
-        [userDefaults setBool:NO forKey:@"Prefer Music Off"];
-    }
-    [userDefaults synchronize];
+    GKScore *scoreReporter = [[GKScore alloc] initWithLeaderboardIdentifier: identifier];
+    scoreReporter.value = gameScore;
+    [GKScore reportScores:@[scoreReporter] withCompletionHandler:^(NSError *error) {
+        GKLeaderboard *leaderBoard = [[GKLeaderboard alloc] init];
+        if (leaderBoard)
+        {
+            leaderBoard.identifier = identifier;
+            leaderBoard.timeScope = GKLeaderboardTimeScopeAllTime;
+            [leaderBoard loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
+                GKScore *bestScore = scores[0];
+                if (bestScore.value > score)
+                {
+                    highscoreLabel.text = [NSString stringWithFormat:@"%lli MORE TO GO", bestScore.value - score];
+                }
+                else if (bestScore.value == score)
+                {
+                    highscoreLabel.text = @"YOU TIED THE RECORD!";
+                }
+                else
+                {
+                    highscoreLabel.text = @"HOT DAMN! NEW RECORD!";
+                }
+                [highscoreAnimationView startCanvasAnimation];
+            }];
+        }
+    }];
 }
 
-- (BOOL)prefersStatusBarHidden
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
 {
-    return YES;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)leaderBoardButtonPressed:(id)sender
+{
+    GKGameCenterViewController *GKVC = [[GKGameCenterViewController alloc] init];
+    GKVC.gameCenterDelegate = self;
+    [self presentViewController:GKVC animated:YES completion:nil];
+}
 
 #pragma mark Gesture Recognizers
 

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <iAd/iAd.h>
-#import "GameCenterHandler.h"
+#import <GameKit/GameKit.h>
 
 @implementation AppDelegate
 
@@ -16,11 +16,48 @@
 {
     [UIViewController prepareInterstitialAds];
     
-    [[GameCenterHandler sharedInstance] authenticateLocalUser];
+    [self authenticateLocalPlayer];
 
     return YES;
 }
-							
+
+- (void) authenticateLocalPlayer
+{
+    __weak GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    
+    localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
+        if (viewController != nil)
+        {
+            [self showAuthenticationDialog: viewController];
+        }
+        else if (localPlayer.isAuthenticated)
+        {
+            [self enableGameCenter: localPlayer];
+        }
+        else
+        {
+            [self disableGameCenter];
+        }
+    };
+}
+
+-(void)showAuthenticationDialog:(UIViewController*)viewController
+{
+    
+    [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
+    
+}
+
+-(void)enableGameCenter:(GKLocalPlayer*)localPlayer
+{
+    NSLog(@"Game Center Enabled");
+}
+
+-(void)disableGameCenter
+{
+    NSLog(@"Game Center Disabled");
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
