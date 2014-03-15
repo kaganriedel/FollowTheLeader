@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5142407DE680446F9E9A406A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 567668A951244E18A61A79E8 /* libPods.a */; };
 		6D00545C18D37E11000C96CF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D00545B18D37E11000C96CF /* GameKit.framework */; };
+		6D46C8CA18D4F56900A12330 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D46C8C918D4F56900A12330 /* StoreKit.framework */; };
 		6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */; };
 		6D6A4AB118D3D0A3006B2426 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB018D3D0A3006B2426 /* music@2x.png */; };
 		6D6A4AB318D3D0D7006B2426 /* trophy_silver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		567668A951244E18A61A79E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D00545B18D37E11000C96CF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		6D46C8C918D4F56900A12330 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ghostwriter.mp3; sourceTree = "<group>"; };
 		6D6A4AB018D3D0A3006B2426 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
 		6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trophy_silver@2x.png"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D00545C18D37E11000C96CF /* GameKit.framework in Frameworks */,
+				6D46C8CA18D4F56900A12330 /* StoreKit.framework in Frameworks */,
 				6D7FA00818D0EFE400314E8A /* iAd.framework in Frameworks */,
 				6D8F71D918C296410077D383 /* CoreGraphics.framework in Frameworks */,
 				6D8F71DB18C296410077D383 /* UIKit.framework in Frameworks */,
@@ -160,6 +163,7 @@
 		6D8F71D518C296410077D383 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D46C8C918D4F56900A12330 /* StoreKit.framework */,
 				6D00545B18D37E11000C96CF /* GameKit.framework */,
 				6D7FA00718D0EFE400314E8A /* iAd.framework */,
 				6D8F71D618C296410077D383 /* Foundation.framework */,
@@ -266,6 +270,14 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Kagan Riedel";
 				TargetAttributes = {
+					6D8F71D218C296410077D383 = {
+						DevelopmentTeam = K67R3SLFMD;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
 					6D8F71F318C296410077D383 = {
 						TestTargetID = 6D8F71D218C296410077D383;
 					};
@@ -490,11 +502,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FollowTheLeader/Gesturements-Prefix.pch";
 				INFOPLIST_FILE = "FollowTheLeader/Gesturements-Info.plist";
 				PRODUCT_NAME = Gesturements;
-				PROVISIONING_PROFILE = "0D838E85-962C-491B-A563-5C1DAD813C4C";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -505,11 +519,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FollowTheLeader/Gesturements-Prefix.pch";
 				INFOPLIST_FILE = "FollowTheLeader/Gesturements-Info.plist";
 				PRODUCT_NAME = Gesturements;
-				PROVISIONING_PROFILE = "0D838E85-962C-491B-A563-5C1DAD813C4C";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

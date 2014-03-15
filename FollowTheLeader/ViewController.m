@@ -307,14 +307,20 @@
             maxCounterTime -= 0.1;
         }
     }
-    int randomNumber = arc4random()%feedbackArray.count;
-    feedbackLabel.text = feedbackArray[randomNumber];
-    feedbackLabel.alpha = 1.0;
-    [feedbackAnimationView startCanvasAnimation];
-    [UIView animateWithDuration:2.0 animations:^{
-        feedbackLabel.alpha = 0.0;
-    }];
     score += 1;
+    
+    //every 5 points give feedback
+    if (score %5 == 0)
+    {
+        int randomNumber = arc4random()%feedbackArray.count;
+        feedbackLabel.text = feedbackArray[randomNumber];
+        feedbackLabel.alpha = 1.0;
+        [feedbackAnimationView startCanvasAnimation];
+        [UIView animateWithDuration:2.0 animations:^{
+            feedbackLabel.alpha = 0.0;
+        }];
+
+    }
     scoreLabel.text = [NSString stringWithFormat:@"%li", score];
     [self startNextCommand];
 }
@@ -377,7 +383,7 @@
 
 - (void) reportScore: (int64_t) gameScore forLeaderboardID: (NSString*) identifier
 {
-    //save the local userDefaults highscore first
+    //grab the local userDefaults highscore first
     NSString *highScoreKey;
     if (endlessMode)
     {
