@@ -13,6 +13,8 @@
 #import "BKECircularProgressView.h"
 #import <GameKit/GameKit.h>
 
+#define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
+
 @interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, UINavigationControllerDelegate>
 {
     __weak IBOutlet UILabel *leaderLabel;
@@ -61,8 +63,14 @@
     maxCounterTime = 5.0;
     gamesPlayed = 0;
     firstLoad = YES;
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0] forKey:NSFontAttributeName];
-    [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:FONT_ALTEHAAS_REG(17.0) forKey:NSFontAttributeName];
+//    [gameModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
+    feedbackLabel.font = FONT_ALTEHAAS_REG(35);
+    highscoreLabel.font = FONT_ALTEHAAS_REG(35);
+    leaderLabel.font = FONT_ALTEHAAS_REG(52);
+    goButton.titleLabel.font = FONT_ALTEHAAS_REG(52);
+    scoreLabel.font = FONT_ALTEHAAS_REG(20);
     
     progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 33, 33)];
     [progressView setProgressTintColor:[UIColor orangeColor]];
@@ -103,7 +111,6 @@
     }
     
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated

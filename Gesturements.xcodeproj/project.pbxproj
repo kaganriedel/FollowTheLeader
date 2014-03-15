@@ -14,6 +14,10 @@
 		6D57253418CA2C6E00F68E58 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D57253318CA2C6E00F68E58 /* play@2x.png */; };
 		6D6A4AB118D3D0A3006B2426 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB018D3D0A3006B2426 /* music@2x.png */; };
 		6D6A4AB318D3D0D7006B2426 /* trophy_silver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */; };
+		6D6A4AB718D41965006B2426 /* AlteHaasGroteskBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB618D41965006B2426 /* AlteHaasGroteskBold.ttf */; };
+		6D6A4AB918D4196D006B2426 /* AlteHaasGroteskRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB818D4196D006B2426 /* AlteHaasGroteskRegular.ttf */; };
+		6D6A4AC318D42890006B2426 /* time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AC218D42890006B2426 /* time@2x.png */; };
+		6D6A4AC718D42A55006B2426 /* infinity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AC618D42A55006B2426 /* infinity@2x.png */; };
 		6D7FA00818D0EFE400314E8A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7FA00718D0EFE400314E8A /* iAd.framework */; };
 		6D8F71D718C296410077D383 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F71D618C296410077D383 /* Foundation.framework */; };
 		6D8F71D918C296410077D383 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8F71D818C296410077D383 /* CoreGraphics.framework */; };
@@ -49,6 +53,10 @@
 		6D57253318CA2C6E00F68E58 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		6D6A4AB018D3D0A3006B2426 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
 		6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trophy_silver@2x.png"; sourceTree = "<group>"; };
+		6D6A4AB618D41965006B2426 /* AlteHaasGroteskBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlteHaasGroteskBold.ttf; sourceTree = "<group>"; };
+		6D6A4AB818D4196D006B2426 /* AlteHaasGroteskRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlteHaasGroteskRegular.ttf; sourceTree = "<group>"; };
+		6D6A4AC218D42890006B2426 /* time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time@2x.png"; sourceTree = "<group>"; };
+		6D6A4AC618D42A55006B2426 /* infinity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infinity@2x.png"; sourceTree = "<group>"; };
 		6D7FA00718D0EFE400314E8A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		6D8F71D318C296410077D383 /* Gesturements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gesturements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8F71D618C296410077D383 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,12 +118,23 @@
 		6D57252618CA234400F68E58 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6D6A4AC218D42890006B2426 /* time@2x.png */,
+				6D6A4AC618D42A55006B2426 /* infinity@2x.png */,
 				6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */,
 				6D6A4AB018D3D0A3006B2426 /* music@2x.png */,
 				6D57253118CA2C3000F68E58 /* pause@2x.png */,
 				6D57253318CA2C6E00F68E58 /* play@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		6D6A4AB518D41958006B2426 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6D6A4AB618D41965006B2426 /* AlteHaasGroteskBold.ttf */,
+				6D6A4AB818D4196D006B2426 /* AlteHaasGroteskRegular.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		6D8F71CA18C296410077D383 = {
@@ -161,6 +180,7 @@
 				6D8F71EB18C296410077D383 /* ViewController.h */,
 				6D8F71EC18C296410077D383 /* ViewController.m */,
 				6D8F71EE18C296410077D383 /* Images.xcassets */,
+				6D6A4AB518D41958006B2426 /* Fonts */,
 				6D57252518CA233E00F68E58 /* Audio */,
 				6D57252618CA234400F68E58 /* Images */,
 				6D8F71DD18C296410077D383 /* Supporting Files */,
@@ -275,11 +295,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6A4AC318D42890006B2426 /* time@2x.png in Resources */,
+				6D6A4AB718D41965006B2426 /* AlteHaasGroteskBold.ttf in Resources */,
 				6D8F71EF18C296410077D383 /* Images.xcassets in Resources */,
 				6D6A4AB118D3D0A3006B2426 /* music@2x.png in Resources */,
 				6D8F71E118C296410077D383 /* InfoPlist.strings in Resources */,
+				6D6A4AC718D42A55006B2426 /* infinity@2x.png in Resources */,
 				6D57253218CA2C3000F68E58 /* pause@2x.png in Resources */,
 				6D8F71EA18C296410077D383 /* Main.storyboard in Resources */,
+				6D6A4AB918D4196D006B2426 /* AlteHaasGroteskRegular.ttf in Resources */,
 				6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */,
 				6D6A4AB318D3D0D7006B2426 /* trophy_silver@2x.png in Resources */,
 				6D57253418CA2C6E00F68E58 /* play@2x.png in Resources */,

@@ -65,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WiZ-z9-IFW" userLabel="LeaderBoardButton">
-                                        <rect key="frame" x="118" y="7" width="32" height="32"/>
+                                        <rect key="frame" x="120" y="8" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="trophy_silver.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,15 +82,15 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-GV-BXE" customClass="CSAnimationView">
-                                <rect key="frame" x="196" y="4" width="176" height="32"/>
+                                <rect key="frame" x="196" y="2" width="176" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="McU-oB-dtx">
-                                        <rect key="frame" x="0.0" y="2" width="176" height="29"/>
+                                        <rect key="frame" x="58" y="7" width="60" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="ENDLESS"/>
-                                            <segment title="TIMED"/>
+                                            <segment title="" image="infinity.png"/>
+                                            <segment title="" image="time.png"/>
                                         </segments>
                                         <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
@@ -100,20 +100,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="C0c-NR-1Mc"/>
-                                    <constraint firstAttribute="trailing" secondItem="McU-oB-dtx" secondAttribute="trailing" id="Czy-cp-IRc"/>
-                                    <constraint firstItem="McU-oB-dtx" firstAttribute="leading" secondItem="Gh5-GV-BXE" secondAttribute="leading" id="R8p-EJ-fqZ"/>
+                                    <constraint firstAttribute="height" constant="42" id="C0c-NR-1Mc"/>
+                                    <constraint firstAttribute="trailing" secondItem="McU-oB-dtx" secondAttribute="trailing" constant="58" id="Czy-cp-IRc"/>
+                                    <constraint firstItem="McU-oB-dtx" firstAttribute="leading" secondItem="Gh5-GV-BXE" secondAttribute="leading" constant="58" id="R8p-EJ-fqZ"/>
                                     <constraint firstAttribute="width" constant="176" id="joY-bL-os6"/>
-                                    <constraint firstAttribute="bottom" secondItem="McU-oB-dtx" secondAttribute="bottom" constant="2" id="kQh-2v-pLB"/>
-                                    <constraint firstItem="McU-oB-dtx" firstAttribute="top" secondItem="Gh5-GV-BXE" secondAttribute="top" constant="2" id="llX-Kx-8tP"/>
+                                    <constraint firstAttribute="bottom" secondItem="McU-oB-dtx" secondAttribute="bottom" constant="7" id="kQh-2v-pLB"/>
+                                    <constraint firstItem="McU-oB-dtx" firstAttribute="top" secondItem="Gh5-GV-BXE" secondAttribute="top" constant="7" id="llX-Kx-8tP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdo-hF-06K" customClass="CSAnimationView">
-                                <rect key="frame" x="86" y="195" width="397" height="90"/>
+                                <rect key="frame" x="20" y="195" width="528" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIGH SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-St-EIa">
-                                        <rect key="frame" x="20" y="20" width="357" height="50"/>
+                                        <rect key="frame" x="0.0" y="20" width="528" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1RM-f3-epx"/>
@@ -125,10 +125,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="XWX-St-EIa" secondAttribute="trailing" constant="20" id="EmQ-jK-bba"/>
+                                    <constraint firstAttribute="trailing" secondItem="XWX-St-EIa" secondAttribute="trailing" id="EmQ-jK-bba"/>
                                     <constraint firstAttribute="bottom" secondItem="XWX-St-EIa" secondAttribute="bottom" constant="20" id="a5s-ed-TKG"/>
                                     <constraint firstAttribute="height" constant="90" id="oee-T7-cks"/>
-                                    <constraint firstItem="XWX-St-EIa" firstAttribute="leading" secondItem="Jdo-hF-06K" secondAttribute="leading" constant="20" id="xCJ-he-6Wf"/>
+                                    <constraint firstItem="XWX-St-EIa" firstAttribute="leading" secondItem="Jdo-hF-06K" secondAttribute="leading" id="xCJ-he-6Wf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNK-FO-a5f" customClass="CSAnimationView">
@@ -179,10 +179,10 @@
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="55" id="53I-NH-OIm"/>
                             <constraint firstItem="1Cs-ye-fci" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="AdZ-zZ-nG0"/>
                             <constraint firstAttribute="trailing" secondItem="GxP-FC-xXM" secondAttribute="trailing" constant="34" id="B84-QS-P2d"/>
-                            <constraint firstAttribute="trailing" secondItem="Jdo-hF-06K" secondAttribute="trailing" constant="85" id="COp-9D-Ezh"/>
+                            <constraint firstAttribute="trailing" secondItem="Jdo-hF-06K" secondAttribute="trailing" constant="20" id="COp-9D-Ezh"/>
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="34" id="Kfo-7v-GKb"/>
-                            <constraint firstItem="Jdo-hF-06K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="86" id="Rl9-y1-3D5"/>
-                            <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="4" id="S9o-b7-oGa"/>
+                            <constraint firstItem="Jdo-hF-06K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Rl9-y1-3D5"/>
+                            <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="2" id="S9o-b7-oGa"/>
                             <constraint firstAttribute="centerX" secondItem="Gh5-GV-BXE" secondAttribute="centerX" id="TI1-6Z-bJg"/>
                             <constraint firstItem="1Cs-ye-fci" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="dOp-Xp-wfX"/>
                             <constraint firstAttribute="trailing" secondItem="VOI-BW-7if" secondAttribute="trailing" constant="20" id="irn-yc-0cR"/>
@@ -272,7 +272,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="infinity.png" width="52" height="52"/>
         <image name="music.png" width="64" height="64"/>
+        <image name="time.png" width="64" height="64"/>
         <image name="trophy_silver.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
