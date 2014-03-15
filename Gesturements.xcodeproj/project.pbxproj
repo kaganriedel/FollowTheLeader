@@ -478,7 +478,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "F3877C12-29E4-463C-A5C7-467818DFF530";
+				PROVISIONING_PROFILE = "0D838E85-962C-491B-A563-5C1DAD813C4C";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -494,7 +494,7 @@
 				GCC_PREFIX_HEADER = "FollowTheLeader/Gesturements-Prefix.pch";
 				INFOPLIST_FILE = "FollowTheLeader/Gesturements-Info.plist";
 				PRODUCT_NAME = Gesturements;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0D838E85-962C-491B-A563-5C1DAD813C4C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -509,7 +509,7 @@
 				GCC_PREFIX_HEADER = "FollowTheLeader/Gesturements-Prefix.pch";
 				INFOPLIST_FILE = "FollowTheLeader/Gesturements-Info.plist";
 				PRODUCT_NAME = Gesturements;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0D838E85-962C-491B-A563-5C1DAD813C4C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

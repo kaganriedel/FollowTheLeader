@@ -67,8 +67,8 @@
     gamesPlayed = 0;
     firstLoad = YES;
     
-    feedbackLabel.font = FONT_ALTEHAAS_REG(35);
-    highscoreLabel.font = FONT_ALTEHAAS_REG(35);
+    feedbackLabel.font = FONT_ALTEHAAS_REG(34);
+    highscoreLabel.font = FONT_ALTEHAAS_REG(34);
     leaderLabel.font = FONT_ALTEHAAS_REG(52);
     goButton.titleLabel.font = FONT_ALTEHAAS_REG(52);
     scoreLabel.font = FONT_ALTEHAAS_REG(28);
@@ -186,6 +186,10 @@
         segmentedControlAnimationView.duration = 1.5;
         [segmentedControlAnimationView startCanvasAnimation];
         
+        settingsAnimationView.type = CSAnimationTypeSlideLeft;
+        settingsAnimationView.delay = 0.8;
+        settingsAnimationView.duration = 1.5;
+        [settingsAnimationView startCanvasAnimation];
         firstLoad = NO;
     }
 }
@@ -216,12 +220,13 @@
     {
         maxCounterTime = 5.0;
     }
+    highscoreLabel.text = @"";
     goButton.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
-    highscoreLabel.text = @"";
     leaderLabel.alpha = 1.0;
     scoreLabel.alpha = 1.0;
     gameModeSegmentedControl.alpha = 0.0;
+    settingsAnimationView.alpha = 0.0;
     score = 0;
     scoreLabel.text = [NSString stringWithFormat:@"%li", score];
     [self startNextCommand];
@@ -327,12 +332,16 @@
     highscoreLabel.alpha = 1.0;
     gameModeSegmentedControl.alpha = 1.0;
     goButton.alpha = 1.0;
+    settingsAnimationView.alpha = 1.0;
     [progressView setProgress:1.0];
     
     segmentedControlAnimationView.delay = 0.0;
     [segmentedControlAnimationView startCanvasAnimation];
     leaderAnimationView.delay = 0.0;
     [leaderAnimationView startCanvasAnimation];
+    settingsAnimationView.delay = 0.0;
+    [settingsAnimationView startCanvasAnimation];
+    
     [timer invalidate];
     if (![userDefaults boolForKey:@"Ads Disabled"])
     {
@@ -380,7 +389,7 @@
                 GKScore *bestScore = scores[0];
                 if (bestScore.value > score)
                 {
-                    highscoreLabel.text = [NSString stringWithFormat:@"%lli MORE TO GO", bestScore.value - score];
+                    highscoreLabel.text = [NSString stringWithFormat:@"%lli MORE FOR THE RECORD", bestScore.value - score];
                 }
                 else if (bestScore.value == score)
                 {
@@ -388,7 +397,7 @@
                 }
                 else
                 {
-                    highscoreLabel.text = @"HOT DAMN! NEW RECORD!";
+                    highscoreLabel.text = @"HOT DAMN NEW RECORD!";
                 }
                 [highscoreAnimationView startCanvasAnimation];
             }];
