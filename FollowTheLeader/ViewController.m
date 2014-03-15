@@ -97,7 +97,11 @@
     {
         [audioPlayer play];
     }
-    self.canDisplayBannerAds = YES;
+    if (![userDefaults boolForKey:@"Ads Disabled"])
+    {
+        self.canDisplayBannerAds = YES;
+    }
+    
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     
 }
@@ -305,7 +309,10 @@
     NSLog(@"%i", gamesPlayed);
     if (gamesPlayed >= 3)
     {
-        [self requestInterstitialAdPresentation];
+        if (![userDefaults boolForKey:@"Ads Disabled"])
+        {
+            [self requestInterstitialAdPresentation];
+        }
         gamesPlayed = 0;
     }
 }
