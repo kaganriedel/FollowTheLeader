@@ -40,7 +40,6 @@
     float maxCounterTime;
     float counter;
     long score;
-    BOOL endlessMode;
     BOOL firstLoad;
     int lastRandomGesturePicked;
     int gamesPlayed;
@@ -62,7 +61,7 @@
     highscoreLabel.alpha = 0.0;
     leaderLabel.alpha = 0.0;
     scoreLabel.alpha = 0.0;
-    endlessMode = YES;
+    self.gameMode = GameModeEndless;
     maxCounterTime = 5.0;
     gamesPlayed = 0;
     firstLoad = YES;
@@ -193,6 +192,7 @@
         firstLoad = NO;
     }
 }
+
 - (IBAction)segmentValueChanged:(UISegmentedControl *)segmentedControl
 {
     scoreLabel.alpha = 0.0;
@@ -200,25 +200,30 @@
     if (segmentedControl.selectedSegmentIndex == 0)
     {
         maxCounterTime = 5.0;
-        endlessMode = YES;
+        self.gameMode = GameModeEndless;
     }
     //timed
     else if (segmentedControl.selectedSegmentIndex == 1)
     {
         maxCounterTime = 50.0;
-        endlessMode = NO;
+        self.gameMode = GameModeTimed;
+    }
+    else if (segmentedControl.selectedSegmentIndex == 2)
+    {
+        maxCounterTime = 2.0;
+        self.gameMode = GameModeMemory;
     }
 }
 - (IBAction)goPressed:(UIButton *)sender
 {
-    if (!endlessMode)
+    if (self.gameMode == GameModeEndless)
+    {
+        maxCounterTime = 5.0;
+    }
+    else if (self.gameMode == GameModeTimed)
     {
         counter = 0;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
-    }
-    else
-    {
-        maxCounterTime = 5.0;
     }
     highscoreLabel.text = @"";
     goButton.alpha = 0.0;
@@ -235,7 +240,7 @@
 
 - (void)startNextCommand
 {
-    if (endlessMode)
+    if (self.gameMode == GameModeEndless)
     {
         counter = 0;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
@@ -299,7 +304,9 @@
 - (void)correct
 {
     lastGestureRecieved = @"";
-    if (endlessMode)
+    
+    //make the timer be a shorter amount of time each correct answer to a minimum of 1.2 seconds
+    if (self.gameMode == GameModeEndless)
     {
         [timer invalidate];
         if (maxCounterTime > 1.2)
@@ -307,22 +314,22 @@
             maxCounterTime -= 0.1;
         }
     }
-    score += 1;
     
-    //every 5 points give feedback
+    score += 1;
+    scoreLabel.text = [NSString stringWithFormat:@"%li", score];
+    [self startNextCommand];
+    
+    //Every 5 points give feedback
     if (score %5 == 0)
     {
         int randomNumber = arc4random()%feedbackArray.count;
         feedbackLabel.text = feedbackArray[randomNumber];
         feedbackLabel.alpha = 1.0;
         [feedbackAnimationView startCanvasAnimation];
-        [UIView animateWithDuration:2.0 animations:^{
+        [UIView animateWithDuration:3.0 animations:^{
             feedbackLabel.alpha = 0.0;
         }];
-
     }
-    scoreLabel.text = [NSString stringWithFormat:@"%li", score];
-    [self startNextCommand];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -356,11 +363,11 @@
     gamesPlayed ++;
     [self checkGamesPlayedCount];
 
-    if (endlessMode)
+    if (self.gameMode == GameModeEndless)
     {
         [self reportScore:score forLeaderboardID:@"endless"];
     }
-    else
+    else if (self.gameMode == GameModeTimed)
     {
         [self reportScore:score forLeaderboardID:@"timed"];
     }
@@ -385,11 +392,12 @@
 {
     //grab the local userDefaults highscore first
     NSString *highScoreKey;
-    if (endlessMode)
+    if (self.gameMode == GameModeEndless)
     {
         highScoreKey = @"endlessHighScore";
     }
-    else
+    else if (self.gameMode == GameModeTimed)
+
     {
         highScoreKey = @"timedHighScore";
     }

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, GameMode) {
+    GameModeEndless,
+    GameModeTimed,
+    GameModeMemory
+};
+
 @interface ViewController : UIViewController
+
+@property (nonatomic) GameMode gameMode;
 
 @end

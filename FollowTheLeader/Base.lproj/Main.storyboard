@@ -68,11 +68,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="McU-oB-dtx">
-                                        <rect key="frame" x="58" y="7" width="60" height="29"/>
+                                        <rect key="frame" x="43" y="7" width="90" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="" image="infinity.png"/>
                                             <segment title="" image="time.png"/>
+                                            <segment title="123"/>
                                         </segments>
                                         <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
@@ -83,8 +84,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="C0c-NR-1Mc"/>
-                                    <constraint firstAttribute="trailing" secondItem="McU-oB-dtx" secondAttribute="trailing" constant="58" id="Czy-cp-IRc"/>
-                                    <constraint firstItem="McU-oB-dtx" firstAttribute="leading" secondItem="Gh5-GV-BXE" secondAttribute="leading" constant="58" id="R8p-EJ-fqZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="McU-oB-dtx" secondAttribute="trailing" constant="43" id="Czy-cp-IRc"/>
+                                    <constraint firstItem="McU-oB-dtx" firstAttribute="leading" secondItem="Gh5-GV-BXE" secondAttribute="leading" constant="43" id="R8p-EJ-fqZ"/>
                                     <constraint firstAttribute="width" constant="176" id="joY-bL-os6"/>
                                     <constraint firstAttribute="bottom" secondItem="McU-oB-dtx" secondAttribute="bottom" constant="7" id="kQh-2v-pLB"/>
                                     <constraint firstItem="McU-oB-dtx" firstAttribute="top" secondItem="Gh5-GV-BXE" secondAttribute="top" constant="7" id="llX-Kx-8tP"/>
