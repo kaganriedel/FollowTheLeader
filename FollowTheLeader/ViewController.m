@@ -199,20 +199,31 @@
     //endless
     if (segmentedControl.selectedSegmentIndex == 0)
     {
+        feedbackLabel.text = @"ENDLESS";
         maxCounterTime = 5.0;
         self.gameMode = GameModeEndless;
+
     }
     //timed
     else if (segmentedControl.selectedSegmentIndex == 1)
     {
+        feedbackLabel.text = @"TIMED";
         maxCounterTime = 50.0;
         self.gameMode = GameModeTimed;
     }
     else if (segmentedControl.selectedSegmentIndex == 2)
     {
+        feedbackLabel.text = @"MEMORY";
         maxCounterTime = 2.0;
         self.gameMode = GameModeMemory;
     }
+    
+    feedbackLabel.alpha = 1.0;
+    feedbackAnimationView.type = CSAnimationTypeZoomOut;
+    [feedbackAnimationView startCanvasAnimation];
+    [UIView animateWithDuration:4.0 animations:^{
+        feedbackLabel.alpha = 0.0;
+    }];
 }
 - (IBAction)goPressed:(UIButton *)sender
 {
@@ -225,6 +236,8 @@
         counter = 0;
         timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
+    feedbackAnimationView.type = CSAnimationTypeBounceDown;
+    feedbackAnimationView.alpha = 0.0;
     highscoreLabel.text = @"";
     goButton.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
@@ -324,6 +337,7 @@
     {
         int randomNumber = arc4random()%feedbackArray.count;
         feedbackLabel.text = feedbackArray[randomNumber];
+        feedbackAnimationView.alpha = 1.0;
         feedbackLabel.alpha = 1.0;
         [feedbackAnimationView startCanvasAnimation];
         [UIView animateWithDuration:3.0 animations:^{
