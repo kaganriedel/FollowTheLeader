@@ -276,6 +276,7 @@
     else if (self.gameMode == GameModeMemory)
     {
         feedbackLabel.text = @"YOUR TURN";
+        [feedbackAnimationView startCanvasAnimation];
         gestureCommanded = memoryGameGestures[memoryCounter];
         leaderLabel.text = [NSString stringWithFormat:@"GESTURE %i", memoryCounter +1];
     }
@@ -406,8 +407,8 @@
         }
         else
         {
+            [progressView setProgress:0.0];
             [self givePositiveFeedback];
-            [self demoMemoryGameGestures];
         }
     }
     else
@@ -430,8 +431,14 @@
     feedbackAnimationView.alpha = 1.0;
     feedbackLabel.alpha = 1.0;
     [feedbackAnimationView startCanvasAnimation];
-    [UIView animateWithDuration:3.0 animations:^{
+    [UIView animateWithDuration:2.0 animations:^{
         feedbackLabel.alpha = 0.0;
+
+    } completion:^(BOOL finished) {
+        if (self.gameMode == GameModeMemory)
+        {
+            [self demoMemoryGameGestures];
+        }
     }];
 }
 
