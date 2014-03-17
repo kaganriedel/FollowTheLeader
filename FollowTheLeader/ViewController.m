@@ -32,12 +32,16 @@
     __weak IBOutlet CSAnimationView *highscoreAnimationView;
     __weak IBOutlet CSAnimationView *settingsAnimationView;
     BKECircularProgressView *progressView;
-    NSTimer *timer;
+    NSTimer *gameTimer;
+    NSTimer *memoryGameDemonstrationTimer;
     NSString *gestureCommanded;
     NSString *lastGestureRecieved;
     NSArray *feedbackArray;
+    NSArray *gestures;
+    NSMutableArray *memoryGameGestures;
     NSUserDefaults *userDefaults;
     float maxCounterTime;
+    int memoryCounter;
     float counter;
     long score;
     BOOL firstLoad;
@@ -88,6 +92,8 @@
     
     feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZING", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
     
+    gestures = @[@"TAP", @"DOUBLE TAP", @"PINCH", @"SWIPE RIGHT", @"SWIPE LEFT", @"SWIPE UP", @"SWIPE DOWN", @"PRESS"];
+    
     userDefaults = [NSUserDefaults standardUserDefaults];
     highscoreLabel.text = @"";
     
@@ -114,7 +120,6 @@
     [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateNormal];
     [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateHighlighted];
     [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateSelected];
-    item2.state = ADDropDownMenuItemViewStateHighlighted;
     item2.layer.cornerRadius = 10.0f;
 
     ADDropDownMenuItemView *item3 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
@@ -126,7 +131,6 @@
     [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateNormal];
     [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateHighlighted];
     [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateSelected];
-    item3.state = ADDropDownMenuItemViewStateHighlighted;
     item3.layer.cornerRadius = 10.0f;
 
     ADDropDownMenuItemView *item4 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
@@ -138,11 +142,11 @@
     [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
     [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
     [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
-    item4.state = ADDropDownMenuItemViewStateHighlighted;
     item4.layer.cornerRadius = 10.0f;
 
     dropDownView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 8) withItemsViews:@[item1, item2, item3, item4]];
     dropDownView.delegate = self;
+    dropDownView.shouldExchangeItems = NO;
     
     [settingsAnimationView addSubview:dropDownView];
 
@@ -162,7 +166,6 @@
         self.canDisplayBannerAds = YES;
     }
 }
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -227,15 +230,6 @@
 }
 - (IBAction)goPressed:(UIButton *)sender
 {
-    if (self.gameMode == GameModeEndless)
-    {
-        maxCounterTime = 5.0;
-    }
-    else if (self.gameMode == GameModeTimed)
-    {
-        counter = 0;
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
-    }
     feedbackAnimationView.type = CSAnimationTypeBounceDown;
     feedbackAnimationView.alpha = 0.0;
     highscoreLabel.text = @"";
@@ -247,57 +241,128 @@
     settingsAnimationView.alpha = 0.0;
     score = 0;
     scoreLabel.text = [NSString stringWithFormat:@"%li", score];
-    [self startNextCommand];
     self.canDisplayBannerAds = NO;
+    
+    if (self.gameMode == GameModeEndless)
+    {
+        maxCounterTime = 5.0;
+        [self startNextCommand];
+    }
+    else if (self.gameMode == GameModeTimed)
+    {
+        counter = 0;
+        gameTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+        [self startNextCommand];
+    }
+    else if (self.gameMode == GameModeMemory)
+    {
+        counter = 0;
+        [self demoMemoryGameGestures];
+    }
 }
 
 - (void)startNextCommand
 {
-    if (self.gameMode == GameModeEndless)
+    if (self.gameMode == GameModeEndless || self.gameMode == GameModeMemory)
     {
         counter = 0;
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+        gameTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     }
-    feedbackLabel.alpha = 0.0;
-    int numberOfGestures = 8;
-    int randomNumber = arc4random()%numberOfGestures;
+    if (self.gameMode != GameModeMemory)
+    {
+        feedbackLabel.alpha = 0.0;
+        gestureCommanded = leaderLabel.text = [self pickRandomGesture];
+    }
+    else if (self.gameMode == GameModeMemory)
+    {
+        feedbackLabel.text = @"YOUR TURN";
+        gestureCommanded = memoryGameGestures[memoryCounter];
+        leaderLabel.text = [NSString stringWithFormat:@"GESTURE %i", memoryCounter +1];
+    }
+
+}
+
+- (void)demoMemoryGameGestures
+{
+    leaderLabel.text = @"";
+    feedbackLabel.text = @"PAY ATTENTION";
+    [progressView setProgress:1.0];
+    feedbackAnimationView.alpha = 1.0;
+    [feedbackAnimationView startCanvasAnimation];
+    feedbackLabel.alpha = 1.0;
+    if (!memoryGameGestures) {
+        memoryGameGestures = [NSMutableArray new];
+    }
+    //if it's the first turn, add in 3 gestures
+    if (score == 0)
+    {
+        for (int x = 0; x < 2; x++)
+        {
+            [memoryGameGestures addObject:[self pickRandomGesture]];
+        }
+    }
+    //else add 1 gesture
+    else
+    {
+        [memoryGameGestures addObject:[self pickRandomGesture]];
+    }
+    NSLog(@"Memory Game Gestures: %i",memoryGameGestures.count);
+    memoryGameDemonstrationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(demonstrationTimerFired) userInfo:nil repeats:YES];
+}
+
+- (NSString *) pickRandomGesture
+{
+    int randomNumber = arc4random()%gestures.count;
     if (randomNumber == lastRandomGesturePicked && randomNumber > 0)
     {
         randomNumber --;
     }
     else if (randomNumber == lastRandomGesturePicked && randomNumber == 0)
     {
-        randomNumber = numberOfGestures - 1;
-    }
-    switch (randomNumber) {
-        case 0:
-            leaderLabel.text = @"TAP";
-            break;
-        case 1:
-            leaderLabel.text = @"DOUBLE TAP";
-            break;
-        case 2:
-            leaderLabel.text = @"PINCH";
-            break;
-        case 3:
-            leaderLabel.text = @"SWIPE RIGHT";
-            break;
-        case 4:
-            leaderLabel.text = @"SWIPE LEFT";
-            break;
-        case 5:
-            leaderLabel.text = @"SWIPE UP";
-            break;
-        case 6:
-            leaderLabel.text = @"SWIPE DOWN";
-            break;
-        case 7:
-            leaderLabel.text = @"PRESS";
-            break;
-        default:
-            break;
+        randomNumber = gestures.count - 1;
     }
     lastRandomGesturePicked = randomNumber;
+    switch (randomNumber) {
+        case 0:
+            return gestures[0];
+            break;
+        case 1:
+            return gestures[1];
+            break;
+        case 2:
+            return gestures[2];
+            break;
+        case 3:
+            return gestures[3];
+            break;
+        case 4:
+            return gestures[4];
+            break;
+        case 5:
+            return gestures[5];
+            break;
+        case 6:
+            return gestures[6];
+            break;
+        case 7:
+            return gestures[7];
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
+
+-(void)demonstrationTimerFired
+{
+    leaderLabel.text = memoryGameGestures[(int)counter];
+    counter += 1.0;
+    if ((int)counter >= memoryGameGestures.count)
+    {
+        [memoryGameDemonstrationTimer invalidate];
+        memoryCounter = 0;
+        [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:1.0];
+    }
 }
 
 - (void)timerFired
@@ -308,7 +373,7 @@
     {
         [self gameOver];
     }
-    if ([leaderLabel.text isEqualToString:lastGestureRecieved])
+    else if ([gestureCommanded isEqualToString:lastGestureRecieved])
     {
         [self correct];
     }
@@ -316,34 +381,58 @@
 
 - (void)correct
 {
+    score += 1;
     lastGestureRecieved = @"";
     
+    if (self.gameMode == GameModeEndless || self.gameMode == GameModeMemory)
+    {
+        [gameTimer invalidate];
+    }
     //make the timer be a shorter amount of time each correct answer to a minimum of 1.2 seconds
     if (self.gameMode == GameModeEndless)
     {
-        [timer invalidate];
         if (maxCounterTime > 1.2)
         {
             maxCounterTime -= 0.1;
         }
     }
     
-    score += 1;
+    if (self.gameMode == GameModeMemory)
+    {
+        memoryCounter ++;
+        if (memoryCounter < memoryGameGestures.count)
+        {
+            [self startNextCommand];
+        }
+        else
+        {
+            [self givePositiveFeedback];
+            [self demoMemoryGameGestures];
+        }
+    }
+    else
+    {
+        [self startNextCommand];
+    }
     scoreLabel.text = [NSString stringWithFormat:@"%li", score];
-    [self startNextCommand];
     
     //Every 5 points give feedback
-    if (score %5 == 0)
+    if (score %5 == 0 && self.gameMode != GameModeMemory)
     {
-        int randomNumber = arc4random()%feedbackArray.count;
-        feedbackLabel.text = feedbackArray[randomNumber];
-        feedbackAnimationView.alpha = 1.0;
-        feedbackLabel.alpha = 1.0;
-        [feedbackAnimationView startCanvasAnimation];
-        [UIView animateWithDuration:3.0 animations:^{
-            feedbackLabel.alpha = 0.0;
-        }];
+        [self givePositiveFeedback];
     }
+}
+
+-(void)givePositiveFeedback
+{
+    int randomNumber = arc4random()%feedbackArray.count;
+    feedbackLabel.text = feedbackArray[randomNumber];
+    feedbackAnimationView.alpha = 1.0;
+    feedbackLabel.alpha = 1.0;
+    [feedbackAnimationView startCanvasAnimation];
+    [UIView animateWithDuration:3.0 animations:^{
+        feedbackLabel.alpha = 0.0;
+    }];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -357,6 +446,7 @@
 {
     leaderLabel.alpha = 0.0;
     highscoreLabel.alpha = 1.0;
+    feedbackAnimationView.alpha = 0.0;
     gameModeSegmentedControl.alpha = 1.0;
     goButton.alpha = 1.0;
     settingsAnimationView.alpha = 1.0;
@@ -369,7 +459,7 @@
     settingsAnimationView.delay = 0.0;
     [settingsAnimationView startCanvasAnimation];
     
-    [timer invalidate];
+    [gameTimer invalidate];
     if (![userDefaults boolForKey:@"Ads Disabled"])
     {
         self.canDisplayBannerAds = YES;
@@ -385,11 +475,16 @@
     {
         [self reportScore:score forLeaderboardID:@"timed"];
     }
+    else if (self.gameMode == GameModeMemory)
+    {
+        [self reportScore:score forLeaderboardID:@"memory"];
+        memoryGameGestures = nil;
+    }
 }
 
 - (void)checkGamesPlayedCount
 {
-    NSLog(@"%i", gamesPlayed);
+    NSLog(@"Games Played = %i", gamesPlayed);
     if (gamesPlayed >= 3)
     {
         if (![userDefaults boolForKey:@"Ads Disabled"])
@@ -415,6 +510,10 @@
     {
         highScoreKey = @"timedHighScore";
     }
+    else if (self.gameMode == GameModeMemory)
+    {
+        highScoreKey = @"memoryHighScore";
+    }
     
     int yourHighScore;
     yourHighScore = [userDefaults integerForKey:highScoreKey];
@@ -435,10 +534,6 @@
                     if (bestScore.value > score)
                     {
                         highscoreLabel.text = [NSString stringWithFormat:@"%lli MORE FOR THE RECORD", bestScore.value - score];
-                    }
-                    else if (bestScore.value == score)
-                    {
-                        highscoreLabel.text = @"YOU TIED THE RECORD!";
                     }
                     else
                     {
