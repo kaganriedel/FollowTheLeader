@@ -14,6 +14,7 @@
 #import <GameKit/GameKit.h>
 #import "ADDropDownMenuItemView.h"
 #import "ADDropDownMenuView.h"
+#import "TutorialViewController.h"
 
 #define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
 
@@ -109,7 +110,6 @@
     [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateNormal];
     [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateHighlighted];
     [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateSelected];
-    item1.layer.cornerRadius = 10.0f;
     
     ADDropDownMenuItemView *item2 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
     item2.tag = 2;
@@ -120,7 +120,6 @@
     [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateNormal];
     [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateHighlighted];
     [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateSelected];
-    item2.layer.cornerRadius = 10.0f;
 
     ADDropDownMenuItemView *item3 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
     item3.tag = 3;
@@ -131,7 +130,6 @@
     [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateNormal];
     [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateHighlighted];
     [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateSelected];
-    item3.layer.cornerRadius = 10.0f;
 
     ADDropDownMenuItemView *item4 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
     item4.tag = 4;
@@ -142,9 +140,20 @@
     [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
     [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
     [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
-    item4.layer.cornerRadius = 10.0f;
+    
+    ADDropDownMenuItemView *item5 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+    item5.tag = 5;
+    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+    item5.titleLabel.text = @"?";
+    
+//    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
+//    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
 
-    dropDownView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 8) withItemsViews:@[item1, item2, item3, item4]];
+
+    dropDownView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 8) withItemsViews:@[item1, item2, item3, item4, item5]];
     dropDownView.delegate = self;
     dropDownView.shouldExchangeItems = NO;
     
@@ -668,6 +677,10 @@
             [userDefaults setBool:NO forKey:@"Ads Disabled"];
         }
         [userDefaults synchronize];
+    }
+    else if (item.tag == 5)
+    {
+        [self performSegueWithIdentifier:@"tutorial segue" sender:self];
     }
 }
 

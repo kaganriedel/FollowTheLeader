@@ -138,6 +138,7 @@
                                         </state>
                                         <connections>
                                             <action selector="goPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vbe-ua-vcN"/>
+                                            <segue destination="mLa-0K-V6A" kind="modal" identifier="tutorial segue" modalTransitionStyle="flipHorizontal" id="XCp-B5-yud"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -194,6 +195,7 @@
                             <outletCollection property="gestureRecognizers" destination="k9s-bc-mEa" appends="YES" id="YkF-JL-rPU"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="5fS-aY-ndR"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="feedbackAnimationView" destination="GxP-FC-xXM" id="ad3-ED-e9C"/>
@@ -260,7 +262,40 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="37" y="244"/>
+            <point key="canvasLocation" x="563" y="244"/>
+        </scene>
+        <!--Tutorial View Controller - tutorial-->
+        <scene sceneID="fag-rI-beA">
+            <objects>
+                <viewController title="tutorial" id="mLa-0K-V6A" customClass="TutorialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pVC-9m-YKU"/>
+                        <viewControllerLayoutGuide type="bottom" id="bgg-r2-R4H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LpX-Ai-zPZ">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-pL-xDA">
+                                <rect key="frame" x="264" y="275" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOS-tV-qRF">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="vb5-pL-xDA" id="4nF-0U-wxe"/>
+                        <outlet property="tutorialScrollView" destination="JOS-tV-qRF" id="mcs-G0-1wo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FOS-qG-yCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="244"/>
         </scene>
     </scenes>
     <resources>
