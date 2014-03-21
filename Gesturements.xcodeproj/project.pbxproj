@@ -38,6 +38,7 @@
 		6D9E922318DB849000913F57 /* murray_background@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6D9E922218DB849000913F57 /* murray_background@2x.jpeg */; };
 		6D9E922518DB849600913F57 /* cage_background@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6D9E922418DB849600913F57 /* cage_background@2x.jpeg */; };
 		6DAAF2BB18D7B45E006B011C /* close_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DAAF2BA18D7B45E006B011C /* close_circle@2x.png */; };
+		6DC98DAE18DCCC3E007E5081 /* GestureAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC98DAD18DCCC3E007E5081 /* GestureAnimationView.m */; };
 		6DE4A47F18D7B1C0000E1D05 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4A47E18D7B1C0000E1D05 /* TutorialViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,8 @@
 		6D9E922218DB849000913F57 /* murray_background@2x.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "murray_background@2x.jpeg"; sourceTree = "<group>"; };
 		6D9E922418DB849600913F57 /* cage_background@2x.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cage_background@2x.jpeg"; sourceTree = "<group>"; };
 		6DAAF2BA18D7B45E006B011C /* close_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_circle@2x.png"; sourceTree = "<group>"; };
+		6DC98DAC18DCCC3E007E5081 /* GestureAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureAnimationView.h; sourceTree = "<group>"; };
+		6DC98DAD18DCCC3E007E5081 /* GestureAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureAnimationView.m; sourceTree = "<group>"; };
 		6DE4A47D18D7B1C0000E1D05 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		6DE4A47E18D7B1C0000E1D05 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		A9487285B49F4BF8A6140B94 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 				6D8F71EC18C296410077D383 /* ViewController.m */,
 				6DE4A47D18D7B1C0000E1D05 /* TutorialViewController.h */,
 				6DE4A47E18D7B1C0000E1D05 /* TutorialViewController.m */,
+				6DC98DAC18DCCC3E007E5081 /* GestureAnimationView.h */,
+				6DC98DAD18DCCC3E007E5081 /* GestureAnimationView.m */,
 				6D8F71EE18C296410077D383 /* Images.xcassets */,
 				6D6A4AB518D41958006B2426 /* Fonts */,
 				6D57252518CA233E00F68E58 /* Audio */,
@@ -392,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8F71ED18C296410077D383 /* ViewController.m in Sources */,
+				6DC98DAE18DCCC3E007E5081 /* GestureAnimationView.m in Sources */,
 				6D8F71E718C296410077D383 /* AppDelegate.m in Sources */,
 				6DE4A47F18D7B1C0000E1D05 /* TutorialViewController.m in Sources */,
 				6D8F71E318C296410077D383 /* main.m in Sources */,

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, GameMode) {
+typedef NS_ENUM(NSUInteger, GameMode)
+{
     GameModeEndless,
     GameModeTimed,
     GameModeMemory

@@ -15,12 +15,13 @@
 #import "ADDropDownMenuItemView.h"
 #import "ADDropDownMenuView.h"
 #import "TutorialViewController.h"
+#import "GestureAnimationView.h"
 
 #define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
 
 @interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, ADDropDownMenuDelegate, UINavigationControllerDelegate>
 {
-    __weak IBOutlet UILabel *leaderLabel;
+    __weak IBOutlet GestureAnimationView *leaderLabel;
     __weak IBOutlet UILabel *feedbackLabel;
     __weak IBOutlet UILabel *scoreLabel;
     __weak IBOutlet UILabel *highscoreLabel;
@@ -84,7 +85,7 @@
     goButton.titleLabel.font = FONT_ALTEHAAS_REG(52);
     scoreLabel.font = FONT_ALTEHAAS_REG(28);
     
-    progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 33, 33)];
+    progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 7, 30, 30)];
     [progressView setProgressTintColor:[UIColor myBlueColor]];
     [progressView setBackgroundTintColor:[UIColor clearColor]];
     [progressView setLineWidth:2.0f];
@@ -153,8 +154,8 @@
     [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
     [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
     [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
-    item5.titleLabel.text = @"?";
     
+    item5.titleLabel.text = @"?";
 //    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
 //    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
 //    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
@@ -296,7 +297,6 @@
         gestureCommanded = memoryGameGestures[memoryCounter];
         leaderLabel.text = [NSString stringWithFormat:@"GESTURE %i", memoryCounter +1];
     }
-
 }
 
 - (void)demoMemoryGameGestures
@@ -323,7 +323,7 @@
     {
         [memoryGameGestures addObject:[self pickRandomGesture]];
     }
-    NSLog(@"Memory Game Gestures: %i",memoryGameGestures.count);
+    NSLog(@"Memory Game Gestures: %lu",(unsigned long)memoryGameGestures.count);
     memoryGameDemonstrationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(demonstrationTimerFired) userInfo:nil repeats:YES];
 }
 
@@ -392,6 +392,7 @@
     }
     else if ([gestureCommanded isEqualToString:lastGestureRecieved])
     {
+        [leaderLabel animate:SwipeLeft];
         [self correct];
     }
 }
@@ -400,6 +401,7 @@
 {
     score += 1;
     lastGestureRecieved = @"";
+    [progressView setProgress:0.0];
     
     if (self.gameMode == GameModeEndless || self.gameMode == GameModeMemory)
     {
@@ -429,7 +431,7 @@
     }
     else
     {
-        [self startNextCommand];
+        [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:0.5];
     }
     scoreLabel.text = [NSString stringWithFormat:@"%li", score];
     
