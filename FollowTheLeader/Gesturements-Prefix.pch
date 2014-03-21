@@ -14,3 +14,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+@interface UIColor (mathletes)
++(UIColor*)myGrayColor;
++(UIColor*)myDarkGrayColor;
++(UIColor*)myRedColor;
++(UIColor*)myBlueColor;
+@end

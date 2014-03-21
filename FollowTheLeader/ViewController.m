@@ -71,6 +71,13 @@
     gamesPlayed = 0;
     firstLoad = YES;
     
+    self.view.backgroundColor = [UIColor myDarkGrayColor];
+    feedbackLabel.textColor = [UIColor myRedColor];
+    highscoreLabel.textColor = [UIColor myRedColor];
+    scoreLabel.textColor = [UIColor whiteColor];
+    gameModeSegmentedControl.tintColor = [UIColor myBlueColor];
+    
+    
     feedbackLabel.font = FONT_ALTEHAAS_REG(34);
     highscoreLabel.font = FONT_ALTEHAAS_REG(34);
     leaderLabel.font = FONT_ALTEHAAS_REG(52);
@@ -78,7 +85,7 @@
     scoreLabel.font = FONT_ALTEHAAS_REG(28);
     
     progressView = [[BKECircularProgressView alloc] initWithFrame:CGRectMake(15, 5, 33, 33)];
-    [progressView setProgressTintColor:[UIColor orangeColor]];
+    [progressView setProgressTintColor:[UIColor myBlueColor]];
     [progressView setBackgroundTintColor:[UIColor clearColor]];
     [progressView setLineWidth:2.0f];
     [progressView setProgress:1.0f];

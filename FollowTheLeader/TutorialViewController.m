@@ -8,7 +8,7 @@
 
 #import "TutorialViewController.h"
 
-@interface TutorialViewController ()
+@interface TutorialViewController () <UIScrollViewDelegate>
 {
     __weak IBOutlet UIScrollView *tutorialScrollView;
     __weak IBOutlet UIPageControl *pageControl;
@@ -60,6 +60,15 @@
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+#pragma mark UIScrollView Delegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = tutorialScrollView.frame.size.width;
+    float fractionalPage = tutorialScrollView.contentOffset.x / pageWidth;
+    NSInteger page = round(fractionalPage);
+    pageControl.currentPage = page;
 }
 
 @end
