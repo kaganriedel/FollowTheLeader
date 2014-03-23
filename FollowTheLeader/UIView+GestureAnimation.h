@@ -1,8 +1,8 @@
 //
-//  GestureAnimationView.h
+//  UIView+GestureAnimation.h
 //  Gesturements
 //
-//  Created by Kagan Riedel on 3/21/14.
+//  Created by Kagan Riedel on 3/22/14.
 //  Copyright (c) 2014 Kagan Riedel. All rights reserved.
 //
 
@@ -20,8 +20,8 @@ typedef NS_ENUM(NSUInteger, ANIMATION)
     Pinch
 };
 
-@interface GestureAnimationView : UILabel
+@interface UIView (GestureAnimation)
 
--(void)animate:(ANIMATION)animation withDuration:(NSTimeInterval)duration;
++(void)animate:(ANIMATION)animation view:(UIView*)view withDuration:(NSTimeInterval)duration;
 
 @end

@@ -15,13 +15,13 @@
 #import "ADDropDownMenuItemView.h"
 #import "ADDropDownMenuView.h"
 #import "TutorialViewController.h"
-#import "GestureAnimationView.h"
+#import "UIView+GestureAnimation.h"
 
 #define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
 
 @interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, ADDropDownMenuDelegate, UINavigationControllerDelegate>
 {
-    __weak IBOutlet GestureAnimationView *leaderLabel;
+    __weak IBOutlet UILabel *leaderLabel;
     __weak IBOutlet UILabel *feedbackLabel;
     __weak IBOutlet UILabel *scoreLabel;
     __weak IBOutlet UILabel *highscoreLabel;
@@ -449,35 +449,35 @@
 {
     if ([gesture isEqualToString:@"TAP"])
     {
-        [leaderLabel animate:Tap withDuration:0.5];
+        [UIView animate:Tap view:leaderLabel withDuration:0.5];
     }
     else if ([gesture isEqualToString:@"DOUBLE TAP"])
     {
-        [leaderLabel animate:DoubleTap withDuration:0.5];
+        [UIView animate:DoubleTap view:leaderLabel withDuration:0.5];
     }
     else if ([gesture isEqualToString:@"PINCH"])
     {
-        [leaderLabel animate:Pinch withDuration:0.5];
+        [UIView animate:Pinch view:leaderLabel withDuration:0.5];
     }
     else if ([gesture isEqualToString:@"PRESS"])
     {
-        [leaderLabel animate:Press withDuration:0.5];
+        [UIView animate:Press view:leaderLabel withDuration:0.5];
     }
     else if ([gesture isEqualToString:@"SWIPE LEFT"])
     {
-        [leaderLabel animate:SwipeLeft withDuration:0.5];
+        [UIView animate:SwipeLeft view:leaderLabel withDuration:0.5];
     }
     else if ([gesture isEqualToString:@"SWIPE RIGHT"])
     {
-        [leaderLabel animate:SwipeRight withDuration:0.5];
+        [UIView animate:SwipeRight view:leaderLabel withDuration:0.5];
     }
     else if ([gesture isEqualToString:@"SWIPE UP"])
     {
-        [leaderLabel animate:SwipeUp withDuration:0.5];
+        [UIView animate:SwipeUp view:leaderLabel withDuration:0.5];
     }
     else if ([gesture isEqualToString:@"SWIPE DOWN"])
     {
-        [leaderLabel animate:SwipeDown withDuration:0.5];
+        [UIView animate:SwipeDown view:leaderLabel withDuration:0.5];
     }
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5142407DE680446F9E9A406A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 567668A951244E18A61A79E8 /* libPods.a */; };
 		6D00545C18D37E11000C96CF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D00545B18D37E11000C96CF /* GameKit.framework */; };
+		6D211EFB18DE740400FA4FC8 /* UIView+GestureAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D211EFA18DE740400FA4FC8 /* UIView+GestureAnimation.m */; };
 		6D46C8CA18D4F56900A12330 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D46C8C918D4F56900A12330 /* StoreKit.framework */; };
 		6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */; };
 		6D6A4AB118D3D0A3006B2426 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB018D3D0A3006B2426 /* music@2x.png */; };
@@ -38,7 +39,6 @@
 		6D9E922318DB849000913F57 /* murray_background@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6D9E922218DB849000913F57 /* murray_background@2x.jpeg */; };
 		6D9E922518DB849600913F57 /* cage_background@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6D9E922418DB849600913F57 /* cage_background@2x.jpeg */; };
 		6DAAF2BB18D7B45E006B011C /* close_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DAAF2BA18D7B45E006B011C /* close_circle@2x.png */; };
-		6DC98DAE18DCCC3E007E5081 /* GestureAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC98DAD18DCCC3E007E5081 /* GestureAnimationView.m */; };
 		6DE4A47F18D7B1C0000E1D05 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4A47E18D7B1C0000E1D05 /* TutorialViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,8 @@
 /* Begin PBXFileReference section */
 		567668A951244E18A61A79E8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D00545B18D37E11000C96CF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		6D211EF918DE740400FA4FC8 /* UIView+GestureAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GestureAnimation.h"; sourceTree = "<group>"; };
+		6D211EFA18DE740400FA4FC8 /* UIView+GestureAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GestureAnimation.m"; sourceTree = "<group>"; };
 		6D46C8C918D4F56900A12330 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ghostwriter.mp3; sourceTree = "<group>"; };
 		6D6A4AB018D3D0A3006B2426 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
@@ -89,8 +91,6 @@
 		6D9E922218DB849000913F57 /* murray_background@2x.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "murray_background@2x.jpeg"; sourceTree = "<group>"; };
 		6D9E922418DB849600913F57 /* cage_background@2x.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cage_background@2x.jpeg"; sourceTree = "<group>"; };
 		6DAAF2BA18D7B45E006B011C /* close_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_circle@2x.png"; sourceTree = "<group>"; };
-		6DC98DAC18DCCC3E007E5081 /* GestureAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureAnimationView.h; sourceTree = "<group>"; };
-		6DC98DAD18DCCC3E007E5081 /* GestureAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureAnimationView.m; sourceTree = "<group>"; };
 		6DE4A47D18D7B1C0000E1D05 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		6DE4A47E18D7B1C0000E1D05 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		A9487285B49F4BF8A6140B94 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -203,8 +203,8 @@
 				6D8F71EC18C296410077D383 /* ViewController.m */,
 				6DE4A47D18D7B1C0000E1D05 /* TutorialViewController.h */,
 				6DE4A47E18D7B1C0000E1D05 /* TutorialViewController.m */,
-				6DC98DAC18DCCC3E007E5081 /* GestureAnimationView.h */,
-				6DC98DAD18DCCC3E007E5081 /* GestureAnimationView.m */,
+				6D211EF918DE740400FA4FC8 /* UIView+GestureAnimation.h */,
+				6D211EFA18DE740400FA4FC8 /* UIView+GestureAnimation.m */,
 				6D8F71EE18C296410077D383 /* Images.xcassets */,
 				6D6A4AB518D41958006B2426 /* Fonts */,
 				6D57252518CA233E00F68E58 /* Audio */,
@@ -397,10 +397,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8F71ED18C296410077D383 /* ViewController.m in Sources */,
-				6DC98DAE18DCCC3E007E5081 /* GestureAnimationView.m in Sources */,
 				6D8F71E718C296410077D383 /* AppDelegate.m in Sources */,
 				6DE4A47F18D7B1C0000E1D05 /* TutorialViewController.m in Sources */,
 				6D8F71E318C296410077D383 /* main.m in Sources */,
+				6D211EFB18DE740400FA4FC8 /* UIView+GestureAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
