@@ -33,6 +33,7 @@
     __weak IBOutlet CSAnimationView *segmentedControlAnimationView;
     __weak IBOutlet CSAnimationView *highscoreAnimationView;
     __weak IBOutlet CSAnimationView *settingsAnimationView;
+    __weak IBOutlet UIImageView *titleImageView;
     BKECircularProgressView *progressView;
     NSTimer *gameTimer;
     NSTimer *memoryGameDemonstrationTimer;
@@ -245,6 +246,7 @@
         feedbackLabel.alpha = 0.0;
     }];
 }
+
 - (IBAction)goPressed:(UIButton *)sender
 {
     feedbackAnimationView.type = CSAnimationTypeBounceDown;
@@ -280,6 +282,7 @@
 
 - (void)startNextCommand
 {
+    leaderLabel.textColor = [UIColor whiteColor];
     if (self.gameMode == GameModeEndless || self.gameMode == GameModeMemory)
     {
         counter = 0;
@@ -292,40 +295,15 @@
     }
     else if (self.gameMode == GameModeMemory)
     {
-        feedbackLabel.text = @"YOUR TURN";
-        [feedbackAnimationView startCanvasAnimation];
         gestureCommanded = memoryGameGestures[memoryCounter];
         leaderLabel.text = [NSString stringWithFormat:@"%i", memoryCounter +1];
     }
 }
 
-- (void)demoMemoryGameGestures
-{
-    leaderLabel.text = @"";
-    feedbackLabel.text = @"PAY ATTENTION";
-    [progressView setProgress:1.0];
-    feedbackAnimationView.alpha = 1.0;
-    [feedbackAnimationView startCanvasAnimation];
-    feedbackLabel.alpha = 1.0;
-    if (!memoryGameGestures) {
-        memoryGameGestures = [NSMutableArray new];
-    }
-    //if it's the first turn, add in 3 gestures
-    if (score == 0)
-    {
-        for (int x = 0; x < 2; x++)
-        {
-            [memoryGameGestures addObject:[self pickRandomGesture]];
-        }
-    }
-    //else add 1 gesture
-    else
-    {
-        [memoryGameGestures addObject:[self pickRandomGesture]];
-    }
-    NSLog(@"Memory Game Gestures: %lu",(unsigned long)memoryGameGestures.count);
-    memoryGameDemonstrationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(demonstrationTimerFired) userInfo:nil repeats:YES];
-}
+
+
+
+
 
 - (NSString *) pickRandomGesture
 {
@@ -370,16 +348,68 @@
     }
 }
 
+- (void)demoMemoryGameGestures
+{
+    leaderLabel.text = @"PAY ATTENTION";
+    leaderLabel.textColor = [UIColor myRedColor];
+    [progressView setProgress:1.0];
+    if (!memoryGameGestures) {
+        memoryGameGestures = [NSMutableArray new];
+    }
+    //if it's the first turn, add in 3 gestures
+    if (score == 0)
+    {
+        for (int x = 0; x < 2; x++)
+        {
+            [memoryGameGestures addObject:[self pickRandomGesture]];
+        }
+    }
+    //else add 1 gesture
+    else
+    {
+        [memoryGameGestures addObject:[self pickRandomGesture]];
+    }
+    NSLog(@"Memory Game Gestures: %lu",(unsigned long)memoryGameGestures.count);
+    memoryGameDemonstrationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(demonstrationTimerFired) userInfo:nil repeats:YES];
+}
+
 -(void)demonstrationTimerFired
 {
+    leaderLabel.textColor = [UIColor whiteColor];
     leaderLabel.text = memoryGameGestures[(int)counter];
     counter += 1.0;
     if ((int)counter >= memoryGameGestures.count)
     {
         [memoryGameDemonstrationTimer invalidate];
         memoryCounter = 0;
-        [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:1.0];
+        
+        [self performSelector:@selector(yourTurnReadyGo) withObject:nil afterDelay:1.0];
     }
+}
+
+-(void)yourTurnReadyGo
+{
+    feedbackLabel.alpha = 0.0;
+
+    leaderLabel.text = @"YOUR TURN";
+    leaderLabel.textColor = [UIColor myRedColor];
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(ready) userInfo:nil repeats:NO];
+}
+
+-(void)ready
+{
+    leaderLabel.text = @"READY?";
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(go) userInfo:nil repeats:NO];
+}
+
+-(void)go
+{
+    leaderLabel.text = @"GO";
+    [UIView animateWithDuration:2.0 animations:^{
+        feedbackLabel.alpha = 0.0;
+    }];
+    lastGestureRecieved = nil;
+    [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:1.0];
 }
 
 - (void)timerFired
@@ -427,8 +457,7 @@
         else
         {
             [progressView setProgress:0.0];
-            [self givePositiveFeedback];
-            leaderLabel.text = @"";
+            [self performSelector:@selector(givePositiveFeedback) withObject:nil afterDelay:0.5];
         }
     }
     else
@@ -442,7 +471,6 @@
     {
         [self givePositiveFeedback];
     }
-
 }
 
 -(void)animateViewForGesture:(NSString*)gesture
@@ -483,6 +511,10 @@
 
 -(void)givePositiveFeedback
 {
+    if (self.gameMode == GameModeMemory)
+    {
+        leaderLabel.text = @"";
+    }
     int randomNumber = arc4random()%feedbackArray.count;
     feedbackLabel.text = feedbackArray[randomNumber];
     feedbackAnimationView.alpha = 1.0;
@@ -512,9 +544,12 @@
     highscoreLabel.alpha = 1.0;
     feedbackAnimationView.alpha = 0.0;
     gameModeSegmentedControl.alpha = 1.0;
-    goButton.alpha = 1.0;
     settingsAnimationView.alpha = 1.0;
     [progressView setProgress:1.0];
+    
+    //have the uiimageview animate the Gesturements intro animation in, then have the button alpha to 1.0. this will have a cooler animation and prevent the user from accidently tapping the goButton and starting a new game
+    goButton.alpha = 1.0;
+
     
     segmentedControlAnimationView.delay = 0.0;
     [segmentedControlAnimationView startCanvasAnimation];

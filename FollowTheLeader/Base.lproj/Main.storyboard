@@ -164,8 +164,16 @@
                                     <constraint firstAttribute="width" constant="45" id="Tqc-wR-Yvy"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FqS-1L-IpD">
+                                <rect key="frame" x="0.0" y="98" width="568" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="sor-be-M0P"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Jdo-hF-06K" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="195" id="0ah-a4-S49"/>
@@ -173,16 +181,19 @@
                             <constraint firstItem="1Cs-ye-fci" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="AdZ-zZ-nG0"/>
                             <constraint firstAttribute="trailing" secondItem="GxP-FC-xXM" secondAttribute="trailing" constant="34" id="B84-QS-P2d"/>
                             <constraint firstAttribute="trailing" secondItem="Jdo-hF-06K" secondAttribute="trailing" constant="20" id="COp-9D-Ezh"/>
+                            <constraint firstItem="FqS-1L-IpD" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="98" id="I7E-Zb-nlZ"/>
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="34" id="Kfo-7v-GKb"/>
                             <constraint firstItem="Jdo-hF-06K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Rl9-y1-3D5"/>
                             <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="2" id="S9o-b7-oGa"/>
                             <constraint firstAttribute="centerX" secondItem="Gh5-GV-BXE" secondAttribute="centerX" id="TI1-6Z-bJg"/>
+                            <constraint firstItem="FqS-1L-IpD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="VVs-vg-Cec"/>
                             <constraint firstItem="IBu-z9-PDS" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="a6X-VU-x8k"/>
                             <constraint firstItem="1Cs-ye-fci" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="dOp-Xp-wfX"/>
                             <constraint firstAttribute="trailing" secondItem="YNK-FO-a5f" secondAttribute="trailing" constant="20" id="pJw-gy-hMP"/>
                             <constraint firstItem="YNK-FO-a5f" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="49" id="rFZ-Ku-OBR"/>
                             <constraint firstItem="YNK-FO-a5f" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="wkd-3R-mQF"/>
                             <constraint firstAttribute="trailing" secondItem="IBu-z9-PDS" secondAttribute="trailing" id="xrZ-Wq-C8u"/>
+                            <constraint firstAttribute="trailing" secondItem="FqS-1L-IpD" secondAttribute="trailing" id="zh0-1T-UvA"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <connections>
@@ -211,6 +222,7 @@
                         <outlet property="segmentedControlAnimationView" destination="Gh5-GV-BXE" id="wXP-Mn-2Qo"/>
                         <outlet property="settingsAnimationView" destination="IBu-z9-PDS" id="mWG-EN-no0"/>
                         <outlet property="timerAnimationView" destination="1Cs-ye-fci" id="ySn-aN-YKq"/>
+                        <outlet property="titleImageView" destination="FqS-1L-IpD" id="bcT-FZ-Nua"/>
                         <segue destination="mLa-0K-V6A" kind="modal" identifier="tutorial segue" id="Xvh-gD-6Kk"/>
                     </connections>
                 </viewController>
