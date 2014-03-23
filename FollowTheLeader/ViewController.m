@@ -295,7 +295,7 @@
         feedbackLabel.text = @"YOUR TURN";
         [feedbackAnimationView startCanvasAnimation];
         gestureCommanded = memoryGameGestures[memoryCounter];
-        leaderLabel.text = [NSString stringWithFormat:@"GESTURE %i", memoryCounter +1];
+        leaderLabel.text = [NSString stringWithFormat:@"%i", memoryCounter +1];
     }
 }
 
@@ -392,7 +392,7 @@
     }
     else if ([gestureCommanded isEqualToString:lastGestureRecieved])
     {
-        [leaderLabel animate:SwipeLeft];
+        [self animateViewForGesture:gestureCommanded];
         [self correct];
     }
 }
@@ -401,6 +401,7 @@
 {
     score += 1;
     lastGestureRecieved = @"";
+    gestureCommanded = nil;
     [progressView setProgress:0.0];
     
     if (self.gameMode == GameModeEndless || self.gameMode == GameModeMemory)
@@ -421,12 +422,13 @@
         memoryCounter ++;
         if (memoryCounter < memoryGameGestures.count)
         {
-            [self startNextCommand];
+            [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:0.5];
         }
         else
         {
             [progressView setProgress:0.0];
             [self givePositiveFeedback];
+            leaderLabel.text = @"";
         }
     }
     else
@@ -439,6 +441,43 @@
     if (score %5 == 0 && self.gameMode != GameModeMemory)
     {
         [self givePositiveFeedback];
+    }
+
+}
+
+-(void)animateViewForGesture:(NSString*)gesture
+{
+    if ([gesture isEqualToString:@"TAP"])
+    {
+        [leaderLabel animate:Tap withDuration:0.5];
+    }
+    else if ([gesture isEqualToString:@"DOUBLE TAP"])
+    {
+        [leaderLabel animate:DoubleTap withDuration:0.5];
+    }
+    else if ([gesture isEqualToString:@"PINCH"])
+    {
+        [leaderLabel animate:Pinch withDuration:0.5];
+    }
+    else if ([gesture isEqualToString:@"PRESS"])
+    {
+        [leaderLabel animate:Press withDuration:0.5];
+    }
+    else if ([gesture isEqualToString:@"SWIPE LEFT"])
+    {
+        [leaderLabel animate:SwipeLeft withDuration:0.5];
+    }
+    else if ([gesture isEqualToString:@"SWIPE RIGHT"])
+    {
+        [leaderLabel animate:SwipeRight withDuration:0.5];
+    }
+    else if ([gesture isEqualToString:@"SWIPE UP"])
+    {
+        [leaderLabel animate:SwipeUp withDuration:0.5];
+    }
+    else if ([gesture isEqualToString:@"SWIPE DOWN"])
+    {
+        [leaderLabel animate:SwipeDown withDuration:0.5];
     }
 }
 

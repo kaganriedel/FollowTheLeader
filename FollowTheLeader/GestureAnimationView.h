@@ -22,6 +22,6 @@ typedef NS_ENUM(NSUInteger, ANIMATION)
 
 @interface GestureAnimationView : UILabel
 
--(void)animate:(ANIMATION)animation;
+-(void)animate:(ANIMATION)animation withDuration:(NSTimeInterval)duration;
 
 @end
