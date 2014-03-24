@@ -18,6 +18,7 @@
 #import "UIView+GestureAnimation.h"
 
 #define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
+static NSTimeInterval animationDuration = 0.35;
 
 @interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, ADDropDownMenuDelegate, UINavigationControllerDelegate>
 {
@@ -80,7 +81,7 @@
     gameModeSegmentedControl.tintColor = [UIColor myBlueColor];
     
     
-    feedbackLabel.font = FONT_ALTEHAAS_REG(34);
+    feedbackLabel.font = FONT_ALTEHAAS_REG(44);
     highscoreLabel.font = FONT_ALTEHAAS_REG(34);
     leaderLabel.font = FONT_ALTEHAAS_REG(52);
     goButton.titleLabel.font = FONT_ALTEHAAS_REG(52);
@@ -100,7 +101,7 @@
     highscoreAnimationView.delay = 0.0;
     highscoreAnimationView.duration = 1.0;
     
-    feedbackArray = @[@"NICE", @"HOT DAMN", @"SEXY", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZING", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE"];
+    feedbackArray = @[@"NICE", @"RAWR", @"MARVELOUS", @"CALIENTE", @"EN FUEGO", @"ROCKSTAR", @"BOOM SHAKALAKA", @"UNSTOPPABLE", @"AMAZING", @"RIDICULOUS", @"STELLAR", @"SMASHING", @"BANGIN", @"INCREDIBLE", @"SHUT THE FRONT DOOR", @"NO WAY", @"KILLER", @"SILLY GOOD", @"PERFECTION", @"REVOLUTIONARY", @"GREAT", @"INCENDIARY", @"UNBELIEVABLE", @"FANTASTIC", @"FABULOUS", @"TERRIFIC", @"EXCELLENT", @"MAGNIFICENT", @"SUPERB", @"ASTONISHING", @"BRILLIANT", @"STUPENDOUS", @"TREMENDOUS", @"AWESOME", @"SENSATIONAL", @"AWE INSPIRING", @"PEACHY", @"GROOVY", @"DYNAMITE", @"DAZZLING", @"DIVINE", @"GLORIOUS", @"ELECTRIFYING", @"GORGEOUS", @"ADMIRABLE", @"BLISSFUL", @"BRAVO", @"ENCORE", @"CLASSIC", @"EXQUISITE", @"GENIUS", @"IMPRESSIVE", @"KEEN", @"PHENOMENAL", @"POWERFUL", @"QUALITY", @"REMARKABLE", @"SPARKLING", @"STUNNING", @"UNREAL", @"VICTORY", @"WONDROUS", @"WONDERFUL", @"WOW"];
     
     gestures = @[@"TAP", @"DOUBLE TAP", @"PINCH", @"SWIPE RIGHT", @"SWIPE LEFT", @"SWIPE UP", @"SWIPE DOWN", @"PRESS"];
     
@@ -300,11 +301,6 @@
     }
 }
 
-
-
-
-
-
 - (NSString *) pickRandomGesture
 {
     int randomNumber = arc4random()%gestures.count;
@@ -422,7 +418,7 @@
     }
     else if ([gestureCommanded isEqualToString:lastGestureRecieved])
     {
-        [self animateViewForGesture:gestureCommanded];
+        [self animateViewForGesture:gestureCommanded forDuration:animationDuration];
         [self correct];
     }
 }
@@ -452,17 +448,17 @@
         memoryCounter ++;
         if (memoryCounter < memoryGameGestures.count)
         {
-            [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:0.5];
+            [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:animationDuration];
         }
         else
         {
             [progressView setProgress:0.0];
-            [self performSelector:@selector(givePositiveFeedback) withObject:nil afterDelay:0.5];
+            [self performSelector:@selector(givePositiveFeedback) withObject:nil afterDelay:animationDuration];
         }
     }
     else
     {
-        [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:0.5];
+        [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:animationDuration];
     }
     scoreLabel.text = [NSString stringWithFormat:@"%li", score];
     
@@ -473,39 +469,40 @@
     }
 }
 
--(void)animateViewForGesture:(NSString*)gesture
+-(void)animateViewForGesture:(NSString*)gesture forDuration:(NSTimeInterval)duration
 {
     if ([gesture isEqualToString:@"TAP"])
     {
-        [UIView animate:Tap view:leaderLabel withDuration:0.5];
+        
+        [UIView animate:Tap view:leaderLabel withDuration:duration];
     }
     else if ([gesture isEqualToString:@"DOUBLE TAP"])
     {
-        [UIView animate:DoubleTap view:leaderLabel withDuration:0.5];
+        [UIView animate:DoubleTap view:leaderLabel withDuration:duration];
     }
     else if ([gesture isEqualToString:@"PINCH"])
     {
-        [UIView animate:Pinch view:leaderLabel withDuration:0.5];
+        [UIView animate:Pinch view:leaderLabel withDuration:duration];
     }
     else if ([gesture isEqualToString:@"PRESS"])
     {
-        [UIView animate:Press view:leaderLabel withDuration:0.5];
+        [UIView animate:Press view:leaderLabel withDuration:duration];
     }
     else if ([gesture isEqualToString:@"SWIPE LEFT"])
     {
-        [UIView animate:SwipeLeft view:leaderLabel withDuration:0.5];
+        [UIView animate:SwipeLeft view:leaderLabel withDuration:duration];
     }
     else if ([gesture isEqualToString:@"SWIPE RIGHT"])
     {
-        [UIView animate:SwipeRight view:leaderLabel withDuration:0.5];
+        [UIView animate:SwipeRight view:leaderLabel withDuration:duration];
     }
     else if ([gesture isEqualToString:@"SWIPE UP"])
     {
-        [UIView animate:SwipeUp view:leaderLabel withDuration:0.5];
+        [UIView animate:SwipeUp view:leaderLabel withDuration:duration];
     }
     else if ([gesture isEqualToString:@"SWIPE DOWN"])
     {
-        [UIView animate:SwipeDown view:leaderLabel withDuration:0.5];
+        [UIView animate:SwipeDown view:leaderLabel withDuration:duration];
     }
 }
 
@@ -712,13 +709,10 @@
     lastGestureRecieved = @"SWIPE DOWN";
 }
 
-
 - (IBAction)didRecieveLongPress:(UILongPressGestureRecognizer *)sender
 {
     lastGestureRecieved = @"PRESS";
 }
-
-
 
 #pragma mark Delegate methods
 
