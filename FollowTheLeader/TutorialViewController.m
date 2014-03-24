@@ -50,14 +50,14 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor myBlueColor];
     
-    UILabel *creditTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, frameWidth, 40)];
+    UILabel *creditTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, frameWidth, 35)];
     creditTitleLabel.text = @"CREDITS";
     creditTitleLabel.font = FONT_ALTEHAAS_REG(40);
     creditTitleLabel.textAlignment = NSTextAlignmentCenter;
     creditTitleLabel.textColor = [UIColor whiteColor];
     
-    UITextView *creditsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 120, frameWidth, frameHeight - 90)];
-    creditsTextView.text = @"Developed by 612 Development LLC\nKagan Riedel\nDesign by Willy Mattson";
+    UITextView *creditsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 105, frameWidth, frameHeight - 90)];
+    creditsTextView.text = @"612 Development LLC\nDeveloped by Kagan Riedel\nDesign by Willy Mattson";
     creditsTextView.font = FONT_ALTEHAAS_REG(26);
     creditsTextView.textAlignment = NSTextAlignmentCenter;
     creditsTextView.textColor = [UIColor grayColor];

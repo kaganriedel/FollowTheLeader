@@ -81,7 +81,7 @@ static NSTimeInterval animationDuration = 0.35;
     gameModeSegmentedControl.tintColor = [UIColor myBlueColor];
     
     
-    feedbackLabel.font = FONT_ALTEHAAS_REG(44);
+    feedbackLabel.font = FONT_ALTEHAAS_REG(40);
     highscoreLabel.font = FONT_ALTEHAAS_REG(34);
     leaderLabel.font = FONT_ALTEHAAS_REG(52);
     goButton.titleLabel.font = FONT_ALTEHAAS_REG(52);

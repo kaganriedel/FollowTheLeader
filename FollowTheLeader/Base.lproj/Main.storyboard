@@ -13,15 +13,15 @@
                         <viewControllerLayoutGuide type="bottom" id="M6q-B8-9GD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GxP-FC-xXM" userLabel="Feedback Animation View" customClass="CSAnimationView">
-                                <rect key="frame" x="34" y="55" width="500" height="50"/>
+                                <rect key="frame" x="0.0" y="55" width="480" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-LU-fW7">
-                                        <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="zgS-ki-HEU"/>
@@ -64,7 +64,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-GV-BXE" userLabel="Segment Animation View" customClass="CSAnimationView">
-                                <rect key="frame" x="196" y="2" width="176" height="42"/>
+                                <rect key="frame" x="152" y="2" width="176" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="McU-oB-dtx">
@@ -92,11 +92,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdo-hF-06K" userLabel="High Score Animation View" customClass="CSAnimationView">
-                                <rect key="frame" x="20" y="195" width="528" height="90"/>
+                                <rect key="frame" x="20" y="195" width="440" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIGH SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.70000000000000018" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-St-EIa">
-                                        <rect key="frame" x="0.0" y="20" width="528" height="50"/>
+                                        <rect key="frame" x="0.0" y="20" width="440" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1RM-f3-epx"/>
@@ -115,11 +115,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNK-FO-a5f" userLabel="Leader Animation View" customClass="CSAnimationView">
-                                <rect key="frame" x="20" y="49" width="528" height="236"/>
+                                <rect key="frame" x="20" y="49" width="440" height="236"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esu-gn-dgj" userLabel="LeaderLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="528" height="236"/>
+                                        <rect key="frame" x="-44" y="0.0" width="528" height="236"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="528" id="trw-DX-9fo"/>
@@ -130,7 +130,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZt-IQ-5ED">
-                                        <rect key="frame" x="0.0" y="55.5" width="528" height="125"/>
+                                        <rect key="frame" x="0.0" y="56" width="440" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="125" id="1Wq-25-805"/>
@@ -156,7 +156,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBu-z9-PDS" userLabel="Settings Animation View" customClass="CSAnimationView">
-                                <rect key="frame" x="523" y="0.0" width="45" height="212"/>
+                                <rect key="frame" x="435" y="0.0" width="45" height="212"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -166,7 +166,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FqS-1L-IpD">
-                                <rect key="frame" x="0.0" y="98" width="568" height="125"/>
+                                <rect key="frame" x="0.0" y="98" width="480" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -180,10 +180,10 @@
                             <constraint firstItem="Jdo-hF-06K" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="195" id="0ah-a4-S49"/>
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="55" id="53I-NH-OIm"/>
                             <constraint firstItem="1Cs-ye-fci" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="AdZ-zZ-nG0"/>
-                            <constraint firstAttribute="trailing" secondItem="GxP-FC-xXM" secondAttribute="trailing" constant="34" id="B84-QS-P2d"/>
+                            <constraint firstAttribute="trailing" secondItem="GxP-FC-xXM" secondAttribute="trailing" id="B84-QS-P2d"/>
                             <constraint firstAttribute="trailing" secondItem="Jdo-hF-06K" secondAttribute="trailing" constant="20" id="COp-9D-Ezh"/>
                             <constraint firstItem="FqS-1L-IpD" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="98" id="I7E-Zb-nlZ"/>
-                            <constraint firstItem="GxP-FC-xXM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="34" id="Kfo-7v-GKb"/>
+                            <constraint firstItem="GxP-FC-xXM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Kfo-7v-GKb"/>
                             <constraint firstItem="Jdo-hF-06K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Rl9-y1-3D5"/>
                             <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="2" id="S9o-b7-oGa"/>
                             <constraint firstAttribute="centerX" secondItem="Gh5-GV-BXE" secondAttribute="centerX" id="TI1-6Z-bJg"/>
@@ -288,11 +288,11 @@
                         <viewControllerLayoutGuide type="bottom" id="bgg-r2-R4H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LpX-Ai-zPZ">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOS-tV-qRF">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="mLa-0K-V6A" id="8LQ-bX-ft7"/>
@@ -323,6 +323,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
