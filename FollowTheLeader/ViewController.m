@@ -18,7 +18,7 @@
 #import "UIView+GestureAnimation.h"
 
 #define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
-static NSTimeInterval animationDuration = 0.35;
+static NSTimeInterval animationDuration = 0.3;
 
 @interface ViewController () <UIGestureRecognizerDelegate, AVAudioPlayerDelegate, GKGameCenterControllerDelegate, ADDropDownMenuDelegate, UINavigationControllerDelegate>
 {
