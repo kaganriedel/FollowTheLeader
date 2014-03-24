@@ -346,13 +346,15 @@ static NSTimeInterval animationDuration = 0.3;
 
 - (void)demoMemoryGameGestures
 {
+    counter = 0.0;
+    memoryCounter = 0.0;
     leaderLabel.text = @"PAY ATTENTION";
     leaderLabel.textColor = [UIColor myRedColor];
     [progressView setProgress:1.0];
     if (!memoryGameGestures) {
         memoryGameGestures = [NSMutableArray new];
     }
-    //if it's the first turn, add in 3 gestures
+    //if it's the first turn, add in 2 gestures
     if (score == 0)
     {
         for (int x = 0; x < 2; x++)
@@ -377,8 +379,6 @@ static NSTimeInterval animationDuration = 0.3;
     if ((int)counter >= memoryGameGestures.count)
     {
         [memoryGameDemonstrationTimer invalidate];
-        memoryCounter = 0;
-        
         [self performSelector:@selector(yourTurnReadyGo) withObject:nil afterDelay:1.0];
     }
 }

@@ -224,7 +224,7 @@
                         <outlet property="settingsAnimationView" destination="IBu-z9-PDS" id="mWG-EN-no0"/>
                         <outlet property="timerAnimationView" destination="1Cs-ye-fci" id="ySn-aN-YKq"/>
                         <outlet property="titleImageView" destination="FqS-1L-IpD" id="bcT-FZ-Nua"/>
-                        <segue destination="mLa-0K-V6A" kind="modal" identifier="tutorial segue" id="Xvh-gD-6Kk"/>
+                        <segue destination="mLa-0K-V6A" kind="modal" identifier="tutorial segue" modalTransitionStyle="flipHorizontal" id="Xvh-gD-6Kk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -291,19 +291,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOS-tV-qRF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOS-tV-qRF">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="mLa-0K-V6A" id="8LQ-bX-ft7"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-pL-xDA">
-                                <rect key="frame" x="264" y="275" width="39" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vb5-pL-xDA">
+                                <rect key="frame" x="220" y="275" width="39" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="vb5-pL-xDA" secondAttribute="centerY" constant="-133.5" id="4DP-Xt-prb"/>
+                            <constraint firstAttribute="bottom" secondItem="JOS-tV-qRF" secondAttribute="bottom" id="9Zx-Fn-ZL8"/>
+                            <constraint firstItem="JOS-tV-qRF" firstAttribute="top" secondItem="LpX-Ai-zPZ" secondAttribute="top" id="Cge-2Q-X4U"/>
+                            <constraint firstItem="JOS-tV-qRF" firstAttribute="leading" secondItem="LpX-Ai-zPZ" secondAttribute="leading" id="Ua0-j4-r3u"/>
+                            <constraint firstAttribute="centerX" secondItem="vb5-pL-xDA" secondAttribute="centerX" constant="0.5" id="VaS-La-nVw"/>
+                            <constraint firstAttribute="trailing" secondItem="JOS-tV-qRF" secondAttribute="trailing" id="vaT-qU-lc8"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>

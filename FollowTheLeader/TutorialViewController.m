@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 15, 35, 35)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 35, 35)];
     [closeButton setImage:[UIImage imageNamed:@"close_circle"] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(onCloseButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
