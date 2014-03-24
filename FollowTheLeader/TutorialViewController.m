@@ -8,6 +8,8 @@
 
 #import "TutorialViewController.h"
 
+#define FONT_ALTEHAAS_REG(s) [UIFont fontWithName:@"AlteHaasGrotesk" size:s]
+
 @interface TutorialViewController () <UIScrollViewDelegate>
 {
     __weak IBOutlet UIScrollView *tutorialScrollView;
@@ -32,24 +34,47 @@
     //width and height are reversed because screen is rotated
     CGFloat frameWidth = [UIScreen mainScreen].bounds.size.height;
     CGFloat frameHeight = [UIScreen mainScreen].bounds.size.width;
-    tutorialScrollView.contentSize = CGSizeMake(frameWidth * 3, frameHeight);
     
-    UIImageView *ImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frameWidth, frameHeight)];
-    ImageView1.image = [UIImage imageNamed:@"kitten_background.jpeg"];
-    [tutorialScrollView addSubview:ImageView1];
+    UIImageView *overlayImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frameWidth, frameHeight)];
+    overlayImageView.image = [UIImage imageNamed:@"murray_background.jpeg"];
     
-    UIImageView *ImageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(frameWidth, 0, frameWidth, frameHeight)];
-    ImageView2.image = [UIImage imageNamed:@"murray_background.jpeg"];
-    [tutorialScrollView addSubview:ImageView2];
+    UIImageView *tutorialAnimationImageView = [[UIImageView alloc] initWithFrame:CGRectMake(frameWidth, 0, frameWidth, frameHeight)];
+    tutorialAnimationImageView.image = [UIImage imageNamed:@"cage_background.jpeg"];
     
-    UIImageView *ImageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(frameWidth * 2, 0, frameWidth, frameHeight)];
-    ImageView3.image = [UIImage imageNamed:@"cage_background.jpeg"];
-    [tutorialScrollView addSubview:ImageView3];
-
+    UIView *acknowledgementsView = [[UIImageView alloc] initWithFrame:CGRectMake(frameWidth * 2, 0, frameWidth, frameHeight)];
+    acknowledgementsView.backgroundColor = [UIColor myDarkGrayColor];
     
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, frameWidth, 40)];
+    titleLabel.text = @"GESTUREMENTS";
+    titleLabel.font = FONT_ALTEHAAS_REG(46);
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor myBlueColor];
+    
+    UILabel *creditTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, frameWidth, 40)];
+    creditTitleLabel.text = @"CREDITS";
+    creditTitleLabel.font = FONT_ALTEHAAS_REG(40);
+    creditTitleLabel.textAlignment = NSTextAlignmentCenter;
+    creditTitleLabel.textColor = [UIColor whiteColor];
+    
+    UITextView *creditsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 120, frameWidth, frameHeight - 90)];
+    creditsTextView.text = @"Developed by 612 Development LLC\nKagan Riedel\nDesign by Willy Mattson";
+    creditsTextView.font = FONT_ALTEHAAS_REG(26);
+    creditsTextView.textAlignment = NSTextAlignmentCenter;
+    creditsTextView.textColor = [UIColor grayColor];
+    creditsTextView.backgroundColor = [UIColor clearColor];
+    
+    [acknowledgementsView addSubview:titleLabel];
+    [acknowledgementsView addSubview:creditTitleLabel];
+    [acknowledgementsView addSubview:creditsTextView];
+    
+    [tutorialScrollView addSubview:overlayImageView];
+    [tutorialScrollView addSubview:tutorialAnimationImageView];
+    [tutorialScrollView addSubview:acknowledgementsView];
+    tutorialScrollView.contentSize = CGSizeMake(frameWidth * tutorialScrollView.subviews.count, frameHeight);
     tutorialScrollView.scrollEnabled = YES;
     tutorialScrollView.scrollsToTop = NO;
 }
+
 
 -(IBAction)onCloseButtonPressed:(UIButton *)closeButton
 {
@@ -63,12 +88,21 @@
 }
 
 #pragma mark UIScrollView Delegate
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat pageWidth = tutorialScrollView.frame.size.width;
     float fractionalPage = tutorialScrollView.contentOffset.x / pageWidth;
     NSInteger page = round(fractionalPage);
     pageControl.currentPage = page;
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (pageControl.currentPage == 1)
+    {
+        //start animating the tutorial
+    }
 }
 
 @end

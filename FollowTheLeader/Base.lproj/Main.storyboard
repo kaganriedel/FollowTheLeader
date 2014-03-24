@@ -130,10 +130,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZt-IQ-5ED">
-                                        <rect key="frame" x="0.0" y="0.0" width="528" height="236"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="528" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="236" id="1Wq-25-805"/>
+                                            <constraint firstAttribute="height" constant="125" id="1Wq-25-805"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
                                         <state key="normal" title="GESTUREMENTS">
@@ -148,7 +148,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="XZt-IQ-5ED" firstAttribute="leading" secondItem="YNK-FO-a5f" secondAttribute="leading" id="6QM-Mv-G0b"/>
-                                    <constraint firstItem="XZt-IQ-5ED" firstAttribute="top" secondItem="YNK-FO-a5f" secondAttribute="top" id="QJg-sg-Xna"/>
+                                    <constraint firstItem="XZt-IQ-5ED" firstAttribute="top" secondItem="YNK-FO-a5f" secondAttribute="top" constant="55.5" id="QJg-sg-Xna"/>
                                     <constraint firstAttribute="trailing" secondItem="XZt-IQ-5ED" secondAttribute="trailing" id="eJN-MP-ndq"/>
                                     <constraint firstAttribute="centerX" secondItem="Esu-gn-dgj" secondAttribute="centerX" id="gyL-IK-Og8"/>
                                     <constraint firstAttribute="height" constant="236" id="oah-IO-lpQ"/>
@@ -159,6 +159,7 @@
                                 <rect key="frame" x="523" y="0.0" width="45" height="212"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="212" id="49Y-px-Mn5"/>
                                     <constraint firstAttribute="width" constant="45" id="Tqc-wR-Yvy"/>
