@@ -57,7 +57,7 @@
     creditTitleLabel.textColor = [UIColor whiteColor];
     
     UITextView *creditsTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 105, frameWidth, frameHeight - 90)];
-    creditsTextView.text = @"612 Development LLC\nDeveloped by Kagan Riedel\nDesign by Willy Mattson";
+    creditsTextView.text = @"612 Development LLC\nDeveloped by Kagan Riedel";
     creditsTextView.font = FONT_ALTEHAAS_REG(26);
     creditsTextView.textAlignment = NSTextAlignmentCenter;
     creditsTextView.textColor = [UIColor grayColor];
