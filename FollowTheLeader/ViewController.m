@@ -158,9 +158,9 @@ static NSTimeInterval animationDuration = 0.3;
     [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
     
     item5.titleLabel.text = @"?";
-//    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
-//    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
-//    [item5 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
+//    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateNormal];
+//    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateSelected];
 
 
     dropDownView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 8) withItemsViews:@[item1, item2, item3, item4, item5]];
@@ -215,6 +215,11 @@ static NSTimeInterval animationDuration = 0.3;
     }
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (IBAction)segmentValueChanged:(UISegmentedControl *)segmentedControl
 {
     scoreLabel.alpha = 0.0;
@@ -233,6 +238,7 @@ static NSTimeInterval animationDuration = 0.3;
         maxCounterTime = 50.0;
         self.gameMode = GameModeTimed;
     }
+    //memory
     else if (segmentedControl.selectedSegmentIndex == 2)
     {
         feedbackLabel.text = @"MEMORY";
@@ -247,6 +253,8 @@ static NSTimeInterval animationDuration = 0.3;
         feedbackLabel.alpha = 0.0;
     }];
 }
+
+#pragma mark Game Methods
 
 - (IBAction)goPressed:(UIButton *)sender
 {
@@ -344,69 +352,6 @@ static NSTimeInterval animationDuration = 0.3;
     }
 }
 
-- (void)demoMemoryGameGestures
-{
-    counter = 0.0;
-    memoryCounter = 0.0;
-    leaderLabel.text = @"PAY ATTENTION";
-    leaderLabel.textColor = [UIColor myRedColor];
-    [progressView setProgress:1.0];
-    if (!memoryGameGestures) {
-        memoryGameGestures = [NSMutableArray new];
-    }
-    //if it's the first turn, add in 2 gestures
-    if (score == 0)
-    {
-        for (int x = 0; x < 2; x++)
-        {
-            [memoryGameGestures addObject:[self pickRandomGesture]];
-        }
-    }
-    //else add 1 gesture
-    else
-    {
-        [memoryGameGestures addObject:[self pickRandomGesture]];
-    }
-    NSLog(@"Memory Game Gestures: %lu",(unsigned long)memoryGameGestures.count);
-    memoryGameDemonstrationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(demonstrationTimerFired) userInfo:nil repeats:YES];
-}
-
--(void)demonstrationTimerFired
-{
-    leaderLabel.textColor = [UIColor whiteColor];
-    leaderLabel.text = memoryGameGestures[(int)counter];
-    counter += 1.0;
-    if ((int)counter >= memoryGameGestures.count)
-    {
-        [memoryGameDemonstrationTimer invalidate];
-        [self performSelector:@selector(yourTurnReadyGo) withObject:nil afterDelay:1.0];
-    }
-}
-
--(void)yourTurnReadyGo
-{
-    feedbackLabel.alpha = 0.0;
-
-    leaderLabel.text = @"YOUR TURN";
-    leaderLabel.textColor = [UIColor myRedColor];
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(ready) userInfo:nil repeats:NO];
-}
-
--(void)ready
-{
-    leaderLabel.text = @"READY?";
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(go) userInfo:nil repeats:NO];
-}
-
--(void)go
-{
-    leaderLabel.text = @"GO";
-    [UIView animateWithDuration:2.0 animations:^{
-        feedbackLabel.alpha = 0.0;
-    }];
-    lastGestureRecieved = nil;
-    [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:1.0];
-}
 
 - (void)timerFired
 {
@@ -528,10 +473,73 @@ static NSTimeInterval animationDuration = 0.3;
     }];
 }
 
-- (BOOL)prefersStatusBarHidden
+#pragma mark Memory Mode
+- (void)demoMemoryGameGestures
 {
-    return YES;
+    counter = 0.0;
+    memoryCounter = 0.0;
+    leaderLabel.text = @"PAY ATTENTION";
+    leaderLabel.textColor = [UIColor myRedColor];
+    [progressView setProgress:1.0];
+    if (!memoryGameGestures) {
+        memoryGameGestures = [NSMutableArray new];
+    }
+    //if it's the first turn, add in 2 gestures
+    if (score == 0)
+    {
+        for (int x = 0; x < 2; x++)
+        {
+            [memoryGameGestures addObject:[self pickRandomGesture]];
+        }
+    }
+    //else add 1 gesture
+    else
+    {
+        [memoryGameGestures addObject:[self pickRandomGesture]];
+    }
+    NSLog(@"Memory Game Gestures: %lu",(unsigned long)memoryGameGestures.count);
+    memoryGameDemonstrationTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(demonstrationTimerFired) userInfo:nil repeats:YES];
 }
+
+-(void)demonstrationTimerFired
+{
+    leaderLabel.textColor = [UIColor whiteColor];
+    leaderLabel.text = memoryGameGestures[(int)counter];
+    counter += 1.0;
+    if ((int)counter >= memoryGameGestures.count)
+    {
+        [memoryGameDemonstrationTimer invalidate];
+        [self performSelector:@selector(yourTurn) withObject:nil afterDelay:1.0];
+    }
+}
+
+-(void)yourTurn
+{
+    feedbackLabel.alpha = 0.0;
+    
+    leaderLabel.text = @"YOUR TURN";
+    leaderLabel.textColor = [UIColor myRedColor];
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(ready) userInfo:nil repeats:NO];
+}
+
+-(void)ready
+{
+    leaderLabel.text = @"READY?";
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(go) userInfo:nil repeats:NO];
+}
+
+-(void)go
+{
+    leaderLabel.text = @"GO";
+    [UIView animateWithDuration:2.0 animations:^{
+        feedbackLabel.alpha = 0.0;
+    }];
+    lastGestureRecieved = nil;
+    [self performSelector:@selector(startNextCommand) withObject:nil afterDelay:1.0];
+}
+
+
+
 
 #pragma mark GameOver
 
@@ -714,7 +722,16 @@ static NSTimeInterval animationDuration = 0.3;
     lastGestureRecieved = @"PRESS";
 }
 
-#pragma mark Delegate methods
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[ADDropDownMenuItemView class]])
+    {
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark Options Drop Down Menu
 
 -(void)ADDropDownMenu:(ADDropDownMenuView *)view didSelectItem:(ADDropDownMenuItemView *)item
 {
@@ -761,14 +778,7 @@ static NSTimeInterval animationDuration = 0.3;
     }
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    if ([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[ADDropDownMenuItemView class]])
-    {
-        return NO;
-    }
-    return YES;
-}
+#pragma mark Audio
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
