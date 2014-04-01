@@ -753,9 +753,9 @@ static NSTimeInterval animationDuration = 0.3;
     else if (item.tag == 3)
     {
         NSLog(@"Leaders Tapped");
-        GKGameCenterViewController *GKVC = [[GKGameCenterViewController alloc] init];
-        GKVC.gameCenterDelegate = self;
-        [self presentViewController:GKVC animated:YES completion:nil];
+        GKGameCenterViewController *GameCenterVC = [[GKGameCenterViewController alloc] init];
+        GameCenterVC.gameCenterDelegate = self;
+        [self presentViewController:GameCenterVC animated:YES completion:nil];
     }
     else if (item.tag == 4)
     {

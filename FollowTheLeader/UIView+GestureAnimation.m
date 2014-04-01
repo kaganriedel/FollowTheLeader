@@ -12,7 +12,7 @@
 
 +(void)animate:(ANIMATION)animation view:(UIView*)view withDuration:(NSTimeInterval)duration
 {
-    //added extra set of curly braces for each case because of "switch case is in protected scope" warning
+    //added extra set of curly braces for each case because of "switch case is in protected scope" warning. the "swipe" animations use CATransforms because autolayout was messing up CGAffineTransforms
     switch (animation) {
         case SwipeLeft:
         {
@@ -101,9 +101,7 @@
         }
         default:
             break;
-            
     }
-
 }
 
 
