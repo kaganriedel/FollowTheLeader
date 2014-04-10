@@ -71,9 +71,9 @@
                                         <rect key="frame" x="0.0" y="7" width="180" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="" image="infinity_segmentedcontrol.png"/>
+                                            <segment title="" image="infinity_broken_segmentedcontrol.png"/>
                                             <segment title="" image="clock_segmentedcontrol.png"/>
-                                            <segment title="123"/>
+                                            <segment title="" image="memory_segmentedcontrol.png"/>
                                         </segments>
                                         <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
@@ -325,8 +325,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clock_segmentedcontrol.png" width="120" height="58"/>
-        <image name="infinity_segmentedcontrol.png" width="120" height="58"/>
+        <image name="clock_segmentedcontrol.png" width="60" height="29"/>
+        <image name="infinity_broken_segmentedcontrol.png" width="60" height="29"/>
+        <image name="memory_segmentedcontrol.png" width="60" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
