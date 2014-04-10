@@ -18,6 +18,8 @@
 		6D6A4AB918D4196D006B2426 /* AlteHaasGroteskRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB818D4196D006B2426 /* AlteHaasGroteskRegular.ttf */; };
 		6D6A4AC318D42890006B2426 /* time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AC218D42890006B2426 /* time@2x.png */; };
 		6D6A4AC718D42A55006B2426 /* infinity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AC618D42A55006B2426 /* infinity@2x.png */; };
+		6D7BE12B18F5F9040053CBB0 /* infinity_segmentedcontrol@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7BE12A18F5F9040053CBB0 /* infinity_segmentedcontrol@2x.png */; };
+		6D7BE12D18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7BE12C18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png */; };
 		6D7FA00818D0EFE400314E8A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7FA00718D0EFE400314E8A /* iAd.framework */; };
 		6D86390F18D4C25C0034640F /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D86390E18D4C25C0034640F /* settings@2x.png */; };
 		6D86391118D4C5220034640F /* iad_icon@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D86391018D4C5220034640F /* iad_icon@2x.jpg */; };
@@ -65,6 +67,8 @@
 		6D6A4AB818D4196D006B2426 /* AlteHaasGroteskRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlteHaasGroteskRegular.ttf; sourceTree = "<group>"; };
 		6D6A4AC218D42890006B2426 /* time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time@2x.png"; sourceTree = "<group>"; };
 		6D6A4AC618D42A55006B2426 /* infinity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infinity@2x.png"; sourceTree = "<group>"; };
+		6D7BE12A18F5F9040053CBB0 /* infinity_segmentedcontrol@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infinity_segmentedcontrol@2x.png"; sourceTree = "<group>"; };
+		6D7BE12C18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock_segmentedcontrol@2x.png"; sourceTree = "<group>"; };
 		6D7FA00718D0EFE400314E8A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		6D86390E18D4C25C0034640F /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		6D86391018D4C5220034640F /* iad_icon@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iad_icon@2x.jpg"; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 		6D57252618CA234400F68E58 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6D7BE12C18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png */,
+				6D7BE12A18F5F9040053CBB0 /* infinity_segmentedcontrol@2x.png */,
 				6DAAF2BA18D7B45E006B011C /* close_circle@2x.png */,
 				6D6A4AC218D42890006B2426 /* time@2x.png */,
 				6D86391018D4C5220034640F /* iad_icon@2x.jpg */,
@@ -161,7 +167,7 @@
 		6D8F71CA18C296410077D383 = {
 			isa = PBXGroup;
 			children = (
-				6D8F71DC18C296410077D383 /* FollowTheLeader */,
+				6D8F71DC18C296410077D383 /* Gesturements */,
 				6D8F71FB18C296410077D383 /* FollowTheLeaderTests */,
 				6D8F71D518C296410077D383 /* Frameworks */,
 				6D8F71D418C296410077D383 /* Products */,
@@ -193,7 +199,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6D8F71DC18C296410077D383 /* FollowTheLeader */ = {
+		6D8F71DC18C296410077D383 /* Gesturements */ = {
 			isa = PBXGroup;
 			children = (
 				6D8F71E518C296410077D383 /* AppDelegate.h */,
@@ -211,6 +217,7 @@
 				6D57252618CA234400F68E58 /* Images */,
 				6D8F71DD18C296410077D383 /* Supporting Files */,
 			);
+			name = Gesturements;
 			path = FollowTheLeader;
 			sourceTree = "<group>";
 		};
@@ -330,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6A4AC318D42890006B2426 /* time@2x.png in Resources */,
+				6D7BE12D18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png in Resources */,
 				6D6A4AB718D41965006B2426 /* AlteHaasGroteskBold.ttf in Resources */,
 				6D8F71EF18C296410077D383 /* Images.xcassets in Resources */,
 				6D86391118D4C5220034640F /* iad_icon@2x.jpg in Resources */,
@@ -341,6 +349,7 @@
 				6D8F71EA18C296410077D383 /* Main.storyboard in Resources */,
 				6D6A4AB918D4196D006B2426 /* AlteHaasGroteskRegular.ttf in Resources */,
 				6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */,
+				6D7BE12B18F5F9040053CBB0 /* infinity_segmentedcontrol@2x.png in Resources */,
 				6D9E922118DB848A00913F57 /* kitten_background@2x.jpeg in Resources */,
 				6D86390F18D4C25C0034640F /* settings@2x.png in Resources */,
 				6D6A4AB318D3D0D7006B2426 /* trophy_silver@2x.png in Resources */,

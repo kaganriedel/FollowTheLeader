@@ -40,15 +40,15 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cs-ye-fci" userLabel="Score/Timer Animation View" customClass="CSAnimationView">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-BW-7if">
-                                        <rect key="frame" x="64" y="8" width="106" height="26"/>
+                                        <rect key="frame" x="64" y="8" width="70" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="ZHD-Yu-G48"/>
-                                            <constraint firstAttribute="width" constant="106" id="hay-7w-CTA"/>
+                                            <constraint firstAttribute="width" constant="70" id="hay-7w-CTA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.99215692280000001" green="0.50196081400000003" blue="0.13725490870000001" alpha="1" colorSpace="deviceRGB"/>
@@ -58,21 +58,21 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="VOI-BW-7if" firstAttribute="top" secondItem="1Cs-ye-fci" secondAttribute="top" constant="8" id="Hpc-IU-082"/>
-                                    <constraint firstAttribute="width" constant="170" id="KvI-mY-muS"/>
+                                    <constraint firstAttribute="width" constant="145" id="KvI-mY-muS"/>
                                     <constraint firstAttribute="height" constant="50" id="eo3-Uu-xKe"/>
-                                    <constraint firstAttribute="trailing" secondItem="VOI-BW-7if" secondAttribute="trailing" id="zLR-Bc-Y5p"/>
+                                    <constraint firstAttribute="trailing" secondItem="VOI-BW-7if" secondAttribute="trailing" constant="11" id="zLR-Bc-Y5p"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-GV-BXE" userLabel="Segment Animation View" customClass="CSAnimationView">
-                                <rect key="frame" x="152" y="2" width="176" height="42"/>
+                                <rect key="frame" x="150" y="0.0" width="180" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="McU-oB-dtx">
-                                        <rect key="frame" x="43" y="7" width="90" height="29"/>
+                                        <rect key="frame" x="0.0" y="7" width="180" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="" image="infinity.png"/>
-                                            <segment title="" image="time.png"/>
+                                            <segment title="" image="infinity_segmentedcontrol.png"/>
+                                            <segment title="" image="clock_segmentedcontrol.png"/>
                                             <segment title="123"/>
                                         </segments>
                                         <color key="tintColor" red="0.40392160420000001" green="0.41960787770000002" blue="0.98431378599999997" alpha="1" colorSpace="deviceRGB"/>
@@ -84,9 +84,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="C0c-NR-1Mc"/>
-                                    <constraint firstAttribute="trailing" secondItem="McU-oB-dtx" secondAttribute="trailing" constant="43" id="Czy-cp-IRc"/>
-                                    <constraint firstItem="McU-oB-dtx" firstAttribute="leading" secondItem="Gh5-GV-BXE" secondAttribute="leading" constant="43" id="R8p-EJ-fqZ"/>
-                                    <constraint firstAttribute="width" constant="176" id="joY-bL-os6"/>
+                                    <constraint firstAttribute="trailing" secondItem="McU-oB-dtx" secondAttribute="trailing" id="Czy-cp-IRc"/>
+                                    <constraint firstItem="McU-oB-dtx" firstAttribute="leading" secondItem="Gh5-GV-BXE" secondAttribute="leading" id="R8p-EJ-fqZ"/>
+                                    <constraint firstAttribute="width" constant="180" id="joY-bL-os6"/>
                                     <constraint firstAttribute="bottom" secondItem="McU-oB-dtx" secondAttribute="bottom" constant="7" id="kQh-2v-pLB"/>
                                     <constraint firstItem="McU-oB-dtx" firstAttribute="top" secondItem="Gh5-GV-BXE" secondAttribute="top" constant="7" id="llX-Kx-8tP"/>
                                 </constraints>
@@ -185,7 +185,7 @@
                             <constraint firstItem="FqS-1L-IpD" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="98" id="I7E-Zb-nlZ"/>
                             <constraint firstItem="GxP-FC-xXM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Kfo-7v-GKb"/>
                             <constraint firstItem="Jdo-hF-06K" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Rl9-y1-3D5"/>
-                            <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="2" id="S9o-b7-oGa"/>
+                            <constraint firstItem="Gh5-GV-BXE" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="S9o-b7-oGa"/>
                             <constraint firstAttribute="centerX" secondItem="Gh5-GV-BXE" secondAttribute="centerX" id="TI1-6Z-bJg"/>
                             <constraint firstItem="FqS-1L-IpD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="VVs-vg-Cec"/>
                             <constraint firstItem="IBu-z9-PDS" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="a6X-VU-x8k"/>
@@ -325,8 +325,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="infinity.png" width="52" height="52"/>
-        <image name="time.png" width="64" height="64"/>
+        <image name="clock_segmentedcontrol.png" width="120" height="58"/>
+        <image name="infinity_segmentedcontrol.png" width="120" height="58"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

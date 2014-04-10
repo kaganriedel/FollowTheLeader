@@ -82,7 +82,7 @@ static NSTimeInterval animationDuration = 0.3;
     
     
     feedbackLabel.font = FONT_ALTEHAAS_REG(40);
-    highscoreLabel.font = FONT_ALTEHAAS_REG(34);
+    highscoreLabel.font = FONT_ALTEHAAS_REG(40);
     leaderLabel.font = FONT_ALTEHAAS_REG(52);
     goButton.titleLabel.font = FONT_ALTEHAAS_REG(52);
     scoreLabel.font = FONT_ALTEHAAS_REG(28);
@@ -637,11 +637,11 @@ static NSTimeInterval animationDuration = 0.3;
                     GKScore *bestScore = scores[0];
                     if (bestScore.value > score)
                     {
-                        highscoreLabel.text = [NSString stringWithFormat:@"%lli MORE FOR THE RECORD", bestScore.value - score];
+                        highscoreLabel.text = @"GAME OVER";
                     }
                     else
                     {
-                        highscoreLabel.text = @"HOT DAMN NEW RECORD!";
+                        highscoreLabel.text = @"YOU SET A NEW RECORD!";
                     }
                     [highscoreAnimationView startCanvasAnimation];
                 }
@@ -650,7 +650,7 @@ static NSTimeInterval animationDuration = 0.3;
                 {
                     if (yourHighScore > score)
                     {
-                        highscoreLabel.text = [NSString stringWithFormat:@"%li MORE FOR YOUR RECORD", yourHighScore - score];
+                        highscoreLabel.text = @"GAME OVER";
                     }
                     else if (yourHighScore == score)
                     {
@@ -658,7 +658,7 @@ static NSTimeInterval animationDuration = 0.3;
                     }
                     else
                     {
-                        highscoreLabel.text = @"HOT DAMN NEW RECORD!";
+                        highscoreLabel.text = @"YOU SET A NEW RECORD!";
                     }
                     [highscoreAnimationView startCanvasAnimation];
 
@@ -724,7 +724,7 @@ static NSTimeInterval animationDuration = 0.3;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-    if ([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[ADDropDownMenuItemView class]])
+    if ([touch.view isKindOfClass:[UIControl class]] || [touch.view isKindOfClass:[ADDropDownMenuItemView class]] || [touch.view isKindOfClass:[UISegmentedControl class]])
     {
         return NO;
     }
