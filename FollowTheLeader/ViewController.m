@@ -110,65 +110,72 @@ static NSTimeInterval animationDuration = 0.3;
     
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     
-    //Drop Down Menu
-    ADDropDownMenuItemView *item1 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
-    item1.tag = 1;
-    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
-    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+    //Drop Down Menu - uncomment to implement the dropdown menu
+//    ADDropDownMenuItemView *item1 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+//    item1.tag = 1;
+//    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+//    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+//
+//    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateNormal];
+//    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateSelected];
+//    
+//    ADDropDownMenuItemView *item2 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+//    item2.tag = 2;
+//    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+//    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+//
+//    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateNormal];
+//    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateSelected];
+//
+//    ADDropDownMenuItemView *item3 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+//    item3.tag = 3;
+//    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+//    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+//
+//    [item3 setBackgroundImage:[UIImage imageNamed:@"trophybutton_normal"] forState:ADDropDownMenuItemViewStateNormal];
+//    [item3 setBackgroundImage:[UIImage imageNamed:@"trophybutton_pressed"] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item3 setBackgroundImage:[UIImage imageNamed:@"trophybutton_normal"] forState:ADDropDownMenuItemViewStateSelected];
+//
+//    ADDropDownMenuItemView *item4 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+//    item4.tag = 4;
+//    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+//    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+//
+//    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
+//    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
+//    
+//    ADDropDownMenuItemView *item5 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
+//    item5.tag = 5;
+//    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
+//    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
+//    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
+//    
+//    item5.titleLabel.text = @"?";
+////    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateNormal];
+////    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateHighlighted];
+////    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateSelected];
+//
+//
+//    dropDownView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 8) withItemsViews:@[item1, item2, item3, item4, item5]];
+//    dropDownView.delegate = self;
+//    dropDownView.shouldExchangeItems = NO;
+//    
+//    [settingsAnimationView addSubview:dropDownView];
 
-    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateNormal];
-    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item1 setBackgroundImage:[UIImage imageNamed:@"settings"] forState:ADDropDownMenuItemViewStateSelected];
+    //instead of dropdown menu, only using leaderboard button for version 1.0
+    UIButton *leaderboardButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 8, 35, 35)];
+    [leaderboardButton setImage:[UIImage imageNamed:@"trophybutton_normal"] forState:UIControlStateNormal];
+    [leaderboardButton setImage:[UIImage imageNamed:@"trophybutton_pressed"] forState:UIControlStateHighlighted];
+    [leaderboardButton addTarget:self action:@selector(leaderboardButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [settingsAnimationView addSubview:leaderboardButton];
     
-    ADDropDownMenuItemView *item2 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
-    item2.tag = 2;
-    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
-    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item2 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
-
-    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateNormal];
-    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item2 setBackgroundImage:[UIImage imageNamed:@"music"] forState:ADDropDownMenuItemViewStateSelected];
-
-    ADDropDownMenuItemView *item3 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
-    item3.tag = 3;
-    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
-    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item3 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
-
-    [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateNormal];
-    [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item3 setBackgroundImage:[UIImage imageNamed:@"trophy_silver"] forState:ADDropDownMenuItemViewStateSelected];
-
-    ADDropDownMenuItemView *item4 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
-    item4.tag = 4;
-    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
-    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item4 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
-
-    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateNormal];
-    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item4 setBackgroundImage:[UIImage imageNamed:@"iad_icon.jpg"] forState:ADDropDownMenuItemViewStateSelected];
-    
-    ADDropDownMenuItemView *item5 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
-    item5.tag = 5;
-    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
-    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateHighlighted];
-    [item5 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateSelected];
-    
-    item5.titleLabel.text = @"?";
-//    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateNormal];
-//    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateHighlighted];
-//    [item5 setBackgroundImage:[UIImage imageNamed:@""] forState:ADDropDownMenuItemViewStateSelected];
-
-
-    dropDownView = [[ADDropDownMenuView alloc] initAtOrigin:CGPointMake(0, 8) withItemsViews:@[item1, item2, item3, item4, item5]];
-    dropDownView.delegate = self;
-    dropDownView.shouldExchangeItems = NO;
-    
-    [settingsAnimationView addSubview:dropDownView];
-
     //Audio
 
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource: @"Ghostwriter" ofType: @"mp3"];
@@ -729,6 +736,14 @@ static NSTimeInterval animationDuration = 0.3;
         return NO;
     }
     return YES;
+}
+
+#pragma mark UIButtons
+-(IBAction)leaderboardButtonPressed:(UIButton*)leaderboardButton
+{
+    GKGameCenterViewController *GameCenterVC = [[GKGameCenterViewController alloc] init];
+    GameCenterVC.gameCenterDelegate = self;
+    [self presentViewController:GameCenterVC animated:YES completion:nil];
 }
 
 #pragma mark Options Drop Down Menu

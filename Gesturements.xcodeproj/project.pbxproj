@@ -12,11 +12,12 @@
 		6D211EFB18DE740400FA4FC8 /* UIView+GestureAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D211EFA18DE740400FA4FC8 /* UIView+GestureAnimation.m */; };
 		6D46C8CA18D4F56900A12330 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D46C8C918D4F56900A12330 /* StoreKit.framework */; };
 		6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */; };
+		6D5E5D9B18F6E3FE00AA7736 /* timed_segmentedcontrol@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D5E5D9A18F6E3FE00AA7736 /* timed_segmentedcontrol@2x.png */; };
+		6D5E5D9D18F6E56800AA7736 /* trophybutton_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D5E5D9C18F6E56800AA7736 /* trophybutton_pressed@2x.png */; };
 		6D6A4AB118D3D0A3006B2426 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB018D3D0A3006B2426 /* music@2x.png */; };
-		6D6A4AB318D3D0D7006B2426 /* trophy_silver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */; };
+		6D6A4AB318D3D0D7006B2426 /* trophybutton_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB218D3D0D7006B2426 /* trophybutton_normal@2x.png */; };
 		6D6A4AB718D41965006B2426 /* AlteHaasGroteskBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB618D41965006B2426 /* AlteHaasGroteskBold.ttf */; };
 		6D6A4AB918D4196D006B2426 /* AlteHaasGroteskRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D6A4AB818D4196D006B2426 /* AlteHaasGroteskRegular.ttf */; };
-		6D7BE12D18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D7BE12C18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png */; };
 		6D7FA00818D0EFE400314E8A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7FA00718D0EFE400314E8A /* iAd.framework */; };
 		6D86390F18D4C25C0034640F /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D86390E18D4C25C0034640F /* settings@2x.png */; };
 		6D86391118D4C5220034640F /* iad_icon@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D86391018D4C5220034640F /* iad_icon@2x.jpg */; };
@@ -59,11 +60,12 @@
 		6D211EFA18DE740400FA4FC8 /* UIView+GestureAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GestureAnimation.m"; sourceTree = "<group>"; };
 		6D46C8C918D4F56900A12330 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6D57251F18CA17CD00F68E58 /* Ghostwriter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ghostwriter.mp3; sourceTree = "<group>"; };
+		6D5E5D9A18F6E3FE00AA7736 /* timed_segmentedcontrol@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timed_segmentedcontrol@2x.png"; sourceTree = "<group>"; };
+		6D5E5D9C18F6E56800AA7736 /* trophybutton_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trophybutton_pressed@2x.png"; sourceTree = "<group>"; };
 		6D6A4AB018D3D0A3006B2426 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
-		6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trophy_silver@2x.png"; sourceTree = "<group>"; };
+		6D6A4AB218D3D0D7006B2426 /* trophybutton_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trophybutton_normal@2x.png"; sourceTree = "<group>"; };
 		6D6A4AB618D41965006B2426 /* AlteHaasGroteskBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlteHaasGroteskBold.ttf; sourceTree = "<group>"; };
 		6D6A4AB818D4196D006B2426 /* AlteHaasGroteskRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AlteHaasGroteskRegular.ttf; sourceTree = "<group>"; };
-		6D7BE12C18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock_segmentedcontrol@2x.png"; sourceTree = "<group>"; };
 		6D7FA00718D0EFE400314E8A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		6D86390E18D4C25C0034640F /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		6D86391018D4C5220034640F /* iad_icon@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iad_icon@2x.jpg"; sourceTree = "<group>"; };
@@ -135,12 +137,13 @@
 		6D57252618CA234400F68E58 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6D5E5D9A18F6E3FE00AA7736 /* timed_segmentedcontrol@2x.png */,
 				6DB71E6918F6298D00EC2020 /* infinity_broken_segmentedcontrol@2x.png */,
-				6D7BE12C18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png */,
 				6DB71E6B18F6343100EC2020 /* memory_segmentedcontrol@2x.png */,
 				6DAAF2BA18D7B45E006B011C /* close_circle@2x.png */,
 				6D86391018D4C5220034640F /* iad_icon@2x.jpg */,
-				6D6A4AB218D3D0D7006B2426 /* trophy_silver@2x.png */,
+				6D6A4AB218D3D0D7006B2426 /* trophybutton_normal@2x.png */,
+				6D5E5D9C18F6E56800AA7736 /* trophybutton_pressed@2x.png */,
 				6D6A4AB018D3D0A3006B2426 /* music@2x.png */,
 				6D86390E18D4C25C0034640F /* settings@2x.png */,
 				6D9E922218DB849000913F57 /* murray_background@2x.jpeg */,
@@ -331,9 +334,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DB71E6C18F6343100EC2020 /* memory_segmentedcontrol@2x.png in Resources */,
-				6D7BE12D18F5FA240053CBB0 /* clock_segmentedcontrol@2x.png in Resources */,
 				6D6A4AB718D41965006B2426 /* AlteHaasGroteskBold.ttf in Resources */,
 				6D8F71EF18C296410077D383 /* Images.xcassets in Resources */,
+				6D5E5D9D18F6E56800AA7736 /* trophybutton_pressed@2x.png in Resources */,
+				6D5E5D9B18F6E3FE00AA7736 /* timed_segmentedcontrol@2x.png in Resources */,
 				6D86391118D4C5220034640F /* iad_icon@2x.jpg in Resources */,
 				6D6A4AB118D3D0A3006B2426 /* music@2x.png in Resources */,
 				6D9E922318DB849000913F57 /* murray_background@2x.jpeg in Resources */,
@@ -344,7 +348,7 @@
 				6D6A4AB918D4196D006B2426 /* AlteHaasGroteskRegular.ttf in Resources */,
 				6D57252018CA17CD00F68E58 /* Ghostwriter.mp3 in Resources */,
 				6D86390F18D4C25C0034640F /* settings@2x.png in Resources */,
-				6D6A4AB318D3D0D7006B2426 /* trophy_silver@2x.png in Resources */,
+				6D6A4AB318D3D0D7006B2426 /* trophybutton_normal@2x.png in Resources */,
 				6DAAF2BB18D7B45E006B011C /* close_circle@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
