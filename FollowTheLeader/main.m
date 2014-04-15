@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
 
 +(UIColor*)myRedColor
 {
-    UIColor *color = [UIColor colorWithRed:255.0/255.0 green:59.0/255.0 blue:71.0/255.0 alpha:1];
+    UIColor *color = [UIColor colorWithRed:241.0/255.0 green:37.0/255.0 blue:63.0/255.0 alpha:1];
     return color;
 }
 

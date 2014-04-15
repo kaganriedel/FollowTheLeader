@@ -75,8 +75,8 @@ static NSTimeInterval animationDuration = 0.3;
     firstLoad = YES;
     
     self.view.backgroundColor = [UIColor myLightBlueColor];
-    feedbackLabel.textColor = [UIColor myRedColor];
-    highscoreLabel.textColor = [UIColor myRedColor];
+    feedbackLabel.textColor = [UIColor myDarkGrayColor];
+    highscoreLabel.textColor = [UIColor myDarkGrayColor];
     scoreLabel.textColor = [UIColor whiteColor];
     gameModeSegmentedControl.tintColor = [UIColor myBlueColor];
     
