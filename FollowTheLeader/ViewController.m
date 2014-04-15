@@ -69,13 +69,12 @@ static NSTimeInterval animationDuration = 0.3;
     feedbackLabel.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
     leaderLabel.alpha = 0.0;
-    scoreLabel.alpha = 0.0;
     self.gameMode = GameModeEndless;
     maxCounterTime = 5.0;
     gamesPlayed = 0;
     firstLoad = YES;
     
-    self.view.backgroundColor = [UIColor myDarkGrayColor];
+    self.view.backgroundColor = [UIColor myLightBlueColor];
     feedbackLabel.textColor = [UIColor myRedColor];
     highscoreLabel.textColor = [UIColor myRedColor];
     scoreLabel.textColor = [UIColor whiteColor];
@@ -232,7 +231,6 @@ static NSTimeInterval animationDuration = 0.3;
 
 - (IBAction)segmentValueChanged:(UISegmentedControl *)segmentedControl
 {
-    scoreLabel.alpha = 0.0;
     //endless
     if (segmentedControl.selectedSegmentIndex == 0)
     {
@@ -274,7 +272,6 @@ static NSTimeInterval animationDuration = 0.3;
     goButton.alpha = 0.0;
     highscoreLabel.alpha = 0.0;
     leaderLabel.alpha = 1.0;
-    scoreLabel.alpha = 1.0;
     gameModeSegmentedControl.alpha = 0.0;
     settingsAnimationView.alpha = 0.0;
     score = 0;
