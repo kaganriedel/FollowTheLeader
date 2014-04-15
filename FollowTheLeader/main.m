@@ -19,9 +19,9 @@ int main(int argc, char * argv[])
 
 @implementation UIColor (mathletes)
 
-+(UIColor*)myGrayColor
++(UIColor*)myLightBlueColor
 {
-    UIColor *color = [UIColor colorWithRed:178.0/255.0 green:196.0/255.0 blue:219.0/255.0 alpha:1];
+    UIColor *color = [UIColor colorWithRed:32.0/255.0 green:127.0/255.0 blue:178.0/255.0 alpha:1];
     return color;
 }
 

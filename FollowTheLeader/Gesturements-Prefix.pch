@@ -16,7 +16,7 @@
 #endif
 
 @interface UIColor (mathletes)
-+(UIColor*)myGrayColor;
++(UIColor*)myLightBlueColor;
 +(UIColor*)myDarkGrayColor;
 +(UIColor*)myRedColor;
 +(UIColor*)myBlueColor;
