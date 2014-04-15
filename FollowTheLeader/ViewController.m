@@ -746,8 +746,8 @@ static NSTimeInterval animationDuration = 0.3;
     [self presentViewController:GameCenterVC animated:YES completion:nil];
 }
 
-#pragma mark Options Drop Down Menu
-
+//#pragma mark Options Drop Down Menu
+//
 //-(void)ADDropDownMenu:(ADDropDownMenuView *)view didSelectItem:(ADDropDownMenuItemView *)item
 //{
 //    if (item.tag == 2)
