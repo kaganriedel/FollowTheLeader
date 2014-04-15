@@ -52,9 +52,10 @@ static NSTimeInterval animationDuration = 0.3;
     int lastRandomGesturePicked;
     int gamesPlayed;
     
-    AVAudioPlayer *audioPlayer;
     GKPlayer *currentPlayer;
     ADDropDownMenuView *dropDownView;
+    
+    //AVAudioPlayer *audioPlayer;
 }
 
 @end
@@ -108,7 +109,6 @@ static NSTimeInterval animationDuration = 0.3;
     userDefaults = [NSUserDefaults standardUserDefaults];
     highscoreLabel.text = @"";
     
-    self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     
     //Drop Down Menu - uncomment to implement the dropdown menu
 //    ADDropDownMenuItemView *item1 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
@@ -176,17 +176,20 @@ static NSTimeInterval animationDuration = 0.3;
     [leaderboardButton addTarget:self action:@selector(leaderboardButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [settingsAnimationView addSubview:leaderboardButton];
     
-    //Audio
+    //Audio also not included in version 1.0
 
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource: @"Ghostwriter" ofType: @"mp3"];
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: soundFilePath];
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-    [audioPlayer prepareToPlay];
-    audioPlayer.delegate = self;
-    if (![userDefaults boolForKey:@"Prefer Music Off"])
-    {
-        [audioPlayer play];
-    }
+//    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource: @"Ghostwriter" ofType: @"mp3"];
+//    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: soundFilePath];
+//    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+//    [audioPlayer prepareToPlay];
+//    audioPlayer.delegate = self;
+//    if (![userDefaults boolForKey:@"Prefer Music Off"])
+//    {
+//        [audioPlayer play];
+//    }
+    
+    //Ads
+    self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     if (![userDefaults boolForKey:@"Ads Disabled"])
     {
         self.canDisplayBannerAds = YES;
@@ -748,56 +751,56 @@ static NSTimeInterval animationDuration = 0.3;
 
 #pragma mark Options Drop Down Menu
 
--(void)ADDropDownMenu:(ADDropDownMenuView *)view didSelectItem:(ADDropDownMenuItemView *)item
-{
-    if (item.tag == 2)
-    {
-        NSLog(@"Music Tapped");
-        if (audioPlayer.playing)
-        {
-            [audioPlayer pause];
-            [userDefaults setBool:YES forKey:@"Prefer Music Off"];
-        }
-        else
-        {
-            [audioPlayer play];
-            [userDefaults setBool:NO forKey:@"Prefer Music Off"];
-        }
-        [userDefaults synchronize];
-    }
-    else if (item.tag == 3)
-    {
-        NSLog(@"Leaders Tapped");
-        GKGameCenterViewController *GameCenterVC = [[GKGameCenterViewController alloc] init];
-        GameCenterVC.gameCenterDelegate = self;
-        [self presentViewController:GameCenterVC animated:YES completion:nil];
-    }
-    else if (item.tag == 4)
-    {
-        NSLog(@"Ads Tapped");
-        if (![userDefaults boolForKey:@"Ads Disabled"])
-        {
-            self.canDisplayBannerAds = NO;
-            [userDefaults setBool:YES forKey:@"Ads Disabled"];
-        }
-        else
-        {
-            self.canDisplayBannerAds = YES;
-            [userDefaults setBool:NO forKey:@"Ads Disabled"];
-        }
-        [userDefaults synchronize];
-    }
-    else if (item.tag == 5)
-    {
-        [self performSegueWithIdentifier:@"tutorial segue" sender:self];
-    }
-}
-
-#pragma mark Audio
-
--(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
-{
-    [audioPlayer play];
-}
+//-(void)ADDropDownMenu:(ADDropDownMenuView *)view didSelectItem:(ADDropDownMenuItemView *)item
+//{
+//    if (item.tag == 2)
+//    {
+//        NSLog(@"Music Tapped");
+//        if (audioPlayer.playing)
+//        {
+//            [audioPlayer pause];
+//            [userDefaults setBool:YES forKey:@"Prefer Music Off"];
+//        }
+//        else
+//        {
+//            [audioPlayer play];
+//            [userDefaults setBool:NO forKey:@"Prefer Music Off"];
+//        }
+//        [userDefaults synchronize];
+//    }
+//    else if (item.tag == 3)
+//    {
+//        NSLog(@"Leaders Tapped");
+//        GKGameCenterViewController *GameCenterVC = [[GKGameCenterViewController alloc] init];
+//        GameCenterVC.gameCenterDelegate = self;
+//        [self presentViewController:GameCenterVC animated:YES completion:nil];
+//    }
+//    else if (item.tag == 4)
+//    {
+//        NSLog(@"Ads Tapped");
+//        if (![userDefaults boolForKey:@"Ads Disabled"])
+//        {
+//            self.canDisplayBannerAds = NO;
+//            [userDefaults setBool:YES forKey:@"Ads Disabled"];
+//        }
+//        else
+//        {
+//            self.canDisplayBannerAds = YES;
+//            [userDefaults setBool:NO forKey:@"Ads Disabled"];
+//        }
+//        [userDefaults synchronize];
+//    }
+//    else if (item.tag == 5)
+//    {
+//        [self performSegueWithIdentifier:@"tutorial segue" sender:self];
+//    }
+//}
+//
+//#pragma mark Audio
+//
+//-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+//{
+//    [audioPlayer play];
+//}
 
 @end
