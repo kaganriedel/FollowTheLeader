@@ -109,7 +109,7 @@ static NSTimeInterval animationDuration = 0.3;
     highscoreLabel.text = @"";
     
     
-    //Drop Down Menu - uncomment to implement the dropdown menu
+//    Drop Down Menu - uncomment to implement the dropdown menu
 //    ADDropDownMenuItemView *item1 = [[ADDropDownMenuItemView alloc] initWithSize: CGSizeMake(35, 35)];
 //    item1.tag = 1;
 //    [item1 setBackgroundColor:[UIColor clearColor] forState:ADDropDownMenuItemViewStateNormal];
@@ -191,7 +191,7 @@ static NSTimeInterval animationDuration = 0.3;
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyManual;
     if (![userDefaults boolForKey:@"Ads Disabled"])
     {
-        self.canDisplayBannerAds = YES;
+//        self.canDisplayBannerAds = YES;
     }
 }
 
@@ -573,7 +573,7 @@ static NSTimeInterval animationDuration = 0.3;
     [gameTimer invalidate];
     if (![userDefaults boolForKey:@"Ads Disabled"])
     {
-        self.canDisplayBannerAds = YES;
+//        self.canDisplayBannerAds = YES;
     }
     gamesPlayed ++;
     [self checkGamesPlayedCount];
@@ -600,7 +600,7 @@ static NSTimeInterval animationDuration = 0.3;
     {
         if (![userDefaults boolForKey:@"Ads Disabled"])
         {
-            [self requestInterstitialAdPresentation];
+//            [self requestInterstitialAdPresentation];
         }
         gamesPlayed = 0;
     }
